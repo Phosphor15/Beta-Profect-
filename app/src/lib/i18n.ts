@@ -3,12 +3,12 @@ export type Lang = "it" | "en";
 const it = {
   nav: {
     apres: "Après-Ski", restaurant: "Ristorante", events: "Eventi", drinks: "Listino bevande",
-    contact: "Contatti", book: "Prenota il tavolo", staff: "Area staff",
+    contact: "Contatti", book: "Prenota il tavolo", staff: "Area staff", privateEvents: "Private Events",
   },
   footer: {
     tagline: "Ski restaurant, bar e après-ski ai piedi delle piste di Campo Smith.",
     privacy: "Privacy policy", terms: "Termini e condizioni prenotazione", cookies: "Preferenze cookie",
-    rights: "Tutti i diritti riservati.", beta: "Versione beta — contenuti e prezzi indicativi.",
+    rights: "Tutti i diritti riservati.", poweredBy: "Powered by", beta: "Versione beta — contenuti e prezzi indicativi.",
     betaBanner: "Anteprima beta · dati di esempio e pagamenti simulati",
   },
   hero: {
@@ -59,6 +59,20 @@ const it = {
     cta: "Prenota ora",
   },
   finale: { title: "Ci vediamo", titleItalic: "sulle piste", text: "Tutti i giorni in stagione, a fondo pista a Campo Smith.", cta: "Prenota il tavolo" },
+  privateEvents: {
+    eyebrow: "Feste, aziende, occasioni speciali", title: "Private Events",
+    intro: "Harald's in esclusiva o una zona tutta per voi: après-ski privati, cene alla brace, feste aziendali e compleanni ai piedi delle piste di Campo Smith.",
+    types: [
+      ["Après-ski privato", "Terrazza riservata, DJ set e open bar per il vostro gruppo."],
+      ["Cene alla brace", "Menu steakhouse con abbinamento vini, per gruppi e occasioni speciali."],
+      ["Eventi aziendali", "Team building sulla neve, cene di gala e lanci di prodotto."],
+      ["Feste e compleanni", "Dalla festa a sorpresa all'esclusiva del locale, su misura."],
+    ] as [string, string][],
+    formTitle: "Richiedi un preventivo",
+    name: "Nome e cognome", email: "Email", phone: "Telefono", date: "Data indicativa", guests: "Numero di ospiti",
+    kind: "Tipo di evento", message: "Raccontaci la tua idea", send: "Invia la richiesta",
+    sent: "Grazie! Questa è una demo: la richiesta non è stata inviata a nessuno.",
+  },
   booking: {
     eyebrow: "Tavoli après-ski", title: "Prenota il tavolo",
     intro: "Scegli la serata, poi la zona sulla piantina. Pagamento completo online e QR all'ingresso.",
@@ -155,12 +169,12 @@ export type Dict = typeof it;
 const en: Dict = {
   nav: {
     apres: "Après-Ski", restaurant: "Restaurant", events: "Events", drinks: "Drinks list",
-    contact: "Contact", book: "Book a table", staff: "Staff area",
+    contact: "Contact", book: "Book a table", staff: "Staff area", privateEvents: "Private Events",
   },
   footer: {
     tagline: "Ski restaurant, bar and après-ski at the foot of the Campo Smith slopes.",
     privacy: "Privacy policy", terms: "Booking terms and conditions", cookies: "Cookie preferences",
-    rights: "All rights reserved.", beta: "Beta version — content and prices are indicative.",
+    rights: "All rights reserved.", poweredBy: "Powered by", beta: "Beta version — content and prices are indicative.",
     betaBanner: "Beta preview · sample data and simulated payments",
   },
   hero: {
@@ -211,6 +225,20 @@ const en: Dict = {
     cta: "Book now",
   },
   finale: { title: "See you", titleItalic: "on the slopes", text: "Every day in season, at the bottom of the Campo Smith runs.", cta: "Book a table" },
+  privateEvents: {
+    eyebrow: "Parties, companies, special occasions", title: "Private Events",
+    intro: "Harald's exclusively or an area all to yourselves: private après-ski, grill dinners, corporate events and birthdays at the foot of the Campo Smith slopes.",
+    types: [
+      ["Private après-ski", "Reserved terrace, DJ set and open bar for your group."],
+      ["Grill dinners", "Steakhouse menu with wine pairing, for groups and special occasions."],
+      ["Corporate events", "Team building on the snow, gala dinners and product launches."],
+      ["Parties & birthdays", "From surprise parties to the whole venue, made to measure."],
+    ],
+    formTitle: "Ask for a quote",
+    name: "Full name", email: "Email", phone: "Phone", date: "Preferred date", guests: "Number of guests",
+    kind: "Type of event", message: "Tell us your idea", send: "Send request",
+    sent: "Thank you! This is a demo: the request was not sent to anyone.",
+  },
   booking: {
     eyebrow: "Après-ski tables", title: "Book a table",
     intro: "Pick the night, then the area on the floor plan. Full payment online and QR at the door.",

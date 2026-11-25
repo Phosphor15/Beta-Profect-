@@ -27,7 +27,9 @@ export async function Footer() {
             <li className="eyebrow !text-gold-2">Harald&rsquo;s</li>
             <li className="pt-2"><Link href="/apres-ski" className="link-underline">{t.nav.apres}</Link></li>
             <li><Link href="/ristorante" className="link-underline">{t.nav.restaurant}</Link></li>
+            <li><Link href="/eventi-privati" className="link-underline">{t.nav.privateEvents}</Link></li>
             <li><Link href="/listino" className="link-underline">{t.nav.drinks}</Link></li>
+            <li><Link href="/contatti" className="link-underline">{t.nav.contact}</Link></li>
             <li><Link href="/privacy" className="link-underline">{t.footer.privacy}</Link></li>
             <li><Link href="/termini" className="link-underline">{t.footer.terms}</Link></li>
             <li><CookiePrefsButton label={t.footer.cookies} /></li>
@@ -38,8 +40,9 @@ export async function Footer() {
           Harald&rsquo;s
         </p>
       </div>
-      <div className="border-t border-white/10 px-5 py-5 text-center text-xs text-white/50">
-        © {new Date().getFullYear()} {VENUE.name} · {t.footer.rights} · <span className="text-gold-2">{t.footer.beta}</span>
+      <div className="flex flex-col items-center justify-between gap-3 border-t border-white/10 px-5 py-6 text-xs text-white/50 sm:flex-row sm:px-8">
+        <span>© {new Date().getFullYear()} {VENUE.name} · {t.footer.rights} · <span className="text-gold-2">{t.footer.beta}</span></span>
+        <span className="text-white/70">{t.footer.poweredBy} <span className="display-italic text-base text-white">Bardo.</span></span>
       </div>
     </footer>
   );
