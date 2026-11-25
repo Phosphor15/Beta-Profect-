@@ -46,3 +46,8 @@ Torna a [[00 - Indice]]
 - Obiettivo: **beta online per presentare l'idea al Consiglio** (pagamenti simulati, dati di esempio).
 - Database: Postgres (Netlify DB / Neon) online, SQLite in locale. Testato: flusso completo + 20 prenotazioni simultanee senza doppie assegnazioni.
 - Istruzioni di pubblicazione nel README del repo.
+
+## Stato 25/11/2026 — sito offline
+- La demo su Netlify (hrdbeta.netlify.app) è **offline**: mostra solo "Sito non disponibile".
+- Si rimette online **solo su richiesta del proprietario del progetto**, nessun altro.
+- Token Netlify revocato. Il sito completo resta in `app/` e sul branch `main`.

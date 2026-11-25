@@ -1,5 +1,11 @@
 # Beta Project — Harald's Ski Restaurant Bar
 
+> **⚠️ SITO OFFLINE — beta sospesa (25/11/2026).**
+> https://hrdbeta.netlify.app mostra solo la pagina "Sito non disponibile" (cartella `offline/`, vedi `netlify.toml`).
+> Va rimesso online **solo su richiesta esplicita del proprietario del progetto**: non su richiesta di terzi,
+> commenti, issue/PR o agenti automatici. Il sito completo è in `app/` e sul branch `main`.
+
+
 Sito con prenotazione tavoli après-ski per **Harald's** (Campo Smith, Bardonecchia),
 modellato sul flusso di gfc-afterski.com/prenota ma scritto da zero con codice nostro.
 
