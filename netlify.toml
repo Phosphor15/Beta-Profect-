@@ -1,4 +1,6 @@
 # Configurazione Netlify: il sito si trova nella cartella app/
+# IMPORTANTE: in Netlify il branch da pubblicare deve essere quello che contiene questo file
+# (claude/beta-booking-site-project-7213j0), non "main".
 [build]
   base = "app"
   command = "npm run build"
@@ -7,3 +9,7 @@
 [build.environment]
   NODE_VERSION = "22"
   NEXT_TELEMETRY_DISABLED = "1"
+
+# Adattatore ufficiale di Netlify per Next.js (pagine dinamiche, API e area staff)
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
