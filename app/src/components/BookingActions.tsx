@@ -47,11 +47,11 @@ export function BookingActions({
   return (
     <div className="mt-6">
       <p className="text-center text-sm text-muted">
-        {t.page.holdLeft} <span className="font-mono text-lg font-semibold text-gold">{mm}:{ss}</span>
+        {t.page.holdLeft} <span className="display text-3xl text-royal">{mm}:{ss}</span>
       </p>
-      {note && <p className="mt-3 rounded-lg border border-gold/40 bg-gold/10 p-3 text-xs text-gold">{note}</p>}
+      {note && <p className="mt-3 rounded-2xl bg-blush p-4 text-sm text-sunset">{note}</p>}
       <button onClick={pay} disabled={busy || left === 0} className="btn btn-primary mt-4 w-full">{t.page.payNow}</button>
-      <button onClick={release} disabled={busy} className="mt-3 w-full text-sm text-muted underline">{t.page.release}</button>
+      <button onClick={release} disabled={busy} className="mt-4 w-full text-sm text-muted underline">{t.page.release}</button>
     </div>
   );
 }

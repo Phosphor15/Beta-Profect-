@@ -6,5 +6,5 @@ export const metadata: Metadata = { title: "Après-Ski", alternates: { canonical
 
 export default async function Apres() {
   const { t } = await getDict();
-  return <InfoPage {...t.apres} photo="apres" cta={{ href: "/prenota", label: t.nav.book }} />;
+  return <InfoPage {...t.apres} photo="apres" position="center 40%" cta={{ href: "/prenota", label: t.nav.book }} />;
 }

@@ -42,25 +42,32 @@ export default async function BookingPage({
   }
 
   const ok = b.status === "confirmed" || b.status === "manual";
-  const qr = ok ? await QRCode.toDataURL(`${publicUrl()}/staff/checkin/${b.token}`, { margin: 1, width: 640, color: { dark: "#0e1940", light: "#f2ead6" } }) : null;
-  const statusColor = ok ? "text-pine" : b.status === "hold" ? "text-gold" : "text-danger";
+  const qr = ok ? await QRCode.toDataURL(`${publicUrl()}/staff/checkin/${b.token}`, { margin: 1, width: 640, color: { dark: "#101c45", light: "#ffffff" } }) : null;
+  const statusColor = ok ? "bg-pine/12 text-pine" : b.status === "hold" ? "bg-blush text-sunset" : "bg-danger/10 text-danger";
 
   return (
-    <div className="mx-auto max-w-xl px-4 py-12">
+    <div className="mx-auto max-w-xl px-5 py-14 sm:py-20">
       <p className="eyebrow">{t.page.title}</p>
-      <h1 className="display mt-2 text-4xl capitalize">{formatDate(b.date, lang)}</h1>
-      <p className={`mt-2 font-semibold ${statusColor}`}>● {t.page.status[b.status]}</p>
+      <h1 className="display animate-page mt-3 text-5xl capitalize sm:text-6xl">{formatDate(b.date, lang)}</h1>
+      <p className={`mt-4 inline-flex rounded-full px-4 py-1.5 text-sm font-semibold ${statusColor}`}>● {t.page.status[b.status]}</p>
 
       {ok && qr && (
-        <section className="mt-8 bg-cream p-2 text-center text-ink shadow-2xl shadow-black/50" style={{ border: "1px solid #c9a45a" }}>
-          <div className="p-6" style={{ border: "1px solid #c9a45a", outline: "3px double rgba(201,164,90,.6)", outlineOffset: "-8px" }}>
-          <p className="caps text-[0.65rem] text-[#8a6a2a]">Harald&rsquo;s · Campo Smith</p>
-          <h2 className="display mt-2 text-3xl italic">{t.page.qrTitle}</h2>
+        <section className="animate-page mt-8 overflow-hidden rounded-[2rem] bg-paper text-center shadow-[0_40px_80px_-40px_rgba(16,28,69,.55)]" style={{ animationDelay: "150ms" }}>
+          <div className="bg-[linear-gradient(135deg,#1f43c9,#101c45)] px-6 pb-8 pt-7 text-white">
+            <p className="display-italic text-3xl">Harald&rsquo;s</p>
+            <p className="mt-1 text-[0.65rem] font-semibold uppercase tracking-[0.25em] text-gold-2">Après-Ski · Campo Smith</p>
+          </div>
+          <div className="relative border-t-2 border-dashed border-line">
+            <span className="absolute -left-4 -top-4 h-8 w-8 rounded-full bg-snow" />
+            <span className="absolute -right-4 -top-4 h-8 w-8 rounded-full bg-snow" />
+          </div>
+          <div className="p-6 text-navy">
+          <h2 className="display text-3xl">{t.page.qrTitle}</h2>
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src={qr} alt={`QR ${b.code}`} className="mx-auto mt-4 w-full max-w-72" />
           <p className="mt-3 font-mono text-lg tracking-widest">{b.code}</p>
-          <p className="mt-2 text-sm text-ink/70">{t.page.qrHint}</p>
-          <p className="mt-1 text-xs text-ink/50">{t.page.brightness}</p>
+          <p className="mt-2 text-sm text-muted">{t.page.qrHint}</p>
+          <p className="mt-1 text-xs text-muted/80">{t.page.brightness}</p>
           {b.checked_in_at && (
             <p className="mt-3 rounded-lg bg-pine/15 p-2 text-sm font-semibold text-pine">
               {t.page.checkedIn.replace("{time}", new Date(b.checked_in_at).toLocaleTimeString(lang === "en" ? "en-GB" : "it-IT", { hour: "2-digit", minute: "2-digit", timeZone: "Europe/Rome" }))}
@@ -80,7 +87,7 @@ export default async function BookingPage({
           [ok ? t.page.paid : t.page.total, formatEuro(b.amount_cents / 100, lang)],
           [t.page.included, formatEuro(b.price_cents / 100, lang)],
         ].map(([k, v]) => (
-          <div key={k} className="flex justify-between gap-4 px-4 py-3"><dt className="text-muted">{k}</dt><dd className="text-right font-semibold">{v}</dd></div>
+          <div key={k} className="flex justify-between gap-4 px-6 py-4"><dt className="text-muted">{k}</dt><dd className="text-right font-semibold">{v}</dd></div>
         ))}
       </dl>
 

@@ -2,10 +2,11 @@
 import { useActionState } from "react";
 import { login } from "./actions";
 
-export function LoginForm() {
+export function LoginForm({ next }: { next?: string }) {
   const [error, action, pending] = useActionState(login, null);
   return (
     <form action={action} className="card mx-auto mt-6 grid max-w-sm gap-4 p-6">
+      {next && <input type="hidden" name="next" value={next} />}
       <label className="grid gap-1 text-sm">Password staff
         <input name="password" type="password" required autoComplete="current-password" className="field" />
       </label>

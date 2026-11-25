@@ -18,7 +18,8 @@ const isDate = (s: string) => /^\d{4}-\d{2}-\d{2}$/.test(s);
 export async function login(_: string | null, f: FormData): Promise<string | null> {
   if (!checkPassword(str(f, "password"))) return "Password errata";
   await startSession();
-  redirect("/staff");
+  const next = str(f, "next");
+  redirect(next.startsWith("/staff/") ? next : "/staff"); // es. torna al check-in del QR inquadrato
 }
 
 export async function logout() {

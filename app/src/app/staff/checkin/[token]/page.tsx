@@ -16,7 +16,7 @@ export default async function CheckIn({ params }: { params: Promise<{ token: str
     return (
       <div className="mx-auto max-w-md px-4 py-16">
         <h1 className="display text-center text-3xl">Check-in · accesso staff</h1>
-        <LoginForm />
+        <LoginForm next={`/staff/checkin/${token}`} />
       </div>
     );
   }
@@ -38,7 +38,7 @@ export default async function CheckIn({ params }: { params: Promise<{ token: str
         <dl className="card mt-6 divide-y divide-line text-sm">
           {[
             ["Nome", b.name], ["Serata", formatDate(b.date, "it")], ["Zona", b.zone === "terrazza" ? "Terrazza" : "Chalet"],
-            ["Tavolo", b.table_label ?? "—"], ["Persone", String(b.guests)], ["Codice", b.code], ["Stato", b.status],
+            ["Tavolo", b.table_label ?? "—"], ["Persone", String(b.guests)], ["Codice", b.code], ["Stato", ({ confirmed: "Pagata", manual: "Manuale", hold: "In pagamento", cancelled: "Annullata", expired: "Scaduta" } as Record<string, string>)[b.status] ?? b.status],
           ].map(([k, v]) => (
             <div key={k} className="flex justify-between px-4 py-3"><dt className="text-muted">{k}</dt><dd className="font-semibold capitalize">{v}</dd></div>
           ))}

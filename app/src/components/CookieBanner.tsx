@@ -11,10 +11,10 @@ export function CookieBanner({ text, ok }: { text: string; ok: string }) {
   }, []);
   if (!show) return null;
   return (
-    <div className="no-print fixed inset-x-3 bottom-3 z-50 mx-auto max-w-xl rounded-2xl border border-line bg-wood p-4 text-sm shadow-2xl sm:flex sm:items-center sm:gap-4">
-      <p className="text-muted">{text}</p>
+    <div className="no-print animate-page fixed inset-x-3 bottom-3 z-50 mx-auto max-w-xl rounded-3xl bg-navy p-5 text-sm text-white shadow-2xl sm:flex sm:items-center sm:gap-5">
+      <p className="text-white/80">{text}</p>
       <button
-        className="btn btn-primary mt-3 w-full !py-2 sm:mt-0 sm:w-auto"
+        className="btn btn-primary mt-3 w-full !py-2.5 sm:mt-0 sm:w-auto"
         onClick={() => { try { localStorage.setItem("cookie-ok", "1"); } catch {} setShow(false); }}
       >
         {ok}
@@ -25,7 +25,7 @@ export function CookieBanner({ text, ok }: { text: string; ok: string }) {
 
 export function CookiePrefsButton({ label }: { label: string }) {
   return (
-    <button className="hover:text-cream" onClick={() => window.dispatchEvent(new Event("open-cookie-banner"))}>
+    <button className="link-underline" onClick={() => window.dispatchEvent(new Event("open-cookie-banner"))}>
       {label}
     </button>
   );

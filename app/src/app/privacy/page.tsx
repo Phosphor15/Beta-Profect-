@@ -9,7 +9,7 @@ export default function Privacy() {
   return (
     <>
       <PageHero eyebrow="Bozza beta" title="Privacy policy" />
-      <article className="mx-auto max-w-3xl space-y-4 px-4 text-muted [&_h2]:display [&_h2]:pt-4 [&_h2]:text-2xl [&_h2]:text-cream">
+      <article className="mx-auto max-w-3xl space-y-4 px-5 text-lg text-muted [&_h2]:display [&_h2]:pt-4 [&_h2]:text-2xl [&_h2]:text-cream">
         <p>Titolare del trattamento: {VENUE.name}, {VENUE.address}, {VENUE.city} — {VENUE.email}.</p>
         <h2>Dati raccolti</h2>
         <p>Per gestire la prenotazione raccogliamo nome, telefono, email, numero di persone ed eventuali note. I pagamenti sono gestiti da Stripe: non conserviamo i dati della carta.</p>

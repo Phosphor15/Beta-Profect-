@@ -9,7 +9,7 @@ export default function Termini() {
   return (
     <>
       <PageHero eyebrow="Bozza beta" title="Termini e condizioni di prenotazione" />
-      <ol className="mx-auto max-w-3xl list-decimal space-y-4 px-4 pl-9 text-muted marker:text-gold">
+      <ol className="mx-auto max-w-3xl list-decimal space-y-4 px-5 pl-10 text-lg text-muted marker:text-royal">
         <li>La prenotazione riguarda una <strong className="text-cream">zona</strong> (Terrazza sulle piste o Sala chalet) per la fascia après-ski {VENUE.apresStart}–{VENUE.apresEnd}. Il numero del tavolo è assegnato dallo staff.</li>
         <li>Ogni tavolo ospita da 4 a 8 persone. Il prezzo del tavolo comprende una consumazione di pari valore da scegliere dal listino al tavolo.</li>
         <li>La prenotazione è confermata solo a pagamento completato. Il tavolo resta bloccato per pochi minuti durante il pagamento; trascorso il tempo viene liberato.</li>

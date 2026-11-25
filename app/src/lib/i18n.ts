@@ -36,6 +36,29 @@ const it = {
     igEyebrow: "Instagram", igTitle: "Harald's su Instagram",
     igText: "Serate, DJ set, piatti e foto dalle piste: tutto in tempo reale sul nostro profilo.", igCta: "Seguici",
   },
+  hero2: {
+    eyebrow: "Campo Smith · Bardonecchia",
+    line: "Ski Restaurant & Après-Ski",
+    words: ["sulle piste", "a pranzo", "al tramonto", "in pista da ballo"],
+    lead: "La montagna si festeggia",
+    ctaBook: "Prenota il tavolo", ctaMenu: "Scopri il listino", scroll: "Scorri",
+    marquee: ["Après-ski ogni giorno 15:30 – 19:30", "DJ set", "Cucina alpina", "Bombardini & bollicine", "Campo Smith · Bardonecchia", "Tavoli in terrazza"],
+  },
+  intro: {
+    eyebrow: "Benvenuti da Harald's",
+    a: "Dalla prima colazione al", b: "tramonto", c: ", Harald's è il posto dove la montagna si", d: "festeggia", e: ".",
+    stats: [["7:30", "apriamo con la colazione"], ["15:30", "parte l'après-ski"], ["2", "zone tavoli da prenotare"]] as [string, string][],
+  },
+  duo: {
+    restTitle: "Ristorante", restText: "Cucina alpina fatta in casa, dalla pasticceria del mattino alle cene à la carte.", restCta: "Il ristorante",
+    apresTitle: "Après-Ski", apresText: "Terrazza sulle piste, DJ set e bombardini: quando chiudono gli impianti, si accende Harald's.", apresCta: "L'après-ski",
+  },
+  tables: {
+    eyebrow: "Tavoli riservati", title: "Il tuo tavolo,", titleItalic: "sulla neve",
+    text: "Scegli la serata e la zona, paghi online e ricevi un QR: all'ingresso il tavolo è già pronto.",
+    cta: "Prenota ora",
+  },
+  finale: { title: "Ci vediamo", titleItalic: "sulle piste", text: "Tutti i giorni in stagione, a fondo pista a Campo Smith.", cta: "Prenota il tavolo" },
   booking: {
     eyebrow: "Tavoli après-ski", title: "Prenota il tavolo",
     intro: "Scegli la serata, poi la zona sulla piantina. Pagamento completo online e QR all'ingresso.",
@@ -165,6 +188,29 @@ const en: Dict = {
     igEyebrow: "Instagram", igTitle: "Harald's on Instagram",
     igText: "Nights, DJ sets, food and photos from the slopes: all live on our profile.", igCta: "Follow us",
   },
+  hero2: {
+    eyebrow: "Campo Smith · Bardonecchia",
+    line: "Ski Restaurant & Après-Ski",
+    words: ["on the slopes", "at lunch", "at sunset", "on the dance floor"],
+    lead: "Celebrate the mountain",
+    ctaBook: "Book a table", ctaMenu: "See the drinks list", scroll: "Scroll",
+    marquee: ["Après-ski daily 3:30 – 7:30 pm", "DJ sets", "Alpine cooking", "Bombardini & bubbles", "Campo Smith · Bardonecchia", "Terrace tables"],
+  },
+  intro: {
+    eyebrow: "Welcome to Harald's",
+    a: "From first breakfast to", b: "sunset", c: ", Harald's is where the mountain comes to", d: "celebrate", e: ".",
+    stats: [["7:30", "we open with breakfast"], ["3:30", "après-ski kicks off"], ["2", "table areas to book"]],
+  },
+  duo: {
+    restTitle: "Restaurant", restText: "Homemade alpine cooking, from morning pastries to à la carte dinners.", restCta: "The restaurant",
+    apresTitle: "Après-Ski", apresText: "A slope-side terrace, DJ sets and bombardini: when the lifts close, Harald's lights up.", apresCta: "The après-ski",
+  },
+  tables: {
+    eyebrow: "Reserved tables", title: "Your table,", titleItalic: "on the snow",
+    text: "Pick the night and the area, pay online and get a QR: your table is ready when you arrive.",
+    cta: "Book now",
+  },
+  finale: { title: "See you", titleItalic: "on the slopes", text: "Every day in season, at the bottom of the Campo Smith runs.", cta: "Book a table" },
   booking: {
     eyebrow: "Après-ski tables", title: "Book a table",
     intro: "Pick the night, then the area on the floor plan. Full payment online and QR at the door.",

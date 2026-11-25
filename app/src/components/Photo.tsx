@@ -1,32 +1,29 @@
-// Foto con fallback: carica /images/<name>.jpg se presente, altrimenti mostra un gradiente "alpino".
-// Per usare le foto di Instagram: salvale in public/images con i nomi indicati in public/images/README.md
+// Foto con fallback: carica /images/<name>.jpg se presente, altrimenti un gradiente.
+// L'immagine sta in un livello interno così può fare zoom (hover) o Ken Burns senza spostare il contenuto.
 const gradients: Record<string, string> = {
-  hero: "radial-gradient(120% 80% at 70% 10%, #2a54d0 0%, #10205a 50%, #050a1f 100%)",
-  apres: "radial-gradient(100% 80% at 20% 0%, #c9a45a 0%, #3a3a5c 40%, #070e29 100%)",
-  restaurant: "radial-gradient(100% 90% at 80% 20%, #8f7a3c 0%, #172a66 55%, #070e29 100%)",
-  terrace: "linear-gradient(160deg, #b9cdf0 0%, #3a68ee 40%, #0b1636 100%)",
-  chalet: "linear-gradient(160deg, #c9a45a 0%, #6b5a2a 35%, #0b1636 100%)",
+  hero: "radial-gradient(120% 80% at 70% 10%, #2d55e8 0%, #101c45 70%)",
+  apres: "linear-gradient(160deg, #ff8a5c, #d4a23c)",
+  restaurant: "linear-gradient(160deg, #f0cf85, #d4a23c)",
+  terrace: "linear-gradient(160deg, #9fb6ff, #1f43c9)",
+  chalet: "linear-gradient(160deg, #f0cf85, #8a5a2b)",
 };
 
 export function Photo({
-  name, className = "", label, children, position = "center", veil = 0,
+  name, className = "", label, children, position = "center", veil, kenburns = false,
 }: {
   name: string; className?: string; label?: string; children?: React.ReactNode;
-  /** background-position, es. "center 35%" */
   position?: string;
-  /** velatura blu notte sopra la foto (0–1), per leggere il testo */
-  veil?: number;
+  /** velatura sopra la foto: un gradiente CSS completo */
+  veil?: string;
+  kenburns?: boolean;
 }) {
   return (
-    <div
-      className={`photo ${className}`}
-      role={label ? "img" : undefined}
-      aria-label={label}
-      style={{
-        backgroundImage: `${veil ? `linear-gradient(rgba(8,18,48,${veil}), rgba(8,18,48,${veil})), ` : ""}url(/images/${name}.jpg), ${gradients[name] ?? gradients.hero}`,
-        backgroundPosition: position,
-      }}
-    >
+    <div className={`photo ${className}`} role={label ? "img" : undefined} aria-label={label}>
+      <div
+        className={`photo-img absolute inset-0 bg-cover ${kenburns ? "animate-kenburns" : ""}`}
+        style={{ backgroundImage: `url(/images/${name}.jpg), ${gradients[name] ?? gradients.hero}`, backgroundPosition: position }}
+      />
+      {veil && <div className="absolute inset-0" style={{ background: veil }} />}
       {children && <div className="relative z-10 h-full">{children}</div>}
     </div>
   );

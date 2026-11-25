@@ -2,31 +2,35 @@ import Link from "next/link";
 import { Photo } from "./Photo";
 
 export function InfoPage({
-  eyebrow, title, intro, blocks, photo, cta, extra,
+  eyebrow, title, intro, blocks, photo, cta, extra, position = "center",
 }: {
   eyebrow: string; title: string; intro: string; blocks: [string, string][];
-  photo: string; cta: { href: string; label: string }; extra?: React.ReactNode;
+  photo: string; cta: { href: string; label: string }; extra?: React.ReactNode; position?: string;
 }) {
+  const accents = ["bg-royal", "bg-sunset", "bg-gold"];
   return (
-    <div className="mx-auto max-w-6xl px-4 pt-12">
-      <div className="grid items-end gap-8 md:grid-cols-2">
+    <div className="relative mx-auto max-w-7xl px-5 pb-24 pt-14 sm:px-8 sm:pt-20">
+      <div className="grid items-center gap-12 md:grid-cols-[1fr_0.9fr]">
         <div>
-          <p className="eyebrow">{eyebrow}</p>
-          <h1 className="display mt-3 text-5xl sm:text-6xl">{title}</h1>
-          <p className="mt-5 text-lg text-muted">{intro}</p>
+          <p className="eyebrow animate-page">{eyebrow}</p>
+          <h1 className="display-italic animate-page mt-4 text-7xl text-royal sm:text-9xl" style={{ animationDelay: "120ms" }}>{title}</h1>
+          <p className="animate-page mt-8 max-w-xl text-xl leading-relaxed text-muted" style={{ animationDelay: "220ms" }}>{intro}</p>
+          <Link href={cta.href} className="btn btn-primary animate-page mt-10" style={{ animationDelay: "320ms" }}>{cta.label}</Link>
         </div>
-        <Photo name={photo} className="frame aspect-[4/3]" label={title} />
+        <div className="zoom-on-hover arch animate-page relative aspect-[4/5] overflow-hidden" style={{ animationDelay: "200ms" }}>
+          <Photo name={photo} position={position} kenburns className="absolute inset-0" label={title} />
+        </div>
       </div>
-      <div className="mt-12 grid gap-4 sm:grid-cols-3">
-        {blocks.map(([h, p]) => (
-          <div key={h} className="wood p-7">
-            <h2 className="display text-2xl italic text-gold-2">{h}</h2>
-            <p className="mt-2 text-cream/80">{p}</p>
+      <div className="mt-24 grid gap-5 sm:grid-cols-3">
+        {blocks.map(([h, p], i) => (
+          <div key={h} className="card card-hover reveal p-8" style={{ ["--d" as string]: `${i * 110}ms` }}>
+            <span className={`block h-2 w-10 rounded-full ${accents[i % 3]}`} />
+            <h2 className="display mt-6 text-3xl">{h}</h2>
+            <p className="mt-3 text-muted">{p}</p>
           </div>
         ))}
       </div>
       {extra}
-      <Link href={cta.href} className="btn btn-primary mt-10">{cta.label}</Link>
     </div>
   );
 }
