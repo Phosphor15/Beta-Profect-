@@ -20,7 +20,7 @@ export default async function CheckIn({ params }: { params: Promise<{ token: str
       </div>
     );
   }
-  const b = bookingByToken(token);
+  const b = await bookingByToken(token);
   const valid = b && ["confirmed", "manual"].includes(b.status);
   const today = romeNow().date;
   const wrongDay = b && b.date !== today;

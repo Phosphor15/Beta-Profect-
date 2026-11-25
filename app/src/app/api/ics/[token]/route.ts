@@ -4,7 +4,7 @@ import { publicUrl } from "@/lib/stripe";
 
 export async function GET(_req: Request, { params }: { params: Promise<{ token: string }> }) {
   const { token } = await params;
-  const b = bookingByToken(token);
+  const b = await bookingByToken(token);
   if (!b || !["confirmed", "manual"].includes(b.status)) return new Response("Not found", { status: 404 });
   const d = b.date.replace(/-/g, "");
   const hm = (s: string) => s.replace(":", "") + "00";

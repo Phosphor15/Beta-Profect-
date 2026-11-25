@@ -11,4 +11,5 @@ export function stripe(): Stripe {
   return client;
 }
 
-export const publicUrl = () => (process.env.PUBLIC_URL || "http://localhost:3000").replace(/\/$/, "");
+export const publicUrl = () =>
+  (process.env.PUBLIC_URL || process.env.URL || "http://localhost:3000").replace(/\/$/, ""); // URL = indirizzo del sito su Netlify

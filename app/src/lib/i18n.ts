@@ -9,6 +9,7 @@ const it = {
     tagline: "Ski restaurant, bar e après-ski ai piedi delle piste di Campo Smith.",
     privacy: "Privacy policy", terms: "Termini e condizioni prenotazione", cookies: "Preferenze cookie",
     rights: "Tutti i diritti riservati.", beta: "Versione beta — contenuti e prezzi indicativi.",
+    betaBanner: "Anteprima beta · dati di esempio e pagamenti simulati",
   },
   hero: {
     eyebrow: "Campo Smith · Bardonecchia",
@@ -137,6 +138,7 @@ const en: Dict = {
     tagline: "Ski restaurant, bar and après-ski at the foot of the Campo Smith slopes.",
     privacy: "Privacy policy", terms: "Booking terms and conditions", cookies: "Cookie preferences",
     rights: "All rights reserved.", beta: "Beta version — content and prices are indicative.",
+    betaBanner: "Beta preview · sample data and simulated payments",
   },
   hero: {
     eyebrow: "Campo Smith · Bardonecchia",

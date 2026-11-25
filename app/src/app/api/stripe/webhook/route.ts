@@ -16,8 +16,8 @@ export async function POST(req: Request) {
   if (event.type === "checkout.session.completed" || event.type === "checkout.session.async_payment_succeeded") {
     const s = event.data.object;
     const token = s.metadata?.token;
-    if (token && s.payment_status === "paid" && markPaid(token, s.id)) {
-      const b = bookingByToken(token);
+    if (token && s.payment_status === "paid" && await markPaid(token, s.id)) {
+      const b = await bookingByToken(token);
       if (b) await sendConfirmation(b);
     }
   }

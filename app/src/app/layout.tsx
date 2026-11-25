@@ -4,7 +4,7 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { CookieBanner } from "@/components/CookieBanner";
 import { getDict } from "@/lib/lang";
-import { publicUrl } from "@/lib/stripe";
+import { publicUrl, stripeEnabled } from "@/lib/stripe";
 
 export const metadata: Metadata = {
   metadataBase: new URL(publicUrl()),
@@ -30,6 +30,11 @@ export default async function RootLayout({ children }: { children: React.ReactNo
         />
       </head>
       <body className="min-h-dvh">
+        {!stripeEnabled() && (
+          <div className="no-print caps border-b border-gold/30 bg-black/40 px-4 py-1.5 text-center text-[0.6rem] text-gold">
+            {t.footer.betaBanner}
+          </div>
+        )}
         <Header />
         <main>{children}</main>
         <Footer />

@@ -20,12 +20,12 @@ export default async function Serata({ params }: { params: Promise<{ date: strin
   await requireStaff();
   const { date } = await params;
   if (!/^\d{4}-\d{2}-\d{2}$/.test(date)) notFound();
-  const info = dayInfo(date);
-  const day = getDay(date);
-  const list = bookingsForDate(date);
+  const info = await dayInfo(date);
+  const day = await getDay(date);
+  const list = await bookingsForDate(date);
   const active = list.filter((b) => ["confirmed", "manual", "hold"].includes(b.status));
   const busy = new Set(active.map((b) => b.table_id));
-  const all = tables();
+  const all = await tables();
   const freeTables = all.filter((t) => !busy.has(t.id));
   const guests = active.filter((b) => b.status !== "hold").reduce((s, b) => s + b.guests, 0);
   const cash = active.filter((b) => b.status === "confirmed").reduce((s, b) => s + b.amount_cents, 0) / 100;

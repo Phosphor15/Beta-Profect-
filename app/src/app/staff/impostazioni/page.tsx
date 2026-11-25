@@ -10,7 +10,7 @@ export const metadata: Metadata = { title: "Impostazioni · staff", robots: { in
 
 export default async function Impostazioni() {
   await requireStaff();
-  const c = getConfig();
+  const c = await getConfig();
   const num = (name: string, value: number, label: string, extra: object = {}) => (
     <label className="grid gap-1 text-sm">{label}<input name={name} type="number" min={0} defaultValue={value} className="field" {...extra} /></label>
   );

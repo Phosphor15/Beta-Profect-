@@ -16,7 +16,7 @@ export const metadata: Metadata = {
 export default async function PrenotaPage({ searchParams }: { searchParams: Promise<{ date?: string }> }) {
   const { lang, t } = await getDict();
   const sp = await searchParams;
-  const cfg = getConfig();
+  const cfg = await getConfig();
   const today = romeNow().date;
   const wanted = sp.date && /^\d{4}-\d{2}-\d{2}$/.test(sp.date) ? sp.date : null;
   const startMonth = (wanted ?? (today < cfg.seasonStart ? cfg.seasonStart : today)).slice(0, 7);
@@ -27,10 +27,10 @@ export default async function PrenotaPage({ searchParams }: { searchParams: Prom
       <BookingClient
         lang={lang}
         t={t}
-        tables={tables()}
-        events={specialEvents()}
+        tables={await tables()}
+        events={await specialEvents()}
         initialMonth={startMonth}
-        initialDays={monthDays(startMonth)}
+        initialDays={await monthDays(startMonth)}
         initialDate={wanted}
         minGuests={cfg.minGuests}
         maxGuests={cfg.maxGuests}

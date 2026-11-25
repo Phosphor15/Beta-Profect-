@@ -28,8 +28,8 @@ export default async function StaffHome({ searchParams }: { searchParams: Promis
   const sp = await searchParams;
   const today = romeNow().date;
   const month = sp.m && /^\d{4}-\d{2}$/.test(sp.m) ? sp.m : today.slice(0, 7);
-  const days = monthDays(month);
-  const total = tables().length;
+  const days = await monthDays(month);
+  const total = (await tables()).length;
   const label = new Intl.DateTimeFormat("it-IT", { month: "long", year: "numeric", timeZone: "UTC" }).format(new Date(`${month}-01T12:00:00Z`));
   const first = (new Date(`${month}-01T12:00:00Z`).getUTCDay() + 6) % 7;
   const wd = ["Lun", "Mar", "Mer", "Gio", "Ven", "Sab", "Dom"];

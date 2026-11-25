@@ -17,14 +17,14 @@ export default async function BookingPage({
   const { token } = await params;
   const sp = await searchParams;
   const { lang, t } = await getDict();
-  let b = bookingByToken(token);
+  let b = await bookingByToken(token);
 
   // Ritorno da Stripe: verifichiamo subito il pagamento (il webhook resta la fonte principale).
   if (b && b.status === "hold" && sp.session_id && stripeEnabled() && sp.session_id === b.stripe_session) {
     try {
       const s = await stripe().checkout.sessions.retrieve(sp.session_id);
-      if (s.payment_status === "paid" && markPaid(token, s.id)) {
-        b = bookingByToken(token)!;
+      if (s.payment_status === "paid" && await markPaid(token, s.id)) {
+        b = (await bookingByToken(token))!;
         await sendConfirmation(b);
       }
     } catch (e) {

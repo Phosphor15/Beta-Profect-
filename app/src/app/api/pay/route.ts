@@ -6,7 +6,7 @@ import { dicts, formatDate, VENUE } from "@/lib/i18n";
 
 export async function POST(req: Request) {
   const { token } = (await req.json().catch(() => ({}))) as { token?: string };
-  const b = token ? bookingByToken(token) : undefined;
+  const b = token ? await bookingByToken(token) : undefined;
   if (!b) return NextResponse.json({ error: "NOT_FOUND" }, { status: 404 });
   if (b.status !== "hold") return NextResponse.json({ error: "NOT_PAYABLE", status: b.status }, { status: 409 });
 
@@ -14,7 +14,7 @@ export async function POST(req: Request) {
 
   if (!stripeEnabled()) {
     // MODALITÀ DEMO: nessun pagamento reale, la prenotazione viene confermata subito.
-    if (markPaid(b.token)) await sendConfirmation({ ...b, status: "confirmed" });
+    if (await markPaid(b.token)) await sendConfirmation({ ...b, status: "confirmed" });
     return NextResponse.json({ url: `${back}?paid=1` });
   }
 
@@ -42,6 +42,6 @@ export async function POST(req: Request) {
     success_url: `${back}?paid=1&session_id={CHECKOUT_SESSION_ID}`,
     cancel_url: back,
   });
-  setStripeSession(b.token, session.id, expiresAt + 60_000);
+  await setStripeSession(b.token, session.id, expiresAt + 60_000);
   return NextResponse.json({ url: session.url });
 }

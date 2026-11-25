@@ -10,7 +10,7 @@ export const dynamic = "force-dynamic";
 
 export default async function Home() {
   const { lang, t } = await getDict();
-  const events = specialEvents().slice(0, 3);
+  const events = (await specialEvents()).slice(0, 3);
   return (
     <>
       <Photo name="hero" className="-mt-[4.5rem] min-h-[94svh]" label="Harald's, Campo Smith" position="center 38%" veil={0.55}>

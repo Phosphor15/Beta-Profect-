@@ -41,3 +41,8 @@ Torna a [[00 - Indice]]
 - Zone: *Terrazza sulle piste* (8 tavoli) e *Sala chalet* (6 tavoli). Prezzi beta in [[Harald's - scheda locale]].
 - Stato MVP + Area staff: ✅ costruiti e testati end-to-end (prenotazione demo → QR → check-in).
 - Restano: foto reali, listino reale, prezzi reali, testi legali, chiavi Stripe/Resend, hosting.
+
+## Aggiornamento — Netlify
+- Obiettivo: **beta online per presentare l'idea al Consiglio** (pagamenti simulati, dati di esempio).
+- Database: Postgres (Netlify DB / Neon) online, SQLite in locale. Testato: flusso completo + 20 prenotazioni simultanee senza doppie assegnazioni.
+- Istruzioni di pubblicazione nel README del repo.

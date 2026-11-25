@@ -31,7 +31,7 @@ export async function bulkDays(f: FormData) {
   const from = str(f, "from"), to = str(f, "to");
   if (!isDate(from) || !isDate(to) || from > to) return;
   const weekdays = f.getAll("wd").map(Number).filter((n) => n >= 0 && n <= 6);
-  setDaysOpen(from, to, weekdays, str(f, "mode") === "open");
+  await setDaysOpen(from, to, weekdays, str(f, "mode") === "open");
   revalidatePath("/staff");
 }
 
@@ -39,8 +39,8 @@ export async function saveDay(f: FormData) {
   await requireStaff();
   const date = str(f, "date");
   if (!isDate(date)) return;
-  const prev = getDay(date);
-  upsertDay({
+  const prev = await getDay(date);
+  await upsertDay({
     date,
     open: f.get("open") ? 1 : 0,
     event_name: str(f, "event_name") || null,
@@ -59,7 +59,7 @@ export async function addManual(f: FormData) {
   const date = str(f, "date");
   const [zone, tableId] = str(f, "table").split(":");
   if (!isDate(date) || !tableId) return;
-  manualBooking({
+  await manualBooking({
     date, zone: zone as Zone, tableId: Number(tableId),
     guests: Math.min(20, Math.max(1, Number(str(f, "guests")) || 4)),
     name: str(f, "name") || "Walk-in", phone: str(f, "phone"), notes: str(f, "notes"),
@@ -69,19 +69,19 @@ export async function addManual(f: FormData) {
 
 export async function cancel(f: FormData) {
   await requireStaff();
-  cancelBooking(Number(str(f, "id")), str(f, "reason") || "Annullata dallo staff");
+  await cancelBooking(Number(str(f, "id")), str(f, "reason") || "Annullata dallo staff");
   revalidatePath(`/staff/serata/${str(f, "date")}`);
 }
 
 export async function move(f: FormData) {
   await requireStaff();
-  moveBooking(Number(str(f, "id")), Number(str(f, "table")));
+  await moveBooking(Number(str(f, "id")), Number(str(f, "table")));
   revalidatePath(`/staff/serata/${str(f, "date")}`);
 }
 
 export async function arrived(f: FormData) {
   await requireStaff();
-  checkIn(Number(str(f, "id")));
+  await checkIn(Number(str(f, "id")));
   const back = str(f, "back");
   if (back.startsWith("/staff")) redirect(back);
   revalidatePath(`/staff/serata/${str(f, "date")}`);
@@ -89,7 +89,7 @@ export async function arrived(f: FormData) {
 
 export async function saveSettings(f: FormData) {
   await requireStaff();
-  const c = getConfig();
+  const c = await getConfig();
   const n = (k: string, fallback: number) => {
     const v = Number(str(f, k));
     return Number.isFinite(v) && str(f, k) !== "" ? Math.max(0, Math.round(v)) : fallback;
@@ -116,6 +116,6 @@ export async function saveSettings(f: FormData) {
     seasonEnd: isDate(str(f, "seasonEnd")) ? str(f, "seasonEnd") : c.seasonEnd,
   };
   if (next.minGuests > next.maxGuests) next.minGuests = next.maxGuests;
-  saveConfig(next);
+  await saveConfig(next);
   revalidatePath("/staff/impostazioni");
 }
