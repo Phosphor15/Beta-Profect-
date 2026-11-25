@@ -10,12 +10,11 @@ Torna a [[00 - Indice]] · [[Piano Beta]]
 - Instagram: @haralds_ski_restaurant_bar
 - Orari: dalle 7:30 (colazione con pasticceria interna), pranzo, cena à la carte; après-ski con DJ set
 - Fonte testi: pagina Harald's su bardonecchiaski.com
-- **Stile attuale: "Fuoco e neve"** — caldo e conviviale: steakhouse, vino, après-ski
-  - Crema calda #f7efe4, bordeaux vino #7a1e2c (principale), arancio brace #ff5a1f (pulsanti), espresso #2b1810 (testo/footer), oro #d4a23c
-  - Firma del marchio: blu royal #1f43c9 + oro solo nel logo e nel filetto del footer
-  - Caratteri: Fraunces morbido (titoli) + Outfit (testo)
-  - Movimento: zoom lento sulla foto d'apertura con bagliore brace, parola che cambia, nastro scorrevole, comparsa allo scorrimento, transizioni tra pagine
-  - Storico: "Old Money Club" → "Alpine Riviera" (troppo formale, blu dominante) → "Fuoco e neve". Prima "Old Money Club" (blu notte, stemma, mogano) — sostituito su richiesta
+- **Stile attuale: "Night Club"** (ispirazione palette Super G: club après-ski)
+  - Nero #0a0a0a / #000, testo bianco, accento rosso #e3132d; oro #d4a23c e blu royal #1f43c9 solo come firma Harald's
+  - Caratteri: Inter Tight (titoli in grassetto) + Inter (testo); menu in minuscolo con punto ("après-ski.")
+  - Header: après-ski. · ristorante. · private events. — Footer: "Powered by Bardo."
+  - Storico: … → "Fuoco e neve" → "Night Club". Prima: "Old Money Club" → "Alpine Riviera" (troppo formale, blu dominante) → "Fuoco e neve". Prima "Old Money Club" (blu notte, stemma, mogano) — sostituito su richiesta
 
 ## Valori beta usati nel sito (da confermare col locale)
 | | Terrazza | Chalet |

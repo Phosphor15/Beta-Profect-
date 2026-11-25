@@ -35,34 +35,34 @@ export function FloorPlan({
           <stop offset="1" stopColor="#f6f8ff" />
         </linearGradient>
         <pattern id="parquet" width="8" height="2" patternUnits="userSpaceOnUse">
-          <rect width="8" height="2" fill="#f3e6cf" />
-          <rect y="1" width="8" height="1" fill="#efdfc3" />
-          <line x1="0" y1="0" x2="8" y2="0" stroke="#e2cfae" strokeWidth="0.12" />
-          <line x1="5" y1="0" x2="5" y2="1" stroke="#e2cfae" strokeWidth="0.12" />
+          <rect width="8" height="2" fill="#1c1c1c" />
+          <rect y="1" width="8" height="1" fill="#191919" />
+          <line x1="0" y1="0" x2="8" y2="0" stroke="#2a2a2a" strokeWidth="0.12" />
+          <line x1="5" y1="0" x2="5" y2="1" stroke="#2a2a2a" strokeWidth="0.12" />
         </pattern>
       </defs>
       {/* Lato piste */}
       <path d="M0 0 H100 V8 Q 75 11 50 7.5 T 0 9 Z" fill="url(#snow)" />
-      <text x="50" y="5.6" textAnchor="middle" fontSize="2.5" fill="#7a1e2c" fontWeight="600" letterSpacing="0.8">▲ {t.booking.map.slopes}</text>
+      <text x="50" y="5.6" textAnchor="middle" fontSize="2.5" fill="#e3132d" fontWeight="600" letterSpacing="0.8">▲ {t.booking.map.slopes}</text>
 
       {/* Edificio chalet */}
-      <rect x="3" y="54" width="94" height="43" rx="3" fill="url(#parquet)" stroke="#e6d6c2" strokeWidth="0.5" />
-      <rect x="62" y="58" width="31" height="16" rx="2" fill="#2b1810" />
+      <rect x="3" y="54" width="94" height="43" rx="3" fill="url(#parquet)" stroke="#262626" strokeWidth="0.5" />
+      <rect x="62" y="58" width="31" height="16" rx="2" fill="#000000" />
       <text x="77.5" y="67.3" textAnchor="middle" fontSize="2.8" fill="#f2c56b" fontWeight="600" letterSpacing="0.5">{t.booking.map.bar}</text>
-      <rect x="62" y="78" width="31" height="15" rx="2" fill="#e6d6c2" />
-      <text x="77.5" y="86.4" textAnchor="middle" fontSize="2.3" fill="#7a6658" letterSpacing="0.4">{t.booking.map.kitchen}</text>
+      <rect x="62" y="78" width="31" height="15" rx="2" fill="#262626" />
+      <text x="77.5" y="86.4" textAnchor="middle" fontSize="2.3" fill="#9a9a9a" letterSpacing="0.4">{t.booking.map.kitchen}</text>
 
       {/* DJ e ingresso */}
-      <rect x="70" y="14" width="24" height="14" rx="2" fill="#ff5a1f" />
+      <rect x="70" y="14" width="24" height="14" rx="2" fill="#e3132d" />
       <text x="82" y="22.3" textAnchor="middle" fontSize="3" fill="#fff" fontWeight="600">♪ {t.booking.map.dj}</text>
-      <rect x="70" y="36" width="24" height="10" rx="2" fill="none" stroke="#7a6658" strokeDasharray="1 1" strokeWidth="0.35" />
-      <text x="82" y="42.2" textAnchor="middle" fontSize="2.3" fill="#7a6658" letterSpacing="0.4">{t.booking.map.entrance}</text>
+      <rect x="70" y="36" width="24" height="10" rx="2" fill="none" stroke="#9a9a9a" strokeDasharray="1 1" strokeWidth="0.35" />
+      <text x="82" y="42.2" textAnchor="middle" fontSize="2.3" fill="#9a9a9a" letterSpacing="0.4">{t.booking.map.entrance}</text>
 
       {(["terrazza", "chalet"] as Zone[]).map((z) => {
         const a = AREA[z];
         const isSel = selected === z;
         const soldOut = free ? free[z] <= 0 : false;
-        const color = z === "terrazza" ? "#7a1e2c" : "#d4a23c";
+        const color = z === "terrazza" ? "#e3132d" : "#d4a23c";
         const clickable = !disabled && !soldOut;
         return (
           <g
@@ -89,7 +89,7 @@ export function FloorPlan({
               const taken = takenIds.has(tb.id);
               return (
                 <g key={tb.id}>
-                  <circle cx={tb.x} cy={tb.y} r="3.6" fill={taken ? "#e6d6c2" : color} fillOpacity={1} style={{ transition: "fill .4s" }} />
+                  <circle cx={tb.x} cy={tb.y} r="3.6" fill={taken ? "#262626" : color} fillOpacity={1} style={{ transition: "fill .4s" }} />
                   <text x={tb.x} y={tb.y + 0.9} textAnchor="middle" fontSize="2.2" fill={taken ? "#b3a294" : "#fff"} fontWeight="600">
                     {tb.label}
                   </text>

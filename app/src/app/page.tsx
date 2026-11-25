@@ -30,7 +30,7 @@ export default async function Home() {
           position="center 35%"
           className="absolute inset-0"
           label="Harald's, Campo Smith"
-          veil="radial-gradient(90% 55% at 15% 100%, rgba(255,90,31,.38), transparent 70%), linear-gradient(180deg, rgba(43,24,16,.55) 0%, rgba(43,24,16,.1) 35%, rgba(43,24,16,.25) 60%, rgba(43,24,16,.92) 100%)"
+          veil="radial-gradient(90% 55% at 15% 100%, rgba(227,19,45,.38), transparent 70%), linear-gradient(180deg, rgba(0,0,0,.55) 0%, rgba(0,0,0,.1) 35%, rgba(0,0,0,.25) 60%, rgba(0,0,0,.92) 100%)"
         />
         <div className="relative z-10 mx-auto flex h-full max-w-7xl flex-col justify-end px-5 pb-24 sm:px-8 sm:pb-28">
           <p className="eyebrow animate-page !text-gold-2" style={{ animationDelay: "150ms" }}>{t.hero2.eyebrow}</p>
@@ -121,7 +121,7 @@ export default async function Home() {
                     className="card card-hover reveal group flex min-h-72 flex-col overflow-hidden p-0"
                     style={{ ["--d" as string]: `${i * 100}ms` }}
                   >
-                    <div className={`flex items-end justify-between p-6 text-white ${["bg-royal", "bg-sunset", "bg-navy", "bg-gold"][i % 4]}`}>
+                    <div className={`flex items-end justify-between p-6 text-white ${["bg-royal", "bg-[#1f1f1f]", "bg-gold", "bg-royal"][i % 4]}`}>
                       <span className="display text-7xl leading-none">{e.date.slice(8)}</span>
                       <span className="text-right text-xs font-semibold uppercase tracking-[0.2em]">
                         {formatDate(e.date, lang, { month: "short" })}<br />{formatDate(e.date, lang, { weekday: "short" })}
@@ -161,13 +161,13 @@ export default async function Home() {
                 </li>
               ))}
             </ol>
-            <Link href="/prenota" className="btn btn-primary reveal mt-12">{t.tables.cta} <Arrow /></Link>
+            <Link href="/prenota" className="btn btn-glass reveal mt-12">{t.tables.cta} <Arrow /></Link>
           </div>
           <div className="reveal relative" style={{ ["--d" as string]: "150ms" }}>
             <div className="zoom-on-hover arch relative aspect-[3/4] overflow-hidden">
               <Photo name="terrace" position="center 60%" className="absolute inset-0" label={t.booking.zones.terrazza} />
             </div>
-            <div className="absolute -bottom-6 -left-6 hidden rounded-3xl bg-white p-5 text-navy shadow-2xl sm:block">
+            <div className="absolute -bottom-6 -left-6 hidden rounded-3xl bg-white p-5 text-black shadow-2xl sm:block">
               <p className="text-xs font-semibold uppercase tracking-[0.2em] text-muted">{t.booking.zones.terrazza}</p>
               <p className="display mt-1 text-3xl">{t.booking.from} {formatEuro(cfg.prices.standard.terrazza, lang)}</p>
             </div>
@@ -202,12 +202,12 @@ export default async function Home() {
 
       {/* ---------- FINALE ---------- */}
       <section className="px-5 pb-8 sm:px-8">
-        <div className="grain relative mx-auto max-w-7xl overflow-hidden rounded-[2.5rem] bg-[linear-gradient(120deg,#ff5a1f_0%,#ff7a3d_35%,#f2c56b_100%)] px-6 py-20 text-center text-navy sm:py-28">
+        <div className="grain relative mx-auto max-w-7xl overflow-hidden rounded-[2.5rem] bg-[linear-gradient(120deg,#e3132d_0%,#8e0b1c_100%)] px-6 py-20 text-center text-white sm:py-28">
           <h2 className="display reveal text-5xl sm:text-8xl">
-            {t.finale.title} <span className="display-italic text-white">{t.finale.titleItalic}</span>
+            {t.finale.title} <span className="display-italic text-black">{t.finale.titleItalic}</span>
           </h2>
-          <p className="reveal mx-auto mt-6 max-w-md text-lg text-navy/80" style={{ ["--d" as string]: "100ms" }}>{t.finale.text}</p>
-          <Link href="/prenota" className="btn btn-royal reveal mt-10" style={{ ["--d" as string]: "200ms" }}>{t.finale.cta} <Arrow /></Link>
+          <p className="reveal mx-auto mt-6 max-w-md text-lg text-white/80" style={{ ["--d" as string]: "100ms" }}>{t.finale.text}</p>
+          <Link href="/prenota" className="btn btn-glass reveal mt-10" style={{ ["--d" as string]: "200ms" }}>{t.finale.cta} <Arrow /></Link>
         </div>
       </section>
     </>

@@ -29,7 +29,7 @@ export function MobileMenu({ links, cta }: { links: { href: string; label: strin
       <div
         inert={!open}
         aria-hidden={!open}
-        className={`fixed inset-0 z-[55] flex flex-col bg-royal px-6 pb-10 pt-28 text-white transition-[clip-path] duration-700 ease-[cubic-bezier(.22,1,.36,1)] ${
+        className={`fixed inset-0 z-[55] flex flex-col bg-black px-6 pb-10 pt-28 text-white transition-[clip-path] duration-700 ease-[cubic-bezier(.22,1,.36,1)] ${
           open ? "[clip-path:circle(150%_at_100%_0)]" : "pointer-events-none [clip-path:circle(0%_at_100%_0)]"
         }`}
       >
@@ -46,10 +46,10 @@ export function MobileMenu({ links, cta }: { links: { href: string; label: strin
             <Link
               key={l.href}
               href={l.href}
-              className={`display-italic text-5xl transition-all duration-700 ${open ? "translate-y-0 opacity-100" : "translate-y-6 opacity-0"}`}
+              className={`display-italic text-5xl lowercase transition-all duration-700 hover:text-royal ${open ? "translate-y-0 opacity-100" : "translate-y-6 opacity-0"}`}
               style={{ transitionDelay: open ? `${150 + i * 60}ms` : "0ms" }}
             >
-              {l.label}
+              {l.label}<span className="text-royal">.</span>
             </Link>
           ))}
         </nav>

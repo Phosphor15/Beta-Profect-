@@ -43,7 +43,7 @@ export default async function BookingPage({
   }
 
   const ok = b.status === "confirmed" || b.status === "manual";
-  const qr = ok ? await QRCode.toDataURL(`${publicUrl()}/staff/checkin/${b.token}`, { margin: 1, width: 640, color: { dark: "#2b1810", light: "#ffffff" } }) : null;
+  const qr = ok ? await QRCode.toDataURL(`${publicUrl()}/staff/checkin/${b.token}`, { margin: 1, width: 640, color: { dark: "#000000", light: "#ffffff" } }) : null;
   const statusColor = ok ? "bg-pine/12 text-pine" : b.status === "hold" ? "bg-blush text-sunset" : "bg-danger/10 text-danger";
 
   return (
@@ -53,8 +53,8 @@ export default async function BookingPage({
       <p className={`mt-4 inline-flex rounded-full px-4 py-1.5 text-sm font-semibold ${statusColor}`}>● {t.page.status[b.status]}</p>
 
       {ok && qr && (
-        <section className="animate-page mt-8 overflow-hidden rounded-[2rem] bg-paper text-center shadow-[0_40px_80px_-40px_rgba(43,24,16,.55)]" style={{ animationDelay: "150ms" }}>
-          <div className="bg-[linear-gradient(135deg,#7a1e2c,#2b1810)] px-6 pb-8 pt-7 text-white">
+        <section className="animate-page mt-8 overflow-hidden rounded-[2rem] bg-white text-center shadow-[0_40px_80px_-40px_rgba(0,0,0,.55)]" style={{ animationDelay: "150ms" }}>
+          <div className="bg-[linear-gradient(135deg,#e3132d,#000000)] px-6 pb-8 pt-7 text-white">
             <p className="display-italic text-3xl">Harald&rsquo;s</p>
             <p className="mt-1 text-[0.65rem] font-semibold uppercase tracking-[0.25em] text-gold-2">Après-Ski · Campo Smith</p>
           </div>
@@ -62,12 +62,12 @@ export default async function BookingPage({
             <span className="absolute -left-4 -top-4 h-8 w-8 rounded-full bg-snow" />
             <span className="absolute -right-4 -top-4 h-8 w-8 rounded-full bg-snow" />
           </div>
-          <div className="p-6 text-navy">
+          <div className="p-6 text-black">
           <h2 className="display text-3xl">{t.page.qrTitle}</h2>
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src={qr} alt={`QR ${b.code}`} className="mx-auto mt-4 w-full max-w-72" />
           <p className="mt-3 font-mono text-lg tracking-widest">{b.code}</p>
-          <p className="mt-2 text-sm text-muted">{t.page.qrHint}</p>
+          <p className="mt-2 text-sm text-neutral-500">{t.page.qrHint}</p>
           <p className="mt-1 text-xs text-muted/80">{t.page.brightness}</p>
           {b.checked_in_at && (
             <p className="mt-3 rounded-lg bg-pine/15 p-2 text-sm font-semibold text-pine">

@@ -4,8 +4,8 @@ export function PageHero({ eyebrow, title, intro }: { eyebrow: string; title: st
   const last = words.pop();
   return (
     <section className="relative overflow-hidden">
-      <div aria-hidden className="pointer-events-none absolute -right-40 -top-40 h-[30rem] w-[30rem] rounded-full bg-[radial-gradient(circle,rgba(255,90,31,.22),transparent_65%)]" />
-      <div aria-hidden className="pointer-events-none absolute -left-40 top-10 h-[26rem] w-[26rem] rounded-full bg-[radial-gradient(circle,rgba(122,30,44,.14),transparent_65%)]" />
+      <div aria-hidden className="pointer-events-none absolute -right-40 -top-40 h-[30rem] w-[30rem] rounded-full bg-[radial-gradient(circle,rgba(227,19,45,.22),transparent_65%)]" />
+      <div aria-hidden className="pointer-events-none absolute -left-40 top-10 h-[26rem] w-[26rem] rounded-full bg-[radial-gradient(circle,rgba(227,19,45,.14),transparent_65%)]" />
       <div className="relative mx-auto max-w-7xl px-5 pb-12 pt-16 sm:px-8 sm:pt-24">
         <p className="eyebrow animate-page">{eyebrow}</p>
         <h1 className="display animate-page mt-4 text-6xl sm:text-8xl" style={{ animationDelay: "120ms" }}>

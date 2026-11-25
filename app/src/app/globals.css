@@ -1,39 +1,39 @@
 @import "tailwindcss";
 
 /* =========================================================
-   HARALD'S — "Fuoco e neve"
-   Crema calda e legno, bordeaux come il vino, arancio brace per
-   la griglia e l'après-ski; blu royal e oro restano la firma del marchio.
+   HARALD'S — "Night Club"
+   Nero pieno, testo bianco e un solo rosso acceso come accento
+   (ispirazione: i club après-ski); blu royal e oro restano la firma Harald's.
    ========================================================= */
 
 @theme {
-  --color-snow: #f7efe4;     /* crema calda (sfondo) */
-  --color-paper: #ffffff;    /* card */
-  --color-sand: #efe3d2;     /* sezioni alternate */
-  --color-navy: #2b1810;     /* espresso: testo e sezioni scure */
-  --color-navy-2: #3d2418;
-  --color-muted: #7a6658;
-  --color-line: #e6d6c2;
-  --color-royal: #7a1e2c;    /* bordeaux vino (colore principale) */
-  --color-royal-2: #962a3b;
+  --color-snow: #0a0a0a;     /* nero (sfondo) */
+  --color-paper: #141414;    /* card */
+  --color-sand: #000000;     /* sezioni alternate */
+  --color-navy: #000000;     /* nero pieno: sezioni scure */
+  --color-navy-2: #111111;
+  --color-muted: #a3a3a3;
+  --color-line: #262626;
+  --color-royal: #e3132d;    /* rosso club (accento principale) */
+  --color-royal-2: #ff3348;
   --color-gold: #d4a23c;     /* oro Harald's */
   --color-brand: #1f43c9;    /* blu royal Harald's: solo come firma */
   --color-wood-warm: #5a3a26; /* noce */
   --color-gold-2: #f2c56b;
-  --color-sunset: #ff5a1f;   /* arancio brace */
-  --color-sunset-2: #ff7a3d;
-  --color-blush: #ffe2d3;
+  --color-sunset: #e3132d;   /* rosso pulsanti */
+  --color-sunset-2: #ff3348;
+  --color-blush: #2a0b10;
   --color-pine: #2f8a5b;
   --color-danger: #d9432e;
 
   /* nomi storici usati dall'area staff */
-  --color-ink: #f7efe4;
-  --color-wood: #ffffff;
-  --color-wood-2: #efe3d2;
-  --color-cream: #2b1810;
+  --color-ink: #0a0a0a;
+  --color-wood: #141414;
+  --color-wood-2: #000000;
+  --color-cream: #ffffff;
 
-  --font-display: "Fraunces", Georgia, "Times New Roman", serif;
-  --font-sans: "Outfit", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-display: "Inter Tight", "Helvetica Neue", Arial, sans-serif;
+  --font-sans: "Inter", "Helvetica Neue", Arial, system-ui, sans-serif;
 
   --ease-out-soft: cubic-bezier(.22, 1, .36, 1);
 
@@ -48,31 +48,31 @@
   @keyframes word-in { from { opacity: 0; transform: translateY(60%); filter: blur(6px); } to { opacity: 1; transform: none; filter: none; } }
 }
 
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; color-scheme: dark; }
 body {
   background: var(--color-snow);
-  color: var(--color-navy);
+  color: #ffffff;
   font-family: var(--font-sans);
   font-size: 1.02rem;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
-::selection { background: var(--color-gold-2); color: var(--color-navy); }
+::selection { background: var(--color-royal); color: #fff; }
 
 @layer components {
   .eyebrow {
     font-family: var(--font-sans); font-size: .72rem; font-weight: 600;
     letter-spacing: .26em; text-transform: uppercase; color: var(--color-royal);
   }
-  .display { font-family: var(--font-display); font-weight: 600; letter-spacing: -.02em; line-height: 1.02; font-variation-settings: "SOFT" 100, "WONK" 0; }
-  .display-italic { font-family: var(--font-display); font-style: italic; font-weight: 500; letter-spacing: -.01em; font-variation-settings: "SOFT" 100, "WONK" 1; }
+  .display { font-family: var(--font-display); font-weight: 700; letter-spacing: -.035em; line-height: 1; }
+  .display-italic { font-family: var(--font-display); font-weight: 800; letter-spacing: -.04em; line-height: .95; }
 
   /* Bottoni a pillola con riempimento che scorre al passaggio del mouse */
   .btn {
     position: relative; isolation: isolate; overflow: hidden;
     display: inline-flex; align-items: center; justify-content: center; gap: .55rem;
     border-radius: 999px; padding: .95rem 1.7rem;
-    font-size: .82rem; font-weight: 600; letter-spacing: .12em; text-transform: uppercase;
+    font-size: .95rem; font-weight: 600; letter-spacing: -.005em;
     transition: color .45s var(--ease-out-soft), transform .3s var(--ease-out-soft), box-shadow .45s var(--ease-out-soft), border-color .45s;
   }
   .btn::before {
@@ -84,36 +84,38 @@ body {
   .btn:disabled { opacity: .45; cursor: not-allowed; }
   .btn:disabled::before { display: none; }
 
-  .btn-primary { background: var(--color-sunset); color: #fff; box-shadow: 0 10px 30px -10px rgba(255,90,31,.7); }
-  .btn-primary::before { background: var(--color-royal); }
-  .btn-primary:hover { box-shadow: 0 14px 34px -12px rgba(122,30,44,.7); }
+  .btn-primary { background: var(--color-sunset); color: #fff; box-shadow: 0 10px 30px -12px rgba(227,19,45,.8); }
+  .btn-primary::before { background: #fff; }
+  .btn-primary:hover { color: #000; }
+  
 
-  .btn-royal { background: var(--color-royal); color: #fff; box-shadow: 0 10px 30px -12px rgba(122,30,44,.65); }
-  .btn-royal::before { background: var(--color-navy); }
+  .btn-royal { background: var(--color-royal); color: #fff; box-shadow: 0 10px 30px -12px rgba(227,19,45,.65); }
+  .btn-royal::before { background: #fff; }
+  .btn-royal:hover { color: #000; }
 
-  .btn-ghost { border: 1.5px solid currentColor; color: var(--color-navy); }
-  .btn-ghost::before { background: var(--color-navy); }
-  .btn-ghost:hover { color: #fff; border-color: var(--color-navy); }
+  .btn-ghost { border: 1.5px solid var(--color-royal); color: #fff; }
+  .btn-ghost::before { background: var(--color-royal); }
+  .btn-ghost:hover { color: #fff; }
 
   .btn-glass { color: #fff; border: 1.5px solid rgba(255,255,255,.7); background: rgba(255,255,255,.08); backdrop-filter: blur(8px); }
   .btn-glass::before { background: #fff; }
-  .btn-glass:hover { color: var(--color-navy); }
+  .btn-glass:hover { color: #000; }
 
   .link-underline { background: linear-gradient(currentColor, currentColor) 0 100% / 0 1.5px no-repeat; transition: background-size .45s var(--ease-out-soft); }
   .link-underline:hover { background-size: 100% 1.5px; }
 
   .card {
     background: var(--color-paper); border: 1px solid var(--color-line); border-radius: 1.5rem;
-    box-shadow: 0 1px 0 rgba(43,24,16,.03), 0 18px 40px -28px rgba(43,24,16,.35);
+    box-shadow: 0 18px 40px -28px rgba(0,0,0,.8);
   }
   .card-hover { transition: transform .5s var(--ease-out-soft), box-shadow .5s var(--ease-out-soft); }
-  .card-hover:hover { transform: translateY(-6px); box-shadow: 0 30px 60px -30px rgba(43,24,16,.45); }
+  .card-hover:hover { transform: translateY(-6px); box-shadow: 0 30px 60px -30px rgba(0,0,0,.45); }
 
   .field {
     width: 100%; background: var(--color-snow); border: 1.5px solid var(--color-line); border-radius: .9rem;
-    padding: .8rem 1rem; color: var(--color-navy); font-size: 1rem; transition: border-color .25s, box-shadow .25s;
+    padding: .8rem 1rem; color: #fff; font-size: 1rem; transition: border-color .25s, box-shadow .25s;
   }
-  .field:focus { outline: none; border-color: var(--color-royal); box-shadow: 0 0 0 4px rgba(122,30,44,.12); background: #fff; }
+  .field:focus { outline: none; border-color: var(--color-royal); box-shadow: 0 0 0 4px rgba(227,19,45,.18); background: #111; }
 
   /* Foto con fallback a gradiente */
   .photo { background-size: cover; background-position: center; position: relative; overflow: hidden; background-color: var(--color-sand); }

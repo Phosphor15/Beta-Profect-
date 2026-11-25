@@ -269,7 +269,7 @@ function BookingDialog({
       ref={ref}
       onClose={onClose}
       onClick={(e) => { if (e.target === ref.current) onClose(); }}
-      className="animate-page m-auto w-[min(100%-1.5rem,34rem)] max-h-[92dvh] overflow-y-auto overscroll-contain rounded-[2rem] bg-paper p-0 text-navy shadow-2xl backdrop:bg-navy/60 backdrop:backdrop-blur-sm"
+      className="animate-page m-auto w-[min(100%-1.5rem,34rem)] max-h-[92dvh] overflow-y-auto overscroll-contain rounded-[2rem] border border-line bg-paper p-0 text-white shadow-2xl backdrop:bg-navy/60 backdrop:backdrop-blur-sm"
     >
       <form onSubmit={submit} className="p-6 sm:p-8">
         <div className="flex items-start justify-between gap-4">
@@ -284,9 +284,9 @@ function BookingDialog({
         <div className="mt-6 flex items-center justify-between rounded-2xl bg-snow p-3 pl-5">
           <span className="text-sm font-semibold">{t.booking.guests}</span>
           <div className="flex items-center gap-3">
-            <button type="button" onClick={() => setGuests((g) => Math.max(minGuests, g - 1))} disabled={guests <= minGuests} className="grid h-10 w-10 place-items-center rounded-full bg-white shadow transition hover:bg-navy hover:text-white disabled:opacity-40" aria-label="−">−</button>
+            <button type="button" onClick={() => setGuests((g) => Math.max(minGuests, g - 1))} disabled={guests <= minGuests} className="grid h-10 w-10 place-items-center rounded-full bg-line transition hover:bg-royal disabled:opacity-40" aria-label="−">−</button>
             <span className="display w-8 text-center text-3xl" aria-live="polite">{guests}</span>
-            <button type="button" onClick={() => setGuests((g) => Math.min(maxGuests, g + 1))} disabled={guests >= maxGuests} className="grid h-10 w-10 place-items-center rounded-full bg-white shadow transition hover:bg-navy hover:text-white disabled:opacity-40" aria-label="+">+</button>
+            <button type="button" onClick={() => setGuests((g) => Math.min(maxGuests, g + 1))} disabled={guests >= maxGuests} className="grid h-10 w-10 place-items-center rounded-full bg-line transition hover:bg-royal disabled:opacity-40" aria-label="+">+</button>
           </div>
         </div>
 
@@ -305,7 +305,7 @@ function BookingDialog({
         </dl>
 
         <label className="mt-4 flex items-start gap-2 text-sm">
-          <input type="checkbox" required checked={accepted} onChange={(e) => setAccepted(e.target.checked)} className="mt-1 accent-[#7a1e2c]" />
+          <input type="checkbox" required checked={accepted} onChange={(e) => setAccepted(e.target.checked)} className="mt-1 accent-[#e3132d]" />
           <span>{t.booking.accept} <Link href="/termini" target="_blank" className="font-semibold text-royal underline">{t.booking.termsLink}</Link></span>
         </label>
 

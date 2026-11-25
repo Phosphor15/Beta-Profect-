@@ -15,7 +15,7 @@ export const metadata: Metadata = {
   openGraph: { siteName: "Harald's Ski Restaurant Bar", type: "website", locale: "it_IT", alternateLocale: ["en_GB"], images: ["/images/hero.jpg"] },
 };
 
-export const viewport: Viewport = { themeColor: "#f7efe4", width: "device-width", initialScale: 1, viewportFit: "cover" };
+export const viewport: Viewport = { themeColor: "#000000", width: "device-width", initialScale: 1, viewportFit: "cover" };
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
   const { lang, t } = await getDict();
@@ -29,7 +29,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
         {/* eslint-disable-next-line @next/next/no-page-custom-font */}
         <link
           rel="stylesheet"
-          href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,300..800,0..100,0..1;1,9..144,300..800,0..100,0..1&family=Outfit:wght@300;400;500;600;700&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap"
         />
       </head>
       <body className="min-h-dvh overflow-x-clip">

@@ -18,7 +18,7 @@ export default async function EventiPrivati() {
       <div className="mt-16 grid gap-5 sm:grid-cols-2">
         {p.types.map(([h, d], i) => (
           <div key={h} className="zoom-on-hover reveal group relative min-h-72 overflow-hidden rounded-[2rem] text-white" style={{ ["--d" as string]: `${i * 100}ms` }}>
-            <Photo name={photos[i % photos.length]} className="absolute inset-0" veil="linear-gradient(180deg, transparent 30%, rgba(43,24,16,.88))" />
+            <Photo name={photos[i % photos.length]} className="absolute inset-0" veil="linear-gradient(180deg, transparent 30%, rgba(0,0,0,.88))" />
             <div className="relative z-10 flex h-full min-h-72 flex-col justify-end p-7">
               <h2 className="display text-3xl">{h}</h2>
               <p className="mt-2 max-w-md text-white/80">{d}</p>

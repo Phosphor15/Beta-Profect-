@@ -18,7 +18,7 @@ export default async function Listino() {
       <nav className="sticky top-[4.5rem] z-30 border-y border-line bg-snow/85 backdrop-blur-xl">
         <div className="mx-auto flex max-w-7xl gap-2 overflow-x-auto px-5 py-3 sm:px-8">
           {DRINKS.map((c) => (
-            <a key={c.id} href={`#${c.id}`} className="shrink-0 rounded-full border border-line bg-paper px-4 py-2 text-sm font-medium transition hover:border-navy hover:bg-navy hover:text-white">
+            <a key={c.id} href={`#${c.id}`} className="shrink-0 rounded-full border border-line bg-paper px-4 py-2 text-sm font-medium transition hover:border-royal hover:bg-royal">
               {lang === "en" ? c.en : c.it}
             </a>
           ))}
@@ -27,7 +27,7 @@ export default async function Listino() {
       <div className="mx-auto grid max-w-7xl gap-6 px-5 pt-10 sm:px-8 lg:grid-cols-2">
         <p className="inline-flex w-fit items-center gap-2 rounded-full bg-blush px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.16em] text-sunset lg:col-span-2">● {t.drinks.beta}</p>
         {DRINKS.map((c, idx) => (
-          <section key={c.id} id={c.id} className={`card reveal scroll-mt-40 p-7 sm:p-10 ${idx === 0 ? "lg:col-span-2 bg-[linear-gradient(135deg,#7a1e2c,#2b1810)] !border-transparent text-white" : ""}`}>
+          <section key={c.id} id={c.id} className={`card reveal scroll-mt-40 p-7 sm:p-10 ${idx === 0 ? "lg:col-span-2 bg-[linear-gradient(135deg,#e3132d,#000000)] !border-transparent text-white" : ""}`}>
             <div className="flex items-baseline justify-between gap-4">
               <h2 className={`display-italic text-5xl ${idx === 0 ? "text-gold-2" : "text-royal"}`}>{lang === "en" ? c.en : c.it}</h2>
               <span className={`text-xs font-semibold uppercase tracking-[0.2em] ${idx === 0 ? "text-white/60" : "text-muted"}`}>{c.items.length} {lang === "en" ? "items" : "voci"}</span>
@@ -51,7 +51,7 @@ export default async function Listino() {
         <div className="mt-8 grid gap-5 sm:grid-cols-2">
           {(["terrazza", "chalet"] as const).map((z, i) => (
             <Link key={z} href="/prenota" className="zoom-on-hover reveal group relative block min-h-[26rem] overflow-hidden rounded-[2rem] text-white" style={{ ["--d" as string]: `${i * 120}ms` }}>
-              <Photo name={z === "terrazza" ? "terrace" : "chalet"} className="absolute inset-0" veil="linear-gradient(180deg, transparent 35%, rgba(43,24,16,.85))" />
+              <Photo name={z === "terrazza" ? "terrace" : "chalet"} className="absolute inset-0" veil="linear-gradient(180deg, transparent 35%, rgba(0,0,0,.85))" />
               <div className="relative z-10 flex h-full min-h-[26rem] flex-col justify-end p-8">
                 <span className={`mb-4 h-2 w-10 rounded-full ${z === "terrazza" ? "bg-royal-2" : "bg-gold"}`} />
                 <p className="display text-4xl">{t.booking.zones[z]}</p>
