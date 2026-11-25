@@ -6,7 +6,7 @@ import { CookiePrefsButton } from "./CookieBanner";
 export async function Footer() {
   const { t } = await getDict();
   return (
-    <footer className="no-print mt-24 border-t border-line bg-wood/60">
+    <footer className="no-print wood-dark gold-trim-top mt-24">
       <div className="mx-auto grid max-w-6xl gap-10 px-4 py-12 sm:grid-cols-3">
         <div>
           <p className="display text-2xl">Harald&rsquo;s</p>
@@ -32,7 +32,7 @@ export async function Footer() {
           <li><Link href="/staff" className="hover:text-cream">{t.nav.staff}</Link></li>
         </ul>
       </div>
-      <div className="border-t border-line/60 px-4 py-5 text-center text-xs text-muted">
+      <div className="border-t border-gold/25 bg-black/20 px-4 py-5 text-center text-xs text-muted">
         © {new Date().getFullYear()} {VENUE.name} · {t.footer.rights} · <span className="text-gold">{t.footer.beta}</span>
       </div>
     </footer>

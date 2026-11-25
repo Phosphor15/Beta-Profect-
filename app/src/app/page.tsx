@@ -25,6 +25,7 @@ export default async function Home() {
           </div>
         </div>
       </Photo>
+      <div className="beam rounded-none" aria-hidden />
 
       {events.length > 0 && (
         <section className="mx-auto max-w-6xl px-4 pt-20">
@@ -52,7 +53,7 @@ export default async function Home() {
       </section>
 
       <section className="mx-auto max-w-6xl px-4 pt-24">
-        <div className="card p-6 sm:p-10">
+        <div className="wood gold-trim rounded-3xl p-6 shadow-2xl shadow-black/50 sm:p-10">
           <p className="eyebrow">{t.home.stepsEyebrow}</p>
           <h2 className="display mt-3 max-w-2xl text-3xl sm:text-4xl">{t.home.stepsTitle}</h2>
           <ol className="mt-8 grid gap-6 sm:grid-cols-4">
@@ -60,7 +61,7 @@ export default async function Home() {
               <li key={title}>
                 <span className="display text-3xl text-gold">{["I", "II", "III", "IV"][i]}</span>
                 <h3 className="mt-2 font-semibold">{title}</h3>
-                <p className="mt-1 text-sm text-muted">{text}</p>
+                <p className="mt-1 text-sm text-cream/75">{text}</p>
               </li>
             ))}
           </ol>
@@ -78,7 +79,8 @@ export default async function Home() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-6xl px-4 pt-24">
+      <div className="mx-auto max-w-6xl px-4 pt-24"><div className="beam" aria-hidden /></div>
+      <section className="mx-auto max-w-6xl px-4 pt-16">
         <p className="eyebrow">{t.home.igEyebrow}</p>
         <h2 className="display mt-2 text-3xl sm:text-4xl">{t.home.igTitle}</h2>
         <p className="mt-3 max-w-xl text-muted">{t.home.igText}</p>

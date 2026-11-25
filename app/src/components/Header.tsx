@@ -13,7 +13,7 @@ export async function Header() {
     { href: "/contatti", label: t.nav.contact },
   ];
   return (
-    <header className="no-print sticky top-0 z-40 border-b border-line/70 bg-ink/85 backdrop-blur">
+    <header className="no-print wood-dark gold-trim-bottom sticky top-0 z-40 shadow-lg shadow-black/40">
       <div className="relative mx-auto flex h-16 max-w-6xl items-center justify-between gap-4 px-4">
         <Link href="/" className="display whitespace-nowrap text-2xl leading-none">
           Harald&rsquo;s<span className="ml-1.5 hidden align-middle text-[0.6rem] sm:inline font-sans font-semibold tracking-[0.2em] text-gold">SKI · BAR</span>

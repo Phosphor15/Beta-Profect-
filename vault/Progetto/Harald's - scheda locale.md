@@ -11,6 +11,7 @@ Torna a [[00 - Indice]] · [[Piano Beta]]
 - Orari: dalle 7:30 (colazione con pasticceria interna), pranzo, cena à la carte; après-ski con DJ set
 - Fonte testi: pagina Harald's su bardonecchiaski.com
 - **Colori brand: blu royal (#2452d6) e oro (#d6b04a)** — sfondo blu notte (#070e29)
+- **Stile: legno di montagna** — header, footer, travi tra le sezioni e riquadri in assi di legno scuro con venature; card blu con venatura leggera ("legno tinto"); sala chalet della piantina con parquet; finiture in oro
 
 ## Valori beta usati nel sito (da confermare col locale)
 | | Terrazza | Chalet |

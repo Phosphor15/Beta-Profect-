@@ -20,7 +20,7 @@ export function MobileMenu({ links, cta }: { links: { href: string; label: strin
         </svg>
       </button>
       {open && (
-        <div className="absolute inset-x-0 top-full border-b border-line bg-ink/98 px-4 pb-6 pt-2 backdrop-blur">
+        <div className="wood-dark gold-trim-bottom absolute inset-x-0 top-full px-4 pb-6 pt-2">
           <nav className="flex flex-col">
             {links.map((l) => (
               <Link key={l.href} href={l.href} className="border-b border-line/60 py-3.5 text-lg display">

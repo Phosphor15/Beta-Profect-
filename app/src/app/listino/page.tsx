@@ -15,10 +15,10 @@ export default async function Listino() {
   return (
     <>
       <PageHero eyebrow={t.drinks.eyebrow} title={t.drinks.title} intro={t.drinks.intro} />
-      <nav className="sticky top-16 z-30 border-y border-line bg-ink/90 backdrop-blur">
+      <nav className="wood-dark gold-trim-bottom sticky top-16 z-30">
         <div className="mx-auto flex max-w-6xl gap-2 overflow-x-auto px-4 py-3">
           {DRINKS.map((c) => (
-            <a key={c.id} href={`#${c.id}`} className="shrink-0 rounded-full border border-line px-3.5 py-1.5 text-sm hover:border-gold">
+            <a key={c.id} href={`#${c.id}`} className="shrink-0 rounded-full border border-gold/40 bg-black/25 px-3.5 py-1.5 text-sm hover:border-gold">
               {lang === "en" ? c.en : c.it}
             </a>
           ))}

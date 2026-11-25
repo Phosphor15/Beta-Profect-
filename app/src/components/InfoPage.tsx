@@ -19,9 +19,9 @@ export function InfoPage({
       </div>
       <div className="mt-12 grid gap-4 sm:grid-cols-3">
         {blocks.map(([h, p]) => (
-          <div key={h} className="card p-6">
+          <div key={h} className="wood gold-trim rounded-2xl p-6 shadow-xl shadow-black/40">
             <h2 className="display text-xl text-gold">{h}</h2>
-            <p className="mt-2 text-muted">{p}</p>
+            <p className="mt-2 text-cream/80">{p}</p>
           </div>
         ))}
       </div>

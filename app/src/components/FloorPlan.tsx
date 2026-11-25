@@ -34,8 +34,24 @@ export function FloorPlan({
       <path d="M0 9 Q 25 4 50 8 T 100 6 L100 0 L0 0Z" fill="#dfe8ee" opacity="0.18" />
       <text x="50" y="6" textAnchor="middle" fontSize="2.6" fill="#dfe8ee" letterSpacing="0.6">{t.booking.map.slopes} ▲</text>
 
-      {/* Edificio chalet */}
-      <rect x="3" y="54" width="94" height="43" rx="2" fill="#0c1638" stroke="#2c4088" strokeWidth="0.5" />
+      <defs>
+        <pattern id="planks" width="24" height="3" patternUnits="userSpaceOnUse">
+          <rect width="24" height="3" fill="#4a2e1b" />
+          <rect y="1.5" width="24" height="1.5" fill="#3f2716" />
+          <rect x="9" width="15" height="1.5" fill="#523320" />
+          <line x1="0" y1="0" x2="24" y2="0" stroke="#1f120a" strokeWidth="0.15" />
+          <line x1="9" y1="0" x2="9" y2="1.5" stroke="#1f120a" strokeWidth="0.15" />
+          <line x1="17" y1="1.5" x2="17" y2="3" stroke="#1f120a" strokeWidth="0.15" />
+        </pattern>
+        <filter id="grain" x="0" y="0" width="100%" height="100%">
+          <feTurbulence type="fractalNoise" baseFrequency="0.02 0.6" numOctaves="3" seed="5" />
+          <feColorMatrix values="0 0 0 0 0.1  0 0 0 0 0.05  0 0 0 0 0.02  1.4 0 0 0 -0.5" />
+          <feComposite in2="SourceGraphic" operator="in" />
+        </filter>
+      </defs>
+      {/* Edificio chalet: pavimento in assi di legno con cornice oro */}
+      <rect x="3" y="54" width="94" height="43" rx="2" fill="url(#planks)" stroke="#d6b04a" strokeWidth="0.6" />
+      <rect x="3" y="54" width="94" height="43" rx="2" fill="#000" filter="url(#grain)" opacity="0.9" />
       <rect x="62" y="58" width="31" height="16" rx="1.5" fill="#16245a" />
       <text x="77.5" y="67.5" textAnchor="middle" fontSize="2.8" fill="#d6b04a">{t.booking.map.bar}</text>
       <rect x="62" y="78" width="31" height="15" rx="1.5" fill="#0e1940" />
