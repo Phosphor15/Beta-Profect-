@@ -12,7 +12,7 @@
 
 <header class="site-header" id="top">
   <div class="wrap">
-    <a class="brand" href="#top" aria-label="Harald's, home">
+    <a class="brand" href="#home" aria-label="Harald's, home">
       <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 1 31 16 16 31 1 16Z" fill="none" stroke="#dcbf86" stroke-width="1.4"/><path d="M16 7 25 16 16 25 7 16Z" fill="#4a0f22" stroke="#dcbf86" stroke-width=".8"/><circle cx="16" cy="16" r="1.8" fill="#dcbf86"/></svg>
       <span><span class="brand-name">Harald's</span><span class="brand-sub">After Dark · Bardonecchia</span></span>
     </a>
@@ -24,16 +24,17 @@
       <button class="menu-toggle" id="menu-toggle" aria-expanded="false" aria-controls="nav" data-i18n="menu">Menu</button>
     </div>
     <nav class="nav" id="nav" aria-label="Menu principale">
-      <a href="#club">Club</a>
-      <a href="#restaurant" data-i18n="nav.restaurant">Ristorante</a>
-      <a href="#events" data-i18n="nav.events">Eventi</a>
-      <a href="#champagne">Champagne</a>
+      <a href="#club" data-nav="home">Club</a>
+      <a href="#restaurant" data-nav="home" data-i18n="nav.restaurant">Ristorante</a>
+      <a href="#eventi" data-nav="eventi" data-i18n="nav.events">Eventi</a>
+      <a href="#champagne" data-nav="champagne">Champagne</a>
       <a class="btn" href="#book" data-i18n="cta.book">Prenota un tavolo</a>
     </nav>
   </div>
 </header>
 
 <main>
+<div data-view="home">
   <section class="hero ice ice--hero" aria-label="Harald's After Dark">
     <div class="wrap">
       <span class="eyebrow" data-i18n="hero.eyebrow">Inverno 2026 / 27 · Campo Smith, 1312 m</span>
@@ -41,7 +42,7 @@
       <p class="hero-lede" data-i18n="hero.lede">Gli sci si tolgono alle quattro. Champagne in terrazza alle cinque. Poi la cena à la carte, le luci si abbassano e l'Harald's diventa un club fino a tardi.</p>
       <div class="hero-actions">
         <a class="btn" href="#book" data-i18n="cta.book">Prenota un tavolo</a>
-        <a class="btn btn--ghost" href="#events" data-i18n="hero.season">Scopri la stagione</a>
+        <a class="btn btn--ghost" href="#eventi" data-i18n="hero.season">Scopri la stagione</a>
       </div>
       <div class="hero-meta">
         <span><b>Après</b> 16:30 – 19:00</span>
@@ -134,47 +135,115 @@
           <span class="eyebrow" data-i18n="ev.eyebrow">Stagione 2026 / 27</span>
           <h2 class="display" data-i18n="ev.title">In <em>arrivo.</em></h2>
         </div>
-        <a class="btn btn--ghost" href="#events" data-i18n="ev.all">Calendario completo · prossimo step</a>
+        <a class="btn btn--ghost" href="#eventi" data-i18n="ev.all">Calendario completo</a>
       </div>
-      <div class="events-grid">
-        <a class="event-card" href="#book">
-          <span class="tag" data-i18n="ev.t1">Apertura</span>
-          <div class="thumb ice ice--c"></div>
-          <div class="event-body">
-            <div class="event-date"><b>05</b><span data-i18n="ev.d1">Sab · Dicembre</span></div>
-            <h3>After Dark Opening</h3>
-            <p data-i18n="ev.p1">Primo giorno di stagione. Terrazza dalle 16:30, club dalle 22:30.</p>
-          </div>
-        </a>
-        <a class="event-card" href="#book">
-          <div class="thumb ice ice--d"></div>
-          <div class="event-body">
-            <div class="event-date"><b>08</b><span data-i18n="ev.d2">Mar · Dicembre</span></div>
-            <h3 data-i18n="ev.h2">Après dell'Immacolata</h3>
-            <p data-i18n="ev.p2">Il ponte si chiude in terrazza con un DJ ospite.</p>
-          </div>
-        </a>
-        <a class="event-card" href="#book">
-          <span class="tag" data-i18n="ev.t3">Posti limitati</span>
-          <div class="thumb ice ice--e"></div>
-          <div class="event-body">
-            <div class="event-date"><b>31</b><span data-i18n="ev.d3">Gio · Dicembre</span></div>
-            <h3 data-i18n="ev.h3">Capodanno</h3>
-            <p data-i18n="ev.p3">Cena, fuochi d'artificio sulle piste a mezzanotte e club fino a tardi.</p>
-          </div>
-        </a>
-      </div>
+      <div class="events-grid" id="home-events"></div>
     </div>
   </section>
 
   <section class="section cta ice ice--cta" id="book">
     <div class="wrap">
-      <span class="eyebrow" id="champagne" data-i18n="cta.eyebrow">Tavoli · bottiglie · champagne</span>
+      <span class="eyebrow" data-i18n="cta.eyebrow">Tavoli · bottiglie · champagne</span>
       <h2 class="display" data-i18n="cta.title">Il tuo tavolo <em>ti aspetta.</em></h2>
       <p data-i18n="cta.lede">Scegli la serata, la zona sulla piantina e le bottiglie. Paghi online ed entri con un QR code.</p>
-      <a class="btn" href="#book" data-i18n="cta.soon">Prenotazioni nello step 2</a>
+      <div class="hero-actions" style="justify-content:center"><a class="btn" href="#champagne" data-i18n="cta.order">Ordina champagne</a><span class="btn btn--ghost is-static" data-i18n="cta.soon">Tavoli: piantina in arrivo</span></div>
     </div>
   </section>
+</div><!-- /home -->
+
+<!-- ===================== CHAMPAGNE ===================== -->
+<div data-view="champagne" hidden>
+  <section class="page-hero ice ice--page">
+    <div class="wrap">
+      <span class="eyebrow" data-i18n="sh.eyebrow">Bottiglie · servizio al tavolo</span>
+      <h1 class="display" data-i18n="sh.title">Champagne <em>al tavolo.</em></h1>
+      <p class="hero-lede" data-i18n="sh.lede">Ordina le bottiglie prima di arrivare: le trovi nel ghiaccio al tavolo. Dalla Magnum in su arrivano con la parata di sparkler.</p>
+    </div>
+  </section>
+
+  <section class="section shop-section">
+    <div class="wrap shop">
+      <div class="shop-main">
+        <div class="tabs" role="tablist" id="bottle-tabs"></div>
+        <div class="bottles" id="bottles"></div>
+        <p class="fine" data-i18n="sh.fine">Gli spirits sono serviti con ghiaccio e mixer a scelta (bibite, tonica, Red Bull). Disponibilità e prezzi possono variare. Vietata la somministrazione di alcolici ai minori di 18 anni.</p>
+      </div>
+
+      <aside class="cart" id="cart" aria-label="Ordine">
+        <div class="cart-head">
+          <h2 data-i18n="sh.cart">Il tuo ordine</h2>
+          <span class="cart-count" id="cart-count">0</span>
+        </div>
+        <p class="cart-empty" id="cart-empty" data-i18n="sh.empty">Nessuna bottiglia. Scegline una dalla lista: la aggiungi con «Aggiungi».</p>
+        <ul class="cart-lines" id="cart-lines"></ul>
+        <div class="cart-total"><span data-i18n="sh.total">Totale</span><b id="cart-total">€ 0</b></div>
+
+        <form class="order-form" id="order-form" novalidate>
+          <label for="o-night"><span data-i18n="sh.night">Serata</span>
+            <select id="o-night" required></select>
+          </label>
+          <label for="o-moment"><span data-i18n="sh.moment">Momento</span>
+            <select id="o-moment">
+              <option value="apres">Après · 16:30</option>
+              <option value="dinner" data-i18n="sh.optdinner">Cena · 19:00</option>
+              <option value="club">Club · 22:30</option>
+            </select>
+          </label>
+          <label for="o-name"><span data-i18n="sh.name">Nome e cognome</span>
+            <input id="o-name" autocomplete="name" required placeholder="Giulia Rossi">
+          </label>
+          <label for="o-phone"><span data-i18n="sh.phone">Telefono</span>
+            <input id="o-phone" type="tel" autocomplete="tel" required placeholder="+39 333 123 4567">
+          </label>
+          <label class="check" for="o-parade"><input id="o-parade" type="checkbox" checked> <span data-i18n="sh.parade">Parata con sparkler (inclusa dalla Magnum in su)</span></label>
+          <p class="form-error" id="o-error" role="alert" hidden></p>
+          <button class="btn btn--block" type="submit" id="o-submit" data-i18n="sh.pay">Conferma e paga</button>
+          <p class="fine" data-i18n="sh.demo">Demo: il pagamento è simulato, nessun addebito.</p>
+        </form>
+      </aside>
+    </div>
+  </section>
+
+  <div class="cart-bar" id="cart-bar" hidden>
+    <span><b id="bar-count">0</b> <span id="bar-word">bottiglie</span> · <b id="bar-total">€ 0</b></span>
+    <a class="btn" href="#cart" data-i18n="sh.review">Riepilogo</a>
+  </div>
+</div>
+
+<!-- ===================== EVENTI ===================== -->
+<div data-view="eventi" hidden>
+  <section class="page-hero ice ice--page2">
+    <div class="wrap">
+      <span class="eyebrow" data-i18n="ec.eyebrow">Stagione 2026 / 27 · 5 dicembre – 11 aprile</span>
+      <h1 class="display" data-i18n="ec.title">Il calendario <em>della stagione.</em></h1>
+      <p class="hero-lede" data-i18n="ec.lede">Après, cene e club night. Ogni serata si prenota con il tavolo, e le bottiglie si ordinano in anticipo.</p>
+    </div>
+  </section>
+  <section class="section">
+    <div class="wrap">
+      <div class="filters" role="group" aria-label="Filtra" id="event-filters">
+        <button type="button" data-filter="all" aria-pressed="true" data-i18n="ec.all">Tutti</button>
+        <button type="button" data-filter="apres" aria-pressed="false">Après</button>
+        <button type="button" data-filter="dinner" aria-pressed="false" data-i18n="w.dinner">Cena</button>
+        <button type="button" data-filter="club" aria-pressed="false">Club</button>
+      </div>
+      <div id="event-list"></div>
+    </div>
+  </section>
+</div>
+
+<!-- ===================== ORDER CONFIRMATION ===================== -->
+<div class="overlay" id="done" hidden>
+  <div class="ticket" role="dialog" aria-modal="true" aria-labelledby="done-title">
+    <span class="eyebrow" data-i18n="dn.eyebrow">Ordine confermato</span>
+    <h2 class="display" id="done-title" data-i18n="dn.title">Ci vediamo <em>al tavolo.</em></h2>
+    <div class="ticket-qr" id="done-qr"></div>
+    <p class="ticket-code" id="done-code"></p>
+    <ul class="ticket-lines" id="done-lines"></ul>
+    <p class="fine" data-i18n="dn.fine">Mostra il QR all'ingresso: le bottiglie arrivano al tavolo nel momento scelto. Demo, nessun addebito.</p>
+    <button class="btn btn--block" type="button" id="done-close" data-i18n="dn.close">Chiudi</button>
+  </div>
+</div>
 </main>
 
 <footer class="site-footer">
@@ -202,6 +271,8 @@
 
 <span class="demo-badge">Demo</span>
 
+<script src="vendor/qrcode.js"></script>
+<script src="data.js"></script>
 <script src="app.js"></script>
 </body>
 </html>

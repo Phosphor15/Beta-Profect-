@@ -1,0 +1,67 @@
+/* Demo data. Bottle list copied from gfc-afterski.com as a placeholder until Harald's sends its own.
+   Events are demo proposals for the 2026/27 season. */
+window.HARALDS = {
+  bottles: [
+    { cat: "bubbles", id: "prosecco-mag", name: "Prosecco Santero", size: 1.5, price: 120 },
+    { cat: "bubbles", id: "moet", name: "Moët & Chandon", size: 0.75, price: 170 },
+    { cat: "bubbles", id: "moet-mag", name: "Moët & Chandon Magnum", size: 1.5, price: 300 },
+    { cat: "bubbles", id: "dom", name: "Dom Pérignon Vintage", size: 0.75, price: 500, top: true },
+    { cat: "vodka", id: "gg", name: "Grey Goose", size: 0.75, price: 170 },
+    { cat: "vodka", id: "gg-mag", name: "Grey Goose Magnum", size: 1.5, price: 300 },
+    { cat: "vodka", id: "gg-jero", name: "Grey Goose Jéroboam", size: 3, price: 500, top: true },
+    { cat: "spirits", id: "bombay", name: "Bombay Sapphire", kind: "Gin", size: 0.75, price: 140 },
+    { cat: "spirits", id: "ballantines", name: "Ballantine's", kind: "Scotch whisky", size: 0.75, price: 140 },
+    { cat: "spirits", id: "patron", name: "Patrón Reposado", kind: "Tequila", size: 0.75, price: 170 },
+    { cat: "spirits", id: "santa-teresa", name: "Santa Teresa 1796", kind: "Rum", size: 0.75, price: 200 }
+  ],
+  cats: [
+    { id: "bubbles", it: "Champagne e Prosecco", en: "Champagne & Prosecco" },
+    { id: "vodka", it: "Grey Goose", en: "Grey Goose" },
+    { id: "spirits", it: "Spirits", en: "Spirits" }
+  ],
+  /* type: apres | dinner | club  (an event can have several) */
+  events: [
+    { date: "2026-12-05", types: ["apres", "club"], tag: { it: "Apertura", en: "Opening" },
+      title: { it: "After Dark Opening", en: "After Dark Opening" },
+      text: { it: "Primo giorno di stagione. Terrazza dalle 16:30, club dalle 22:30.", en: "First day of the season. Terrace from 16:30, club from 22:30." }, pos: "10% 6%" },
+    { date: "2026-12-08", types: ["apres"],
+      title: { it: "Après dell'Immacolata", en: "Immacolata Après" },
+      text: { it: "Il ponte si chiude in terrazza con un DJ ospite.", en: "The long weekend closes on the terrace with a guest DJ." }, pos: "55% 52%" },
+    { date: "2026-12-19", types: ["club"],
+      title: { it: "Snow White Night", en: "Snow White Night" },
+      text: { it: "Dress code total white. House e disco fino alle 02:00.", en: "All-white dress code. House and disco until 02:00." }, pos: "30% 80%" },
+    { date: "2026-12-24", types: ["dinner"],
+      title: { it: "Cena della Vigilia", en: "Christmas Eve Dinner" },
+      text: { it: "Menu degustazione di Natale a lume di candela. Solo su prenotazione.", en: "Candlelit Christmas tasting menu. Booking required." }, pos: "70% 20%" },
+    { date: "2026-12-26", types: ["apres"],
+      title: { it: "Santo Stefano Après", en: "Boxing Day Après" },
+      text: { it: "Si smaltisce il pranzo di Natale ballando in scarponi.", en: "Dance off Christmas lunch in your ski boots." }, pos: "85% 40%" },
+    { date: "2026-12-31", types: ["dinner", "club"], tag: { it: "Posti limitati", en: "Limited tables" },
+      title: { it: "Capodanno After Dark", en: "New Year's Eve After Dark" },
+      text: { it: "Cena, fuochi d'artificio sulle piste a mezzanotte e club fino a tardi.", en: "Dinner, midnight fireworks over the slopes and the club until late." }, pos: "92% 95%" },
+    { date: "2027-01-06", types: ["apres"],
+      title: { it: "Befana Après", en: "Epiphany Après" },
+      text: { it: "L'ultimo giorno di vacanze si chiude in terrazza.", en: "The last holiday closes on the terrace." }, pos: "20% 45%" },
+    { date: "2027-01-16", types: ["club"], tag: { it: "Champagne", en: "Champagne" },
+      title: { it: "Champagne Night", en: "Champagne Night" },
+      text: { it: "Parate di bottiglie, sparkler e DJ ospite. La serata delle Magnum.", en: "Bottle parades, sparklers and a guest DJ. The Magnum night." }, pos: "48% 12%" },
+    { date: "2027-01-30", types: ["apres", "club"],
+      title: { it: "Disco '80 in quota", en: "'80s Disco at Altitude" },
+      text: { it: "Tute da sci vintage benvenute. Dalla terrazza alla pista.", en: "Vintage ski suits welcome. From the terrace to the dance floor." }, pos: "65% 70%" },
+    { date: "2027-02-13", types: ["club"],
+      title: { it: "Carnevale in maschera", en: "Carnival Masquerade" },
+      text: { it: "Maschere obbligatorie dopo le 22:30. Premio alla più bella.", en: "Masks required after 22:30. A prize for the best one." }, pos: "8% 60%" },
+    { date: "2027-02-14", types: ["dinner"],
+      title: { it: "San Valentino", en: "Valentine's Dinner" },
+      text: { it: "Cena per due con calice di champagne di benvenuto.", en: "Dinner for two with a welcome glass of champagne." }, pos: "38% 35%" },
+    { date: "2027-03-06", types: ["apres"],
+      title: { it: "Après in rosa", en: "Après in Pink" },
+      text: { it: "Pomeriggio dedicato alla Festa della Donna, con DJ set femminile.", en: "An afternoon for Women's Day, with an all-female DJ line-up." }, pos: "75% 85%" },
+    { date: "2027-03-20", types: ["apres", "club"],
+      title: { it: "Spring Break", en: "Spring Break" },
+      text: { it: "Sole, neve primaverile e il primo après in maniche corte.", en: "Sun, spring snow and the first après in short sleeves." }, pos: "52% 92%" },
+    { date: "2027-04-10", types: ["apres", "club"], tag: { it: "Chiusura", en: "Closing" },
+      title: { it: "Closing Party", en: "Closing Party" },
+      text: { it: "Ultima sera della stagione. Si chiude quando finisce la musica.", en: "Last night of the season. We close when the music stops." }, pos: "15% 25%" }
+  ]
+};
