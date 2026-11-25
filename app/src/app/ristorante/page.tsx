@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { DemoLink } from "@/components/DemoLink";
 import { getDict } from "@/lib/lang";
 import { VENUE } from "@/lib/i18n";
 import { InfoPage } from "@/components/InfoPage";
@@ -11,8 +12,8 @@ export default async function Ristorante() {
     <InfoPage
       {...t.restaurant}
       photo="restaurant" position="center 25%"
-      cta={{ href: `tel:${VENUE.phoneHref}`, label: `☎ ${VENUE.phone}` }}
-      extra={<p className="mt-10 text-muted">{t.restaurant.reserve} <a className="font-semibold text-royal underline" href={`tel:${VENUE.phoneHref}`}>{VENUE.phone}</a>.</p>}
+      cta={{ href: "/prenota", label: t.nav.book }}
+      extra={<p className="mt-10 text-muted">{t.restaurant.reserve} <DemoLink className="font-semibold text-royal">{VENUE.phone}</DemoLink>.</p>}
     />
   );
 }

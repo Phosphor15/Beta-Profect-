@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { DemoLink } from "@/components/DemoLink";
 import { getDict } from "@/lib/lang";
 import { VENUE } from "@/lib/i18n";
 import { CookiePrefsButton } from "./CookieBanner";
@@ -18,9 +19,9 @@ export async function Footer() {
           <div className="space-y-2 text-white/80">
             <p className="eyebrow !text-gold-2">{t.contact.title}</p>
             <p className="pt-2">{VENUE.address}<br />{VENUE.city}</p>
-            <p><a href={`tel:${VENUE.phoneHref}`} className="link-underline">{VENUE.phone}</a></p>
-            <p><a href={`mailto:${VENUE.email}`} className="link-underline">{VENUE.email}</a></p>
-            <p><a href={VENUE.instagram} target="_blank" rel="noopener noreferrer" className="link-underline">Instagram {VENUE.instagramHandle}</a></p>
+            <p><DemoLink>{VENUE.phone}</DemoLink></p>
+            <p><DemoLink>{VENUE.email}</DemoLink></p>
+            <p><DemoLink>Instagram {VENUE.instagramHandle}</DemoLink></p>
           </div>
           <ul className="space-y-2 text-white/80">
             <li className="eyebrow !text-gold-2">Harald&rsquo;s</li>

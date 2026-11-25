@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { DemoLink } from "@/components/DemoLink";
 import Link from "next/link";
 import QRCode from "qrcode";
 import { getDict } from "@/lib/lang";
@@ -113,7 +114,7 @@ export default async function BookingPage({
       )}
 
       <p className="mt-6 text-xs text-muted">{t.page.nonRefundable}</p>
-      <p className="mt-2 text-xs text-muted">{VENUE.name} · {VENUE.address}, {VENUE.city} · <a href={`tel:${VENUE.phoneHref}`} className="underline">{VENUE.phone}</a></p>
+      <p className="mt-2 text-xs text-muted">{VENUE.name} · {VENUE.address}, {VENUE.city} · <DemoLink>{VENUE.phone}</DemoLink></p>
     </div>
   );
 }

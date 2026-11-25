@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { DemoLink } from "@/components/DemoLink";
 import { getDict } from "@/lib/lang";
 import { VENUE } from "@/lib/i18n";
 import { PageHero } from "@/components/PageHero";
@@ -8,10 +9,10 @@ export const metadata: Metadata = { title: "Contatti", alternates: { canonical: 
 export default async function Contatti() {
   const { t } = await getDict();
   const rows: [string, React.ReactNode][] = [
-    [t.contact.address, <>{VENUE.address}<br />{VENUE.city}<br /><a className="text-gold underline" href={VENUE.maps} target="_blank" rel="noopener noreferrer">{t.contact.map}</a></>],
-    [t.contact.phone, <a className="hover:text-gold" href={`tel:${VENUE.phoneHref}`}>{VENUE.phone}</a>],
-    [t.contact.email, <a className="hover:text-gold" href={`mailto:${VENUE.email}`}>{VENUE.email}</a>],
-    ["Instagram", <a className="hover:text-gold" href={VENUE.instagram} target="_blank" rel="noopener noreferrer">{VENUE.instagramHandle}</a>],
+    [t.contact.address, <>{VENUE.address}<br />{VENUE.city}<br /><DemoLink className="text-royal opacity-60">{t.contact.map}</DemoLink></>],
+    [t.contact.phone, <DemoLink>{VENUE.phone}</DemoLink>],
+    [t.contact.email, <DemoLink>{VENUE.email}</DemoLink>],
+    ["Instagram", <DemoLink>{VENUE.instagramHandle}</DemoLink>],
     [t.contact.hours, t.contact.hoursText],
   ];
   return (

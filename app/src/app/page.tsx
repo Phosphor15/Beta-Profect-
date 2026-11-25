@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { DemoLink } from "@/components/DemoLink";
 import { getDict } from "@/lib/lang";
 import { getConfig, specialEvents } from "@/lib/booking";
 import { formatDate, formatEuro, VENUE } from "@/lib/i18n";
@@ -182,21 +183,19 @@ export default async function Home() {
             <h2 className="display mt-3 text-5xl">{t.home.igTitle}</h2>
             <p className="mt-2 font-medium text-royal">{VENUE.instagramHandle}</p>
           </div>
-          <a href={VENUE.instagram} target="_blank" rel="noopener noreferrer" className="btn btn-ghost reveal">{t.home.igCta}</a>
+          <DemoLink className="btn btn-ghost reveal opacity-60">{t.home.igCta}</DemoLink>
         </div>
         <div className="mt-10 grid grid-cols-2 gap-3 sm:grid-cols-4 sm:gap-4">
           {[1, 2, 3, 4].map((n, i) => (
-            <a
+            <div
               key={n}
-              href={VENUE.instagram}
-              target="_blank"
-              rel="noopener noreferrer"
+              title="Collegamento disattivato nella versione beta"
               aria-label={`Instagram ${n}`}
               className={`zoom-on-hover reveal relative block aspect-square overflow-hidden rounded-3xl ${i % 2 ? "sm:translate-y-8" : ""}`}
               style={{ ["--d" as string]: `${i * 90}ms` }}
             >
               <Photo name={`gallery-${n}`} className="absolute inset-0" />
-            </a>
+            </div>
           ))}
         </div>
       </section>
