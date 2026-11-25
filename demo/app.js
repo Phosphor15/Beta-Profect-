@@ -41,7 +41,7 @@
     "ev.all": "Full calendar · next step",
     "ev.t1": "Opening",
     "ev.d1": "Sat · December",
-    "ev.p1": "First day of the season. Terrace from 15:30, club from 22:30.",
+    "ev.p1": "First day of the season. Terrace from 16:30, club from 22:30.",
     "ev.d2": "Tue · December",
     "ev.h2": "Immacolata Après",
     "ev.p2": "The long weekend closes on the terrace with a guest DJ.",
