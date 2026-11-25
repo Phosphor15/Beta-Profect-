@@ -1,11 +1,11 @@
 <!doctype html>
-<html lang="en">
+<html lang="it">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Harald's After Dark</title>
 <meta name="claude:viewport-fit-sides" content="cover">
-<meta name="description" content="Harald's, Campo Smith, Bardonecchia: après-ski, dinner and club nights, winter 2026/27.">
+<meta name="description" content="Harald's, Campo Smith, Bardonecchia: après-ski, cena e club night, inverno 2026/27.">
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -16,65 +16,70 @@
       <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 1 31 16 16 31 1 16Z" fill="none" stroke="#dcbf86" stroke-width="1.4"/><path d="M16 7 25 16 16 25 7 16Z" fill="#4a0f22" stroke="#dcbf86" stroke-width=".8"/><circle cx="16" cy="16" r="1.8" fill="#dcbf86"/></svg>
       <span><span class="brand-name">Harald's</span><span class="brand-sub">After Dark · Bardonecchia</span></span>
     </a>
-    <button class="menu-toggle" id="menu-toggle" aria-expanded="false" aria-controls="nav">Menu</button>
-    <nav class="nav" id="nav" aria-label="Main">
+    <div class="header-tools">
+      <div class="lang" role="group" aria-label="Lingua / Language">
+        <button type="button" id="lang-it" data-lang="it" aria-pressed="true">IT</button>
+        <button type="button" id="lang-en" data-lang="en" aria-pressed="false">EN</button>
+      </div>
+      <button class="menu-toggle" id="menu-toggle" aria-expanded="false" aria-controls="nav" data-i18n="menu">Menu</button>
+    </div>
+    <nav class="nav" id="nav" aria-label="Menu principale">
       <a href="#club">Club</a>
-      <a href="#restaurant">Restaurant</a>
-      <a href="#events">Events</a>
+      <a href="#restaurant" data-i18n="nav.restaurant">Ristorante</a>
+      <a href="#events" data-i18n="nav.events">Eventi</a>
       <a href="#champagne">Champagne</a>
-      <a class="btn" href="#book">Book a table</a>
+      <a class="btn" href="#book" data-i18n="cta.book">Prenota un tavolo</a>
     </nav>
   </div>
 </header>
 
 <main>
-  <section class="hero" aria-label="Harald's After Dark">
-    <div class="hero-media"><img src="img/hero.jpg" alt="Fireworks over the slopes at Campo Smith"></div>
+  <section class="hero ice ice--hero" aria-label="Harald's After Dark">
     <div class="wrap">
-      <span class="eyebrow">Winter 2026 / 27 · Campo Smith, 1312 m</span>
+      <span class="eyebrow" data-i18n="hero.eyebrow">Inverno 2026 / 27 · Campo Smith, 1312 m</span>
       <h1 class="display">Après-ski, <em>after dark.</em></h1>
-      <p class="hero-lede">Skis off at four. Champagne on the terrace at five. Dinner by the fire, then the lights go down and Harald's becomes a club until late.</p>
+      <p class="hero-lede" data-i18n="hero.lede">Gli sci si tolgono alle quattro. Champagne in terrazza alle cinque. Poi la cena à la carte, le luci si abbassano e l'Harald's diventa un club fino a tardi.</p>
       <div class="hero-actions">
-        <a class="btn" href="#book">Book a table</a>
-        <a class="btn btn--ghost" href="#events">See the season</a>
+        <a class="btn" href="#book" data-i18n="cta.book">Prenota un tavolo</a>
+        <a class="btn btn--ghost" href="#events" data-i18n="hero.season">Scopri la stagione</a>
       </div>
       <div class="hero-meta">
         <span><b>Après</b> 15:30 – 19:30</span>
-        <span><b>Dinner</b> 19:30 – 22:30</span>
+        <span><b data-i18n="w.dinner">Cena</b> 19:30 – 22:30</span>
         <span><b>Club</b> 22:30 – 02:00</span>
       </div>
     </div>
   </section>
 
   <div class="marquee" aria-hidden="true">
-    <div class="marquee-track">
-      <span>Après-ski</span><span>Champagne on snow</span><span>Live DJ on the terrace</span><span>Dinner by the fire</span><span>Club nights</span><span>Bardonecchia</span>
-      <span>Après-ski</span><span>Champagne on snow</span><span>Live DJ on the terrace</span><span>Dinner by the fire</span><span>Club nights</span><span>Bardonecchia</span>
+    <div class="marquee-track" data-i18n="marquee">
+      <span>Après-ski</span><span>Champagne sulla neve</span><span>DJ live in terrazza</span><span>Cena à la carte</span><span>Club night</span><span>Bardonecchia</span>
+      <span>Après-ski</span><span>Champagne sulla neve</span><span>DJ live in terrazza</span><span>Cena à la carte</span><span>Club night</span><span>Bardonecchia</span>
     </div>
   </div>
 
   <section class="section" id="club">
     <div class="wrap">
       <div class="section-head">
-        <span class="eyebrow">One night, three acts</span>
-        <h2 class="display">From the last run <em>to the last song.</em></h2>
-        <p>The same room changes three times a night. You can book for one act or stay for all of them.</p>
+        <span class="eyebrow" data-i18n="acts.eyebrow">Una notte, tre atti</span>
+        <h2 class="display" data-i18n="acts.title">Dall'ultima discesa <em>all'ultima canzone.</em></h2>
+        <p data-i18n="acts.lede">La stessa sala cambia tre volte a notte. Prenota per un atto o resta per tutti e tre.</p>
       </div>
       <div class="acts">
         <article class="act">
           <span class="act-time">15:30 – 19:30</span>
           <h3>Après</h3>
-          <p>DJ on the terrace at the foot of the slopes. Ski boots welcome, bottles on ice, sunset over the Valle Stretta.</p>
+          <p data-i18n="acts.apres">DJ in terrazza ai piedi delle piste. Scarponi ammessi, bottiglie nel ghiaccio, tramonto sulla Valle Stretta.</p>
         </article>
         <article class="act">
           <span class="act-time">19:30 – 22:30</span>
           <h3>Dîner</h3>
-          <p>The kitchen takes over: Piedmontese cuts, fresh pasta and the wine list. Low lights, live sax on weekends.</p>
+          <p data-i18n="acts.diner">Tocca alla cucina: tagli piemontesi, pasta fresca e carta dei vini. Luci basse, sax dal vivo nel weekend.</p>
         </article>
         <article class="act">
           <span class="act-time">22:30 – 02:00</span>
           <h3>Club</h3>
-          <p>Tables move, the booth comes on. House and disco until late, with table service and champagne parades.</p>
+          <p data-i18n="acts.club">I tavoli si spostano, parte la consolle. House e disco fino a tardi, servizio al tavolo e parate di champagne.</p>
         </article>
       </div>
     </div>
@@ -82,42 +87,42 @@
 
   <section class="velvet section" aria-label="Manifesto">
     <div class="wrap">
-      <span class="eyebrow">The new Harald's</span>
-      <blockquote>The mountain closes at five. <em>We don't.</em></blockquote>
-      <p>Harald's has always been the place to stop after skiing. This winter it is also where Bardonecchia spends the night.</p>
+      <span class="eyebrow" data-i18n="mani.eyebrow">Il nuovo Harald's</span>
+      <blockquote data-i18n="mani.quote">La montagna chiude alle cinque. <em>Noi no.</em></blockquote>
+      <p data-i18n="mani.lede">L'Harald's è sempre stato la sosta dopo lo sci. Quest'inverno è anche il posto dove Bardonecchia passa la notte.</p>
     </div>
   </section>
 
   <section class="section">
     <div class="wrap scene">
-      <figure class="scene-media" style="margin:0"><img src="img/apres.jpg" alt="Après-ski party on the terrace"><figcaption>The terrace · après</figcaption></figure>
+      <div class="scene-media ice ice--a" role="img" aria-label="Ghiaccio"><span class="scene-word" data-i18n="w.terrace">Terrazza</span><span class="scene-cap">Après · 15:30</span></div>
       <div class="scene-copy">
         <span class="eyebrow">Après-ski</span>
-        <h2 class="display">The terrace <em>on the piste.</em></h2>
-        <p>Right at the bottom of Campo Smith, with the DJ booth facing the slope. Book a table, choose your bottles in advance and skip the queue at the bar.</p>
+        <h2 class="display" data-i18n="ter.title">La terrazza <em>sulle piste.</em></h2>
+        <p data-i18n="ter.lede">Ai piedi di Campo Smith, con la consolle rivolta verso la pista. Prenota un tavolo, scegli le bottiglie in anticipo e salta la coda al bar.</p>
         <ul class="facts">
-          <li><span>Tables</span><span>4 – 8 guests</span></li>
-          <li><span>Table price</span><span>drinks included</span></li>
-          <li><span>Entry</span><span>QR code at the door</span></li>
+          <li><span data-i18n="f.tables">Tavoli</span><span data-i18n="f.guests">4 – 8 persone</span></li>
+          <li><span data-i18n="f.price">Prezzo tavolo</span><span data-i18n="f.incl">consumazioni incluse</span></li>
+          <li><span data-i18n="f.entry">Ingresso</span><span data-i18n="f.qr">QR code all'entrata</span></li>
         </ul>
-        <div><a class="btn" href="#book">Book the terrace</a></div>
+        <div><a class="btn" href="#book" data-i18n="ter.btn">Prenota la terrazza</a></div>
       </div>
     </div>
   </section>
 
   <section class="section" id="restaurant" style="padding-top:0">
     <div class="wrap scene scene--flip">
-      <figure class="scene-media" style="margin:0"><img src="img/restaurant.jpg" alt="The chef at work in Harald's kitchen"><figcaption>The kitchen · dîner</figcaption></figure>
+      <div class="scene-media ice ice--b" role="img" aria-label="Ghiaccio"><span class="scene-word" data-i18n="w.restaurant">Ristorante</span><span class="scene-cap">Dîner · 19:30</span></div>
       <div class="scene-copy">
-        <span class="eyebrow">Restaurant</span>
-        <h2 class="display">Dinner first, <em>then the dance floor.</em></h2>
-        <p>Breakfast from our own pastry kitchen at 7:30, lunch on the slopes and dinner à la carte. After 22:30 the dining room becomes the club and your table stays yours.</p>
+        <span class="eyebrow" data-i18n="w.restaurant">Ristorante</span>
+        <h2 class="display" data-i18n="res.title">Prima la cena, <em>poi la pista.</em></h2>
+        <p data-i18n="res.lede">Colazione dalle 7:30 con la nostra pasticceria, pranzo sulle piste e cena à la carte. Dopo le 22:30 la sala diventa club e il tavolo resta tuo.</p>
         <ul class="facts">
-          <li><span>Breakfast</span><span>from 07:30</span></li>
-          <li><span>Lunch</span><span>12:00 – 15:00</span></li>
-          <li><span>Dinner</span><span>19:30 – 22:30</span></li>
+          <li><span data-i18n="f.breakfast">Colazione</span><span data-i18n="f.from730">dalle 07:30</span></li>
+          <li><span data-i18n="f.lunch">Pranzo</span><span>12:00 – 15:00</span></li>
+          <li><span data-i18n="w.dinner">Cena</span><span>19:30 – 22:30</span></li>
         </ul>
-        <div><a class="btn btn--ghost" href="#book">Reserve for dinner</a></div>
+        <div><a class="btn btn--ghost" href="#book" data-i18n="res.btn">Prenota la cena</a></div>
       </div>
     </div>
   </section>
@@ -126,55 +131,48 @@
     <div class="wrap">
       <div class="row-end">
         <div class="section-head">
-          <span class="eyebrow">Season 2026 / 27</span>
-          <h2 class="display">Coming <em>up.</em></h2>
+          <span class="eyebrow" data-i18n="ev.eyebrow">Stagione 2026 / 27</span>
+          <h2 class="display" data-i18n="ev.title">In <em>arrivo.</em></h2>
         </div>
-        <a class="btn btn--ghost" href="#events">Full calendar · next step</a>
+        <a class="btn btn--ghost" href="#events" data-i18n="ev.all">Calendario completo · prossimo step</a>
       </div>
       <div class="events-grid">
         <a class="event-card" href="#book">
-          <span class="tag">Opening</span>
-          <div class="thumb"><img src="img/terrace.jpg" alt=""></div>
+          <span class="tag" data-i18n="ev.t1">Apertura</span>
+          <div class="thumb ice ice--c"></div>
           <div class="event-body">
-            <div class="event-date"><b>05</b><span>Sat · December</span></div>
+            <div class="event-date"><b>05</b><span data-i18n="ev.d1">Sab · Dicembre</span></div>
             <h3>After Dark Opening</h3>
-            <p>First day of the season. Terrace from 15:30, club from 22:30.</p>
+            <p data-i18n="ev.p1">Primo giorno di stagione. Terrazza dalle 15:30, club dalle 22:30.</p>
           </div>
         </a>
         <a class="event-card" href="#book">
-          <div class="thumb"><img src="img/gallery-2.jpg" alt=""></div>
+          <div class="thumb ice ice--d"></div>
           <div class="event-body">
-            <div class="event-date"><b>08</b><span>Tue · December</span></div>
-            <h3>Immacolata Après</h3>
-            <p>The long weekend closes on the terrace with a guest DJ.</p>
+            <div class="event-date"><b>08</b><span data-i18n="ev.d2">Mar · Dicembre</span></div>
+            <h3 data-i18n="ev.h2">Après dell'Immacolata</h3>
+            <p data-i18n="ev.p2">Il ponte si chiude in terrazza con un DJ ospite.</p>
           </div>
         </a>
         <a class="event-card" href="#book">
-          <span class="tag">Sold fast</span>
-          <div class="thumb"><img src="img/hero.jpg" alt=""></div>
+          <span class="tag" data-i18n="ev.t3">Posti limitati</span>
+          <div class="thumb ice ice--e"></div>
           <div class="event-body">
-            <div class="event-date"><b>31</b><span>Thu · December</span></div>
-            <h3>New Year's Eve</h3>
-            <p>Dinner, midnight fireworks over the slopes and the club until late.</p>
+            <div class="event-date"><b>31</b><span data-i18n="ev.d3">Gio · Dicembre</span></div>
+            <h3 data-i18n="ev.h3">Capodanno</h3>
+            <p data-i18n="ev.p3">Cena, fuochi d'artificio sulle piste a mezzanotte e club fino a tardi.</p>
           </div>
         </a>
       </div>
     </div>
   </section>
 
-  <div class="strip" aria-label="Photos">
-    <img src="img/gallery-1.jpg" alt="">
-    <img src="img/gallery-2.jpg" alt="">
-    <img src="img/gallery-3.jpg" alt="">
-    <img src="img/gallery-4.jpg" alt="">
-  </div>
-
-  <section class="section cta velvet" id="book">
+  <section class="section cta ice ice--cta" id="book">
     <div class="wrap">
-      <span class="eyebrow" id="champagne">Tables · bottles · champagne</span>
-      <h2 class="display">Your table <em>is waiting.</em></h2>
-      <p>Pick the night, your zone on the floor plan and your bottles. Pay online and walk in with a QR code.</p>
-      <a class="btn" href="#book">Booking opens in step 2</a>
+      <span class="eyebrow" id="champagne" data-i18n="cta.eyebrow">Tavoli · bottiglie · champagne</span>
+      <h2 class="display" data-i18n="cta.title">Il tuo tavolo <em>ti aspetta.</em></h2>
+      <p data-i18n="cta.lede">Scegli la serata, la zona sulla piantina e le bottiglie. Paghi online ed entri con un QR code.</p>
+      <a class="btn" href="#book" data-i18n="cta.soon">Prenotazioni nello step 2</a>
     </div>
   </section>
 </main>
@@ -188,16 +186,16 @@
       <p>Regione Molino 18, Campo Smith<br>10052 Bardonecchia (TO)</p>
     </div>
     <div>
-      <h4>Hours</h4>
-      <p>Every day from 07:30<br>Club nights Thu – Sat</p>
+      <h4 data-i18n="ft.hours">Orari</h4>
+      <p data-i18n="ft.hourstext">Tutti i giorni dalle 07:30<br>Club night gio – sab</p>
     </div>
     <div>
-      <h4>Contact</h4>
+      <h4 data-i18n="ft.contact">Contatti</h4>
       <p>+39 0122 99002<br>info@haraldsrestaurant.com</p>
     </div>
     <div class="legal">
       <span>© 2026 Harald's Ski Restaurant Bar</span>
-      <span>Internal demo · not a live site</span>
+      <span data-i18n="ft.demo">Demo interna · non è un sito pubblico</span>
     </div>
   </div>
 </footer>
