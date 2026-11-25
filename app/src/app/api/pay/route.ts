@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { bookingByToken, markPaid, setStripeSession } from "@/lib/booking";
+import { bookingByToken, confirmDemoToken, isDemoToken, markPaid, setStripeSession } from "@/lib/booking";
 import { sendConfirmation } from "@/lib/email";
 import { publicUrl, stripe, stripeEnabled } from "@/lib/stripe";
 import { dicts, formatDate, VENUE } from "@/lib/i18n";
@@ -11,6 +11,14 @@ export async function POST(req: Request) {
   if (b.status !== "hold") return NextResponse.json({ error: "NOT_PAYABLE", status: b.status }, { status: 409 });
 
   const back = `${publicUrl()}/prenotazione/${b.token}`;
+
+  if (isDemoToken(b.token)) {
+    // DEMO senza database: pagamento simulato, la conferma viaggia nel nuovo link firmato.
+    const confirmed = confirmDemoToken(b.token);
+    if (!confirmed) return NextResponse.json({ error: "NOT_PAYABLE" }, { status: 409 });
+    await sendConfirmation({ ...b, token: confirmed, status: "confirmed" });
+    return NextResponse.json({ url: `${publicUrl()}/prenotazione/${confirmed}?paid=1` });
+  }
 
   if (!stripeEnabled()) {
     // MODALITÀ DEMO: nessun pagamento reale, la prenotazione viene confermata subito.

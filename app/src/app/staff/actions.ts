@@ -3,7 +3,7 @@ import { redirect } from "next/navigation";
 import { revalidatePath } from "next/cache";
 import { checkPassword, endSession, requireStaff, startSession } from "@/lib/auth";
 import {
-  cancelBooking, checkIn, getConfig, getDay, manualBooking, moveBooking, saveConfig, setDaysOpen, upsertDay,
+  cancelBooking, checkIn, checkInDemoToken, isDemoToken, getConfig, getDay, manualBooking, moveBooking, saveConfig, setDaysOpen, upsertDay,
   type Config,
 } from "@/lib/booking";
 import type { Zone } from "@/lib/db";
@@ -82,6 +82,11 @@ export async function move(f: FormData) {
 
 export async function arrived(f: FormData) {
   await requireStaff();
+  const token = str(f, "token");
+  if (token && isDemoToken(token)) {
+    const next = checkInDemoToken(token);
+    redirect(`/staff/checkin/${next ?? token}`);
+  }
   await checkIn(Number(str(f, "id")));
   const back = str(f, "back");
   if (back.startsWith("/staff")) redirect(back);

@@ -208,15 +208,22 @@ export async function createHold(input: HoldInput): Promise<{ ok: true; token: s
       const price = info.prices[zone];
       const amount = Math.round((price * cfg.depositPct) / 100);
       const tok = crypto.randomBytes(18).toString("base64url");
+      const code = randomCode();
+      const expires = Date.now() + cfg.holdMinutes * 60_000;
+      const label = (await t.get<{ label: string }>("SELECT label FROM venue_tables WHERE id = ?", free.id))?.label ?? null;
       await t.run(
         `INSERT INTO bookings (code, token, date, zone, table_id, guests, name, phone, email, notes, lang, status,
           price_cents, amount_cents, hold_expires_at, created_at)
          VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'hold', ?, ?, ?, ?)`,
-        randomCode(), tok, input.date, zone, free.id, guests, name, phone, email,
+        code, tok, input.date, zone, free.id, guests, name, phone, email,
         String(input.notes ?? "").slice(0, 500), input.lang === "en" ? "en" : "it",
-        price * 100, amount * 100, Date.now() + cfg.holdMinutes * 60_000, Date.now(),
+        price * 100, amount * 100, expires, Date.now(),
       );
-      return tok;
+      if (!demoBookings()) return tok;
+      return signDemo({
+        c: code, d: input.date, z: zone, tl: label, g: guests, n: name, p: phone, e: email,
+        l: input.lang === "en" ? "en" : "it", s: "hold", pc: price * 100, ac: amount * 100, x: expires,
+      });
     });
     return { ok: true, token };
   } catch (e) {
@@ -225,11 +232,68 @@ export async function createHold(input: HoldInput): Promise<{ ok: true; token: s
   }
 }
 
-/* ---------- Lettura / aggiornamento prenotazioni ---------- */
+/* ---------- Prenotazioni "autosufficienti" per la demo ----------
+ * Nella demo (nessuna chiave Stripe) i dati della prenotazione viaggiano dentro il link e il QR,
+ * firmati con SESSION_SECRET: non serve alcun database e funziona anche su Netlify, dove ogni
+ * richiesta può essere servita da un'istanza diversa con dati propri.
+ */
 
 export type BookingView = BookingRow & { table_label: string | null };
 
+interface DemoPayload {
+  c: string; d: string; z: Zone; tl: string | null; g: number; n: string; p: string; e: string;
+  l: string; s: BookingRow["status"]; pc: number; ac: number; x: number | null; pa?: number; ci?: number;
+}
+
+export const demoBookings = () => !process.env.STRIPE_SECRET_KEY;
+const demoSecret = () => process.env.SESSION_SECRET || "dev-only-secret-change-me";
+const demoSig = (body: string) => crypto.createHmac("sha256", demoSecret()).update(body).digest("base64url").slice(0, 24);
+export const isDemoToken = (t: string) => t.includes(".");
+
+function signDemo(p: DemoPayload): string {
+  const body = Buffer.from(JSON.stringify(p)).toString("base64url");
+  return `${body}.${demoSig(body)}`;
+}
+
+function readDemo(token: string): DemoPayload | null {
+  const [body, sig] = token.split(".");
+  if (!body || !sig || sig.length !== 24) return null;
+  const expected = demoSig(body);
+  if (!crypto.timingSafeEqual(Buffer.from(expected), Buffer.from(sig))) return null;
+  try { return JSON.parse(Buffer.from(body, "base64url").toString("utf8")) as DemoPayload; } catch { return null; }
+}
+
+function demoView(token: string, p: DemoPayload): BookingView {
+  const expired = p.s === "hold" && p.x != null && p.x < Date.now();
+  return {
+    id: 0, code: p.c, token, date: p.d, zone: p.z, table_id: null, table_label: p.tl, guests: p.g,
+    name: p.n, phone: p.p, email: p.e, notes: "", lang: p.l, status: expired ? "expired" : p.s,
+    price_cents: p.pc, amount_cents: p.ac, hold_expires_at: p.x, stripe_session: null,
+    paid_at: p.pa ?? null, checked_in_at: p.ci ?? null, cancel_reason: null, created_at: 0,
+  };
+}
+
+/** Pagamento simulato: restituisce il nuovo link della prenotazione confermata. */
+export function confirmDemoToken(token: string): string | null {
+  const p = readDemo(token);
+  if (!p || p.s !== "hold" || (p.x != null && p.x < Date.now())) return null;
+  return signDemo({ ...p, s: "confirmed", x: null, pa: Date.now() });
+}
+
+/** Check-in simulato: restituisce il link con l'orario di ingresso registrato. */
+export function checkInDemoToken(token: string): string | null {
+  const p = readDemo(token);
+  if (!p || (p.s !== "confirmed" && p.s !== "manual")) return null;
+  return signDemo({ ...p, ci: p.ci ?? Date.now() });
+}
+
+/* ---------- Lettura / aggiornamento prenotazioni ---------- */
+
 export async function bookingByToken(token: string): Promise<BookingView | undefined> {
+  if (isDemoToken(token)) {
+    const p = readDemo(token);
+    return p ? demoView(token, p) : undefined;
+  }
   await expireHolds();
   return (await engine()).get<BookingView>(
     "SELECT b.*, t.label AS table_label FROM bookings b LEFT JOIN venue_tables t ON t.id = b.table_id WHERE b.token = ?",

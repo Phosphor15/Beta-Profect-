@@ -47,6 +47,7 @@ export default async function CheckIn({ params }: { params: Promise<{ token: str
       {valid && !b!.checked_in_at && (
         <form action={arrived} className="mt-6">
           <input type="hidden" name="id" value={b!.id} />
+          <input type="hidden" name="token" value={token} />
           <input type="hidden" name="back" value={`/staff/checkin/${token}`} />
           <button className="btn btn-primary w-full !py-4 text-lg">Segna arrivo</button>
         </form>
