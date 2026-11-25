@@ -33,3 +33,11 @@ Torna a [[00 - Indice]]
 - Stack: Lovable come GFC, o codice nostro (es. Next.js + Supabase + Stripe)?
 - Pagamento completo, acconto o solo richiesta senza pagamento?
 - Lingue, dominio, brand (colori, logo, foto)?
+
+## Aggiornamento 2026-11-25 — decisioni
+- Cliente: **Harald's Ski Restaurant Bar**, Campo Smith, Bardonecchia (ristorante + après-ski) → [[Harald's - scheda locale]]
+- Stack: **codice nostro** — Next.js 15 + SQLite (node:sqlite) + Stripe + Resend (email). Cartella `app/`.
+- Pagamento: **come GFC** — pagamento completo online, non rimborsabile, QR all'ingresso.
+- Zone: *Terrazza sulle piste* (8 tavoli) e *Sala chalet* (6 tavoli). Prezzi beta in [[Harald's - scheda locale]].
+- Stato MVP + Area staff: ✅ costruiti e testati end-to-end (prenotazione demo → QR → check-in).
+- Restano: foto reali, listino reale, prezzi reali, testi legali, chiavi Stripe/Resend, hosting.

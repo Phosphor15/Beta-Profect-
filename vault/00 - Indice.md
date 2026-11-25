@@ -12,3 +12,4 @@ Vault Obsidian del progetto. Apri la cartella `vault/` come vault in Obsidian.
 
 ## Il nostro progetto
 - [[Piano Beta]]
+- [[Harald's - scheda locale]]

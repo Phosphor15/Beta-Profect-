@@ -1,0 +1,317 @@
+"use client";
+import Link from "next/link";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { useRouter } from "next/navigation";
+import type { DayInfo } from "@/lib/booking";
+import { formatDate, formatEuro, type Dict, type Lang } from "@/lib/i18n";
+import { FloorPlan, type PlanTable } from "./FloorPlan";
+
+type Zone = "terrazza" | "chalet";
+
+interface Props {
+  lang: Lang;
+  t: Dict;
+  tables: PlanTable[];
+  events: DayInfo[];
+  initialMonth: string;
+  initialDays: DayInfo[];
+  initialDate: string | null;
+  minGuests: number;
+  maxGuests: number;
+  depositPct: number;
+  demo: boolean;
+}
+
+const shiftMonth = (m: string, delta: number) => {
+  const [y, mo] = m.split("-").map(Number);
+  const d = new Date(Date.UTC(y, mo - 1 + delta, 1));
+  return d.toISOString().slice(0, 7);
+};
+
+export function BookingClient(p: Props) {
+  const { t, lang } = p;
+  const [month, setMonth] = useState(p.initialMonth);
+  const [days, setDays] = useState<DayInfo[]>(p.initialDays);
+  const [loading, setLoading] = useState(false);
+  const [date, setDate] = useState<string | null>(p.initialDate);
+  const [zone, setZone] = useState<Zone | null>(null);
+  const planRef = useRef<HTMLDivElement>(null);
+
+  const load = useCallback(async (m: string) => {
+    setLoading(true);
+    try {
+      const r = await fetch(`/api/days?month=${m}`, { cache: "no-store" });
+      const j = (await r.json()) as { days: DayInfo[] };
+      setDays(j.days);
+    } finally {
+      setLoading(false);
+    }
+  }, []);
+
+  useEffect(() => { if (month !== p.initialMonth) load(month); }, [month, p.initialMonth, load]);
+
+  const day = useMemo(() => days.find((d) => d.date === date) ?? p.events.find((e) => e.date === date) ?? null, [days, date, p.events]);
+
+  const pickDate = (d: string) => {
+    setDate(d);
+    setZone(null);
+    if (d.slice(0, 7) !== month) setMonth(d.slice(0, 7));
+    setTimeout(() => planRef.current?.scrollIntoView({ behavior: "smooth", block: "start" }), 50);
+  };
+
+  const firstWeekday = (new Date(`${month}-01T12:00:00Z`).getUTCDay() + 6) % 7;
+  const monthLabel = new Intl.DateTimeFormat(lang === "en" ? "en-GB" : "it-IT", { month: "long", year: "numeric", timeZone: "UTC" })
+    .format(new Date(`${month}-01T12:00:00Z`));
+  const anyOpen = days.some((d) => d.state === "open" || d.state === "soldout");
+
+  return (
+    <div className="mx-auto max-w-6xl px-4">
+      {p.demo && (
+        <p className="mb-6 rounded-xl border border-gold/40 bg-gold/10 px-4 py-3 text-sm text-gold">{t.page.demoMode}</p>
+      )}
+
+      {p.events.length > 0 && (
+        <section id="eventi" className="scroll-mt-20">
+          <h2 className="display text-2xl">{t.booking.specialEvents}</h2>
+          <div className="-mx-4 mt-4 flex snap-x gap-3 overflow-x-auto px-4 pb-2">
+            {p.events.map((e) => {
+              const name = (lang === "en" ? e.eventNameEn : e.eventName) ?? e.eventName;
+              const ok = e.state === "open";
+              return (
+                <button
+                  key={e.date}
+                  onClick={() => ok && pickDate(e.date)}
+                  disabled={!ok}
+                  className={`card min-w-56 snap-start p-4 text-left transition ${date === e.date ? "!border-gold" : ""} ${ok ? "hover:border-gold" : "opacity-60"}`}
+                >
+                  <p className="eyebrow">{formatDate(e.date, lang, { weekday: "short", day: "numeric", month: "short" })}</p>
+                  <p className="display mt-1 text-xl leading-tight">{name}</p>
+                  <p className="mt-3 text-xs text-muted">
+                    {ok ? `${t.booking.from} ${formatEuro(Math.min(e.prices.terrazza, e.prices.chalet), lang)}`
+                      : e.state === "soldout" ? t.booking.soldOut : t.booking.closed}
+                  </p>
+                </button>
+              );
+            })}
+          </div>
+        </section>
+      )}
+
+      <div className="mt-10 grid gap-8 lg:grid-cols-[minmax(0,5fr)_minmax(0,6fr)]">
+        <section aria-labelledby="cal-title">
+          <div className="flex flex-wrap items-center justify-between gap-2">
+            <h2 id="cal-title" className="display text-2xl">{t.booking.calendarTitle}</h2>
+            <div className="flex items-center gap-1">
+              <button onClick={() => setMonth(shiftMonth(month, -1))} aria-label={t.booking.prevMonth} className="grid h-9 w-9 place-items-center rounded-full border border-line hover:border-gold">‹</button>
+              <span className="min-w-36 text-center text-sm font-semibold capitalize">{monthLabel}</span>
+              <button onClick={() => setMonth(shiftMonth(month, 1))} aria-label={t.booking.nextMonth} className="grid h-9 w-9 place-items-center rounded-full border border-line hover:border-gold">›</button>
+            </div>
+          </div>
+          <div className={`card mt-4 p-3 sm:p-4 ${loading ? "opacity-60" : ""}`}>
+            <div className="grid grid-cols-7 gap-1 text-center text-[0.7rem] font-semibold uppercase tracking-wider text-muted">
+              {t.booking.weekdays.map((w) => <div key={w} className="py-1">{w}</div>)}
+            </div>
+            <div className="mt-1 grid grid-cols-7 gap-1">
+              {Array.from({ length: firstWeekday }).map((_, i) => <div key={`e${i}`} />)}
+              {days.map((d) => {
+                const n = Number(d.date.slice(8));
+                const sel = d.date === date;
+                const bookable = d.state === "open";
+                const label =
+                  d.state === "soldout" ? t.booking.soldOut
+                  : d.state === "closed" ? t.booking.closed
+                  : d.state === "cutoff" ? t.booking.cutoff
+                  : d.state === "open" ? formatEuro(Math.min(d.prices.terrazza, d.prices.chalet), lang)
+                  : "";
+                return (
+                  <button
+                    key={d.date}
+                    disabled={!bookable}
+                    onClick={() => pickDate(d.date)}
+                    aria-pressed={sel}
+                    aria-label={`${formatDate(d.date, lang)}${label ? ` · ${label}` : ""}${d.eventName ? ` · ${d.eventName}` : ""}`}
+                    className={`relative flex aspect-square flex-col items-center justify-center rounded-lg border text-sm transition sm:aspect-[1/0.9]
+                      ${sel ? "border-gold bg-gold text-ink" : bookable ? "border-line bg-ink hover:border-gold" : "border-transparent text-muted/50"}
+                      ${d.special && bookable && !sel ? "!border-ember/70" : ""}`}
+                  >
+                    <span className="font-semibold">{n}</span>
+                    <span className={`hidden text-[0.6rem] leading-tight sm:block ${sel ? "text-ink/80" : d.state === "soldout" ? "text-ember" : ""}`}>{label}</span>
+                    {d.special && <span className={`absolute right-1 top-1 h-1.5 w-1.5 rounded-full ${sel ? "bg-ink" : "bg-ember"}`} />}
+                  </button>
+                );
+              })}
+            </div>
+            {!loading && !anyOpen && <p className="p-3 text-sm text-muted">{t.booking.noDays}</p>}
+          </div>
+          <p className="mt-3 flex items-center gap-2 text-xs text-muted">
+            <span className="inline-block h-1.5 w-1.5 rounded-full bg-ember" /> {t.booking.specialEvents}
+          </p>
+        </section>
+
+        <section ref={planRef} className="scroll-mt-20" aria-labelledby="zone-title">
+          <div className="flex items-baseline justify-between gap-4">
+            <h2 id="zone-title" className="display text-2xl">{t.booking.pickZone}</h2>
+            {day && <p className="text-sm font-semibold capitalize text-gold">{formatDate(day.date, lang)}</p>}
+          </div>
+          <p className="mt-2 text-sm text-muted">{t.booking.zoneHint}</p>
+          <div className="card relative mt-4 overflow-hidden p-2 sm:p-4">
+            <FloorPlan
+              tables={p.tables}
+              free={day?.free ?? null}
+              selected={zone}
+              onSelect={setZone}
+              t={t}
+              disabled={!day || day.state !== "open"}
+            />
+            {!day && (
+              <div className="absolute inset-0 grid place-items-center bg-ink/60 p-6 text-center text-sm">
+                {t.booking.pickDayFirst}
+              </div>
+            )}
+          </div>
+          <div className="mt-4 grid grid-cols-2 gap-3">
+            {(["terrazza", "chalet"] as Zone[]).map((z) => {
+              const soldOut = day ? day.free[z] <= 0 : false;
+              const ok = day?.state === "open" && !soldOut;
+              return (
+                <button
+                  key={z}
+                  disabled={!ok}
+                  onClick={() => setZone(z)}
+                  className={`card p-4 text-left transition disabled:opacity-50 ${zone === z ? "!border-gold" : "hover:border-gold"}`}
+                >
+                  <span className={`inline-block h-2.5 w-2.5 rounded-full ${z === "terrazza" ? "bg-ember" : "bg-pine"}`} />
+                  <p className="mt-2 font-semibold">{t.booking.zones[z]}</p>
+                  <p className="text-sm text-muted">
+                    {day ? (soldOut ? t.booking.soldOut : `${formatEuro(day.prices[z], lang)} · ${day.free[z]} ${t.booking.freeTables}`) : "—"}
+                  </p>
+                </button>
+              );
+            })}
+          </div>
+          <p className="mt-4 text-sm text-muted">{t.booking.legendNote}</p>
+          <p className="mt-1 text-sm text-muted">
+            {t.booking.menuNote} <Link href="/listino" className="text-gold hover:underline">{t.booking.seeDrinks} →</Link>
+          </p>
+        </section>
+      </div>
+
+      {day && zone && (
+        <BookingDialog
+          key={`${day.date}-${zone}`}
+          {...p}
+          day={day}
+          zone={zone}
+          onClose={() => setZone(null)}
+          onChangeDay={() => { setZone(null); setDate(null); }}
+          reload={() => load(month)}
+        />
+      )}
+    </div>
+  );
+}
+
+function BookingDialog({
+  t, lang, day, zone, minGuests, maxGuests, depositPct, onClose, onChangeDay, reload,
+}: Props & { day: DayInfo; zone: Zone; onClose: () => void; onChangeDay: () => void; reload: () => void }) {
+  const router = useRouter();
+  const ref = useRef<HTMLDialogElement>(null);
+  const [guests, setGuests] = useState(minGuests);
+  const [accepted, setAccepted] = useState(false);
+  const [sending, setSending] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    const d = ref.current;
+    d?.showModal();
+    return () => d?.close();
+  }, []);
+
+  const price = day.prices[zone];
+  const due = Math.round((price * depositPct) / 100);
+
+  async function submit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    setError(null);
+    setSending(true);
+    const f = new FormData(e.currentTarget);
+    try {
+      const r = await fetch("/api/hold", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          date: day.date, zone, guests, lang,
+          name: f.get("name"), phone: f.get("phone"), email: f.get("email"), notes: f.get("notes"),
+        }),
+      });
+      const j = (await r.json()) as { token?: string; error?: string };
+      if (!r.ok || !j.token) {
+        setError(t.booking.errors[j.error ?? "GENERIC"] ?? t.booking.errors.GENERIC);
+        if (j.error === "TABLE_TAKEN") reload();
+        setSending(false);
+        return;
+      }
+      const pr = await fetch("/api/pay", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ token: j.token }) });
+      const pj = (await pr.json()) as { url?: string };
+      if (pj.url?.startsWith("http") && !pj.url.startsWith(window.location.origin)) window.location.href = pj.url;
+      else router.push(pj.url ? new URL(pj.url, window.location.origin).pathname + new URL(pj.url, window.location.origin).search : `/prenotazione/${j.token}`);
+    } catch {
+      setError(t.booking.errors.GENERIC);
+      setSending(false);
+    }
+  }
+
+  return (
+    <dialog
+      ref={ref}
+      onClose={onClose}
+      onClick={(e) => { if (e.target === ref.current) onClose(); }}
+      className="m-auto w-[min(100%-1.5rem,32rem)] max-h-[92dvh] rounded-2xl border border-line bg-wood p-0 text-cream backdrop:bg-black/70"
+    >
+      <form onSubmit={submit} className="p-5 sm:p-6">
+        <div className="flex items-start justify-between gap-4">
+          <div>
+            <p className="eyebrow capitalize">{formatDate(day.date, lang)}</p>
+            <h2 className="display mt-1 text-2xl">{t.booking.zones[zone]}</h2>
+            <button type="button" onClick={onChangeDay} className="mt-1 text-xs text-muted underline">{t.booking.changeDay}</button>
+          </div>
+          <button type="button" onClick={onClose} aria-label={t.booking.close} className="grid h-9 w-9 shrink-0 place-items-center rounded-full border border-line">✕</button>
+        </div>
+
+        <div className="mt-5 flex items-center justify-between rounded-xl bg-ink p-3">
+          <span className="text-sm font-semibold">{t.booking.guests}</span>
+          <div className="flex items-center gap-3">
+            <button type="button" onClick={() => setGuests((g) => Math.max(minGuests, g - 1))} disabled={guests <= minGuests} className="grid h-9 w-9 place-items-center rounded-full border border-line disabled:opacity-40" aria-label="−">−</button>
+            <span className="w-6 text-center text-lg font-semibold" aria-live="polite">{guests}</span>
+            <button type="button" onClick={() => setGuests((g) => Math.min(maxGuests, g + 1))} disabled={guests >= maxGuests} className="grid h-9 w-9 place-items-center rounded-full border border-line disabled:opacity-40" aria-label="+">+</button>
+          </div>
+        </div>
+
+        <div className="mt-4 grid gap-3">
+          <label className="grid gap-1 text-sm">{t.booking.name}<input name="name" required minLength={3} autoComplete="name" className="field" /></label>
+          <label className="grid gap-1 text-sm">{t.booking.phone}<input name="phone" required type="tel" autoComplete="tel" placeholder="+39 …" className="field" /></label>
+          <label className="grid gap-1 text-sm">{t.booking.email}<input name="email" required type="email" autoComplete="email" className="field" /></label>
+          <label className="grid gap-1 text-sm">{t.booking.notes}<textarea name="notes" rows={2} maxLength={500} className="field" /></label>
+        </div>
+
+        <dl className="mt-5 space-y-1.5 rounded-xl border border-line p-4 text-sm">
+          <div className="flex justify-between"><dt className="text-muted">{t.booking.tablePrice}</dt><dd>{formatEuro(price, lang)}</dd></div>
+          <div className="flex justify-between"><dt className="text-muted">{t.booking.included.replace("{amount}", formatEuro(price, lang))}</dt><dd>✓</dd></div>
+          <div className="flex justify-between border-t border-line pt-2 text-base font-semibold"><dt>{t.booking.payNow}</dt><dd>{formatEuro(due, lang)}</dd></div>
+          <p className="pt-1 text-xs text-muted">{t.booking.wholeNight} · <span className="text-ember">{t.booking.nonRefundable}</span></p>
+        </dl>
+
+        <label className="mt-4 flex items-start gap-2 text-sm">
+          <input type="checkbox" required checked={accepted} onChange={(e) => setAccepted(e.target.checked)} className="mt-1 accent-[#d2552f]" />
+          <span>{t.booking.accept} <Link href="/termini" target="_blank" className="text-gold underline">{t.booking.termsLink}</Link></span>
+        </label>
+
+        {error && <p role="alert" className="mt-4 rounded-lg bg-ember/15 p-3 text-sm text-ember-2">{error}</p>}
+
+        <button type="submit" disabled={sending || !accepted} className="btn btn-primary mt-5 w-full">
+          {sending ? t.booking.sending : `${t.booking.pay} · ${formatEuro(due, lang)}`}
+        </button>
+      </form>
+    </dialog>
+  );
+}
