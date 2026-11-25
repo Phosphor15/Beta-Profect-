@@ -15,12 +15,12 @@ export function InfoPage({
           <h1 className="display mt-3 text-5xl sm:text-6xl">{title}</h1>
           <p className="mt-5 text-lg text-muted">{intro}</p>
         </div>
-        <Photo name={photo} className="aspect-[4/3] rounded-3xl" label={title} />
+        <Photo name={photo} className="frame aspect-[4/3]" label={title} />
       </div>
       <div className="mt-12 grid gap-4 sm:grid-cols-3">
         {blocks.map(([h, p]) => (
-          <div key={h} className="wood gold-trim rounded-2xl p-6 shadow-xl shadow-black/40">
-            <h2 className="display text-xl text-gold">{h}</h2>
+          <div key={h} className="wood p-7">
+            <h2 className="display text-2xl italic text-gold-2">{h}</h2>
             <p className="mt-2 text-cream/80">{p}</p>
           </div>
         ))}

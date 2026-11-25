@@ -50,16 +50,16 @@ export function FloorPlan({
         </filter>
       </defs>
       {/* Edificio chalet: pavimento in assi di legno con cornice oro */}
-      <rect x="3" y="54" width="94" height="43" rx="2" fill="url(#planks)" stroke="#d6b04a" strokeWidth="0.6" />
+      <rect x="3" y="54" width="94" height="43" rx="2" fill="url(#planks)" stroke="#c9a45a" strokeWidth="0.6" />
       <rect x="3" y="54" width="94" height="43" rx="2" fill="#000" filter="url(#grain)" opacity="0.9" />
       <rect x="62" y="58" width="31" height="16" rx="1.5" fill="#16245a" />
-      <text x="77.5" y="67.5" textAnchor="middle" fontSize="2.8" fill="#d6b04a">{t.booking.map.bar}</text>
+      <text x="77.5" y="67.5" textAnchor="middle" fontSize="2.8" fill="#c9a45a">{t.booking.map.bar}</text>
       <rect x="62" y="78" width="31" height="15" rx="1.5" fill="#0e1940" />
       <text x="77.5" y="86.5" textAnchor="middle" fontSize="2.4" fill="#7d89b8">{t.booking.map.kitchen}</text>
 
       {/* DJ e ingresso */}
       <rect x="70" y="14" width="24" height="14" rx="1.5" fill="#16245a" />
-      <text x="82" y="22.5" textAnchor="middle" fontSize="3" fill="#e8c867">♪ {t.booking.map.dj}</text>
+      <text x="82" y="22.5" textAnchor="middle" fontSize="3" fill="#e2c47e">♪ {t.booking.map.dj}</text>
       <rect x="70" y="36" width="24" height="10" rx="1.5" fill="none" stroke="#7d89b8" strokeDasharray="1 1" strokeWidth="0.4" />
       <text x="82" y="42.3" textAnchor="middle" fontSize="2.4" fill="#a9b3d6">{t.booking.map.entrance}</text>
 
@@ -67,7 +67,7 @@ export function FloorPlan({
         const a = AREA[z];
         const isSel = selected === z;
         const soldOut = free ? free[z] <= 0 : false;
-        const color = z === "terrazza" ? "#3a68ee" : "#d6b04a";
+        const color = z === "terrazza" ? "#3a68ee" : "#c9a45a";
         const clickable = !disabled && !soldOut;
         return (
           <g

@@ -102,9 +102,9 @@ export function BookingClient(p: Props) {
           <div className="flex flex-wrap items-center justify-between gap-2">
             <h2 id="cal-title" className="display text-2xl">{t.booking.calendarTitle}</h2>
             <div className="flex items-center gap-1">
-              <button onClick={() => setMonth(shiftMonth(month, -1))} aria-label={t.booking.prevMonth} className="grid h-9 w-9 place-items-center rounded-full border border-line hover:border-gold">‹</button>
+              <button onClick={() => setMonth(shiftMonth(month, -1))} aria-label={t.booking.prevMonth} className="grid h-9 w-9 place-items-center border border-line hover:border-gold">‹</button>
               <span className="min-w-36 text-center text-sm font-semibold capitalize">{monthLabel}</span>
-              <button onClick={() => setMonth(shiftMonth(month, 1))} aria-label={t.booking.nextMonth} className="grid h-9 w-9 place-items-center rounded-full border border-line hover:border-gold">›</button>
+              <button onClick={() => setMonth(shiftMonth(month, 1))} aria-label={t.booking.nextMonth} className="grid h-9 w-9 place-items-center border border-line hover:border-gold">›</button>
             </div>
           </div>
           <div className={`card mt-4 p-3 sm:p-4 ${loading ? "opacity-60" : ""}`}>
@@ -275,15 +275,15 @@ function BookingDialog({
             <h2 className="display mt-1 text-2xl">{t.booking.zones[zone]}</h2>
             <button type="button" onClick={onChangeDay} className="mt-1 text-xs text-muted underline">{t.booking.changeDay}</button>
           </div>
-          <button type="button" onClick={onClose} aria-label={t.booking.close} className="grid h-9 w-9 shrink-0 place-items-center rounded-full border border-line">✕</button>
+          <button type="button" onClick={onClose} aria-label={t.booking.close} className="grid h-9 w-9 shrink-0 place-items-center border border-line">✕</button>
         </div>
 
         <div className="mt-5 flex items-center justify-between rounded-xl bg-ink p-3">
           <span className="text-sm font-semibold">{t.booking.guests}</span>
           <div className="flex items-center gap-3">
-            <button type="button" onClick={() => setGuests((g) => Math.max(minGuests, g - 1))} disabled={guests <= minGuests} className="grid h-9 w-9 place-items-center rounded-full border border-line disabled:opacity-40" aria-label="−">−</button>
+            <button type="button" onClick={() => setGuests((g) => Math.max(minGuests, g - 1))} disabled={guests <= minGuests} className="grid h-9 w-9 place-items-center border border-line disabled:opacity-40" aria-label="−">−</button>
             <span className="w-6 text-center text-lg font-semibold" aria-live="polite">{guests}</span>
-            <button type="button" onClick={() => setGuests((g) => Math.min(maxGuests, g + 1))} disabled={guests >= maxGuests} className="grid h-9 w-9 place-items-center rounded-full border border-line disabled:opacity-40" aria-label="+">+</button>
+            <button type="button" onClick={() => setGuests((g) => Math.min(maxGuests, g + 1))} disabled={guests >= maxGuests} className="grid h-9 w-9 place-items-center border border-line disabled:opacity-40" aria-label="+">+</button>
           </div>
         </div>
 

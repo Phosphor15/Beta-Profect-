@@ -10,8 +10,12 @@ Torna a [[00 - Indice]] · [[Piano Beta]]
 - Instagram: @haralds_ski_restaurant_bar
 - Orari: dalle 7:30 (colazione con pasticceria interna), pranzo, cena à la carte; après-ski con DJ set
 - Fonte testi: pagina Harald's su bardonecchiaski.com
-- **Colori brand: blu royal (#2452d6) e oro (#d6b04a)** — sfondo blu notte (#070e29)
-- **Stile: legno di montagna** — header, footer, travi tra le sezioni e riquadri in assi di legno scuro con venature; card blu con venatura leggera ("legno tinto"); sala chalet della piantina con parquet; finiture in oro
+- **Stile: "Old Money Club"** — eleganza discreta da club privato
+  - Colori: blu notte #081230, blu royal #1e3c9c, oro antico #c9a45a, avorio #f2ead6, mogano #3a1d14
+  - Caratteri: Cormorant Garamond (titoli), Cormorant SC (maiuscoletto), EB Garamond (testo)
+  - Dettagli: stemma con monogramma "H" e alloro (segnaposto del logo), gessato oro sullo sfondo, angoli netti,
+    bottoni con doppio filetto oro, divisori ✦, boiserie in mogano con cornice in ottone, listino con puntini guida,
+    QR come biglietto d'invito avorio
 
 ## Valori beta usati nel sito (da confermare col locale)
 | | Terrazza | Chalet |

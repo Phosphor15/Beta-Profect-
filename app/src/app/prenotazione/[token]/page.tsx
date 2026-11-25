@@ -42,7 +42,7 @@ export default async function BookingPage({
   }
 
   const ok = b.status === "confirmed" || b.status === "manual";
-  const qr = ok ? await QRCode.toDataURL(`${publicUrl()}/staff/checkin/${b.token}`, { margin: 1, width: 640, color: { dark: "#0e1940", light: "#ffffff" } }) : null;
+  const qr = ok ? await QRCode.toDataURL(`${publicUrl()}/staff/checkin/${b.token}`, { margin: 1, width: 640, color: { dark: "#0e1940", light: "#f2ead6" } }) : null;
   const statusColor = ok ? "text-pine" : b.status === "hold" ? "text-gold" : "text-danger";
 
   return (
@@ -52,8 +52,10 @@ export default async function BookingPage({
       <p className={`mt-2 font-semibold ${statusColor}`}>● {t.page.status[b.status]}</p>
 
       {ok && qr && (
-        <section className="mt-8 rounded-3xl bg-white p-6 text-center text-ink">
-          <h2 className="display text-2xl">{t.page.qrTitle}</h2>
+        <section className="mt-8 bg-cream p-2 text-center text-ink shadow-2xl shadow-black/50" style={{ border: "1px solid #c9a45a" }}>
+          <div className="p-6" style={{ border: "1px solid #c9a45a", outline: "3px double rgba(201,164,90,.6)", outlineOffset: "-8px" }}>
+          <p className="caps text-[0.65rem] text-[#8a6a2a]">Harald&rsquo;s · Campo Smith</p>
+          <h2 className="display mt-2 text-3xl italic">{t.page.qrTitle}</h2>
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src={qr} alt={`QR ${b.code}`} className="mx-auto mt-4 w-full max-w-72" />
           <p className="mt-3 font-mono text-lg tracking-widest">{b.code}</p>
@@ -64,6 +66,7 @@ export default async function BookingPage({
               {t.page.checkedIn.replace("{time}", new Date(b.checked_in_at).toLocaleTimeString(lang === "en" ? "en-GB" : "it-IT", { hour: "2-digit", minute: "2-digit", timeZone: "Europe/Rome" }))}
             </p>
           )}
+          </div>
         </section>
       )}
 

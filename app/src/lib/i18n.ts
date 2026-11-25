@@ -11,9 +11,9 @@ const it = {
     rights: "Tutti i diritti riservati.", beta: "Versione beta — contenuti e prezzi indicativi.",
   },
   hero: {
-    eyebrow: "Bardonecchia · Campo Smith",
-    title1: "Ski Restaurant", title2: "& Après-Ski",
-    subtitle: "Dalla colazione sulle piste al DJ set al tramonto. Il calore dello chalet, l'energia dell'après-ski.",
+    eyebrow: "Campo Smith · Bardonecchia",
+    title1: "Harald's", title2: "Ski Restaurant · Bar · Après-Ski",
+    subtitle: "Dalla colazione sulle piste al tramonto in terrazza: la tradizione alpina servita con lo stile di un club.",
     ctaBook: "Prenota il tavolo", ctaMenu: "Listino bevande",
   },
   home: {
@@ -139,9 +139,9 @@ const en: Dict = {
     rights: "All rights reserved.", beta: "Beta version — content and prices are indicative.",
   },
   hero: {
-    eyebrow: "Bardonecchia · Campo Smith",
-    title1: "Ski Restaurant", title2: "& Après-Ski",
-    subtitle: "From breakfast on the slopes to a sunset DJ set. Chalet warmth, après-ski energy.",
+    eyebrow: "Campo Smith · Bardonecchia",
+    title1: "Harald's", title2: "Ski Restaurant · Bar · Après-Ski",
+    subtitle: "From breakfast on the slopes to sunset on the terrace: alpine tradition, served with the style of a club.",
     ctaBook: "Book a table", ctaMenu: "Drinks list",
   },
   home: {

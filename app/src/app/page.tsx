@@ -4,6 +4,7 @@ import { specialEvents } from "@/lib/booking";
 import { VENUE } from "@/lib/i18n";
 import { Photo } from "@/components/Photo";
 import { EventCard } from "@/components/EventCard";
+import { Crest } from "@/components/Crest";
 
 export const dynamic = "force-dynamic";
 
@@ -12,20 +13,20 @@ export default async function Home() {
   const events = specialEvents().slice(0, 3);
   return (
     <>
-      <Photo name="hero" className="-mt-16 min-h-[92svh]" label="Harald's, Campo Smith">
-        <div className="mx-auto flex min-h-[92svh] max-w-6xl flex-col justify-end px-4 pb-16 pt-28">
-          <p className="eyebrow">{t.hero.eyebrow}</p>
-          <h1 className="display mt-4 text-5xl leading-[0.95] sm:text-7xl md:text-8xl">
-            {t.hero.title1}<br /><span className="italic text-gold">{t.hero.title2}</span>
-          </h1>
-          <p className="mt-6 max-w-xl text-lg text-cream/85">{t.hero.subtitle}</p>
-          <div className="mt-8 flex flex-wrap gap-3">
+      <Photo name="hero" className="-mt-[4.5rem] min-h-[94svh]" label="Harald's, Campo Smith">
+        <div className="mx-auto flex min-h-[94svh] max-w-4xl flex-col items-center justify-center px-4 pb-16 pt-32 text-center">
+          <Crest size={132} />
+          <p className="eyebrow mt-8">{t.hero.eyebrow}</p>
+          <h1 className="display mt-3 text-6xl leading-none sm:text-8xl md:text-9xl">{t.hero.title1}</h1>
+          <p className="caps mt-5 text-[0.7rem] text-gold-2 sm:text-sm">{t.hero.title2}</p>
+          <div className="rule mt-8 w-full max-w-md text-xs" aria-hidden>✦</div>
+          <p className="mt-6 max-w-xl text-xl italic text-cream/85">{t.hero.subtitle}</p>
+          <div className="mt-10 flex flex-wrap justify-center gap-4">
             <Link href="/prenota" className="btn btn-primary">{t.hero.ctaBook}</Link>
             <Link href="/listino" className="btn btn-ghost bg-ink/40">{t.hero.ctaMenu}</Link>
           </div>
         </div>
       </Photo>
-      <div className="beam rounded-none" aria-hidden />
 
       {events.length > 0 && (
         <section className="mx-auto max-w-6xl px-4 pt-20">
@@ -43,7 +44,7 @@ export default async function Home() {
       )}
 
       <section className="mx-auto grid max-w-6xl items-center gap-8 px-4 pt-24 md:grid-cols-2">
-        <Photo name="apres" className="aspect-[4/5] rounded-3xl" label="Après-ski" />
+        <Photo name="apres" className="frame aspect-[4/5]" label="Après-ski" />
         <div>
           <p className="eyebrow">{t.home.apresEyebrow}</p>
           <h2 className="display mt-3 text-4xl">{t.home.apresTitle}</h2>
@@ -53,13 +54,13 @@ export default async function Home() {
       </section>
 
       <section className="mx-auto max-w-6xl px-4 pt-24">
-        <div className="wood gold-trim rounded-3xl p-6 shadow-2xl shadow-black/50 sm:p-10">
+        <div className="wood p-8 text-center sm:p-14">
           <p className="eyebrow">{t.home.stepsEyebrow}</p>
-          <h2 className="display mt-3 max-w-2xl text-3xl sm:text-4xl">{t.home.stepsTitle}</h2>
+          <h2 className="display mx-auto mt-3 max-w-2xl text-3xl italic sm:text-5xl">{t.home.stepsTitle}</h2>
           <ol className="mt-8 grid gap-6 sm:grid-cols-4">
             {t.home.steps.map(([title, text], i) => (
               <li key={title}>
-                <span className="display text-3xl text-gold">{["I", "II", "III", "IV"][i]}</span>
+                <span className="display text-4xl italic text-gold-2">{["I", "II", "III", "IV"][i]}</span>
                 <h3 className="mt-2 font-semibold">{title}</h3>
                 <p className="mt-1 text-sm text-cream/75">{text}</p>
               </li>
@@ -70,7 +71,7 @@ export default async function Home() {
       </section>
 
       <section className="mx-auto grid max-w-6xl items-center gap-8 px-4 pt-24 md:grid-cols-2">
-        <div className="md:order-2"><Photo name="restaurant" className="aspect-[4/5] rounded-3xl" label="Ristorante" /></div>
+        <div className="md:order-2"><Photo name="restaurant" className="frame aspect-[4/5]" label="Ristorante" /></div>
         <div>
           <p className="eyebrow">{t.home.restEyebrow}</p>
           <h2 className="display mt-3 text-4xl">{t.home.restTitle}</h2>
@@ -79,7 +80,7 @@ export default async function Home() {
         </div>
       </section>
 
-      <div className="mx-auto max-w-6xl px-4 pt-24"><div className="beam" aria-hidden /></div>
+      <div className="mx-auto max-w-6xl px-4 pt-24"><div className="rule text-xs" aria-hidden>✦</div></div>
       <section className="mx-auto max-w-6xl px-4 pt-16">
         <p className="eyebrow">{t.home.igEyebrow}</p>
         <h2 className="display mt-2 text-3xl sm:text-4xl">{t.home.igTitle}</h2>
@@ -87,7 +88,7 @@ export default async function Home() {
         <div className="mt-8 grid grid-cols-3 gap-2 sm:grid-cols-6">
           {[1, 2, 3, 4, 5, 6].map((n) => (
             <a key={n} href={VENUE.instagram} target="_blank" rel="noopener noreferrer" aria-label={`Instagram ${n}`}>
-              <Photo name={`gallery-${n}`} className="aspect-square rounded-xl transition hover:opacity-80" />
+              <Photo name={`gallery-${n}`} className="aspect-square border border-gold/30 transition hover:opacity-80" />
             </a>
           ))}
         </div>

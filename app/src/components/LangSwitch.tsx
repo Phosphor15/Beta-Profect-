@@ -10,16 +10,18 @@ export function LangSwitch({ lang }: { lang: Lang }) {
     router.refresh();
   };
   return (
-    <div className="flex rounded-full border border-line p-0.5 text-xs font-semibold" role="group" aria-label="Lingua / Language">
-      {(["it", "en"] as Lang[]).map((l) => (
-        <button
-          key={l}
-          onClick={() => set(l)}
-          aria-pressed={l === lang}
-          className={`rounded-full px-2.5 py-1 uppercase ${l === lang ? "bg-cream text-ink" : "text-muted hover:text-cream"}`}
-        >
-          {l}
-        </button>
+    <div className="caps flex items-center gap-1 text-[0.7rem]" role="group" aria-label="Lingua / Language">
+      {(["it", "en"] as Lang[]).map((l, i) => (
+        <span key={l} className="flex items-center gap-1">
+          {i > 0 && <span className="text-gold/50">·</span>}
+          <button
+            onClick={() => set(l)}
+            aria-pressed={l === lang}
+            className={`px-1 py-1 ${l === lang ? "border-b border-gold text-gold-2" : "text-muted hover:text-cream"}`}
+          >
+            {l}
+          </button>
+        </span>
       ))}
     </div>
   );

@@ -69,19 +69,19 @@ export default async function Serata({ params }: { params: Promise<{ date: strin
                       <div className="flex flex-wrap items-center gap-2 py-1">
                         {!b.checked_in_at && (
                           <form action={arrived}><input type="hidden" name="id" value={b.id} /><input type="hidden" name="date" value={date} />
-                            <button className="rounded-full bg-pine/30 px-3 py-1 text-xs font-semibold">Segna arrivo</button></form>
+                            <button className="border border-pine/60 bg-pine/20 px-3 py-1 text-xs font-semibold">Segna arrivo</button></form>
                         )}
                         <form action={move} className="flex gap-1"><input type="hidden" name="id" value={b.id} /><input type="hidden" name="date" value={date} />
                           <select name="table" className="rounded border border-line bg-ink px-1 py-1 text-xs" defaultValue="">
                             <option value="" disabled>Sposta…</option>
                             {freeTables.map((t) => <option key={t.id} value={t.id}>{t.label}</option>)}
                           </select>
-                          <button className="rounded-full border border-line px-2 text-xs">OK</button></form>
+                          <button className="border border-line px-2 text-xs">OK</button></form>
                         <details className="text-xs">
                           <summary className="cursor-pointer text-danger">Annulla</summary>
                           <form action={cancel} className="mt-1 flex gap-1"><input type="hidden" name="id" value={b.id} /><input type="hidden" name="date" value={date} />
                             <input name="reason" placeholder="Motivo" className="rounded border border-line bg-ink px-2 py-1" />
-                            <button className="rounded-full bg-danger px-2 text-white">Conferma</button></form>
+                            <button className="bg-danger px-2 text-white">Conferma</button></form>
                           {b.status === "confirmed" && <p className="mt-1 text-muted">Il rimborso va fatto a mano dal pannello Stripe.</p>}
                         </details>
                       </div>

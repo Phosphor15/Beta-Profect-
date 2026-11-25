@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   openGraph: { siteName: "Harald's Ski Restaurant Bar", type: "website", locale: "it_IT", alternateLocale: ["en_GB"] },
 };
 
-export const viewport: Viewport = { themeColor: "#070e29", width: "device-width", initialScale: 1, viewportFit: "cover" };
+export const viewport: Viewport = { themeColor: "#081230", width: "device-width", initialScale: 1, viewportFit: "cover" };
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
   const { lang, t } = await getDict();
@@ -26,7 +26,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
         {/* eslint-disable-next-line @next/next/no-page-custom-font */}
         <link
           rel="stylesheet"
-          href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500&family=Manrope:wght@400;500;600;700&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Cormorant+SC:wght@500;600&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap"
         />
       </head>
       <body className="min-h-dvh">

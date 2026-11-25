@@ -2,6 +2,7 @@ import Link from "next/link";
 import { getDict } from "@/lib/lang";
 import { VENUE } from "@/lib/i18n";
 import { CookiePrefsButton } from "./CookieBanner";
+import { Crest } from "./Crest";
 
 export async function Footer() {
   const { t } = await getDict();
@@ -9,7 +10,8 @@ export async function Footer() {
     <footer className="no-print wood-dark gold-trim-top mt-24">
       <div className="mx-auto grid max-w-6xl gap-10 px-4 py-12 sm:grid-cols-3">
         <div>
-          <p className="display text-2xl">Harald&rsquo;s</p>
+          <Crest size={84} />
+          <p className="caps mt-4 text-lg tracking-[0.3em]">Harald&rsquo;s</p>
           <p className="mt-2 text-sm text-muted">{t.footer.tagline}</p>
           <p className="mt-4 text-sm">{VENUE.address}<br />{VENUE.city}</p>
           <p className="mt-2 text-sm">

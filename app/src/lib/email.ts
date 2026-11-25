@@ -14,7 +14,7 @@ export async function sendConfirmation(b: BookingRow) {
   const qr = await QRCode.toDataURL(`${publicUrl()}/staff/checkin/${b.token}`, { margin: 1, width: 280 });
   const html = `
     <div style="font-family:Georgia,serif;max-width:520px;margin:auto;color:#0e1940">
-      <h1 style="font-weight:500;color:#2452d6;border-bottom:2px solid #d6b04a;padding-bottom:8px">${VENUE.short}</h1>
+      <h1 style="font-weight:500;color:#1e3c9c;border-bottom:2px solid #c9a45a;padding-bottom:8px">${VENUE.short}</h1>
       <p><strong>${t.page.status.confirmed}</strong> — ${t.page.code}: <strong>${b.code}</strong></p>
       <p>${t.page.date}: ${formatDate(b.date, lang)} · ${VENUE.apresStart}–${VENUE.apresEnd}<br/>
          ${t.page.zone}: ${t.booking.zones[b.zone]}<br/>

@@ -76,7 +76,7 @@ export default async function StaffHome({ searchParams }: { searchParams: Promis
         <fieldset className="flex flex-wrap gap-2 text-sm">
           <legend className="mb-1 text-sm">Giorni (nessuno = tutti)</legend>
           {wd.map((w, i) => (
-            <label key={w} className="flex items-center gap-1 rounded-full border border-line px-2.5 py-1"><input type="checkbox" name="wd" value={i} />{w}</label>
+            <label key={w} className="flex items-center gap-1 border border-line px-2.5 py-1"><input type="checkbox" name="wd" value={i} />{w}</label>
           ))}
         </fieldset>
         <div className="flex gap-2">
