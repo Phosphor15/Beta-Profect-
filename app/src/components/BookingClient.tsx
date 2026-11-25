@@ -305,7 +305,7 @@ function BookingDialog({
         </dl>
 
         <label className="mt-4 flex items-start gap-2 text-sm">
-          <input type="checkbox" required checked={accepted} onChange={(e) => setAccepted(e.target.checked)} className="mt-1 accent-[#1f43c9]" />
+          <input type="checkbox" required checked={accepted} onChange={(e) => setAccepted(e.target.checked)} className="mt-1 accent-[#7a1e2c]" />
           <span>{t.booking.accept} <Link href="/termini" target="_blank" className="font-semibold text-royal underline">{t.booking.termsLink}</Link></span>
         </label>
 

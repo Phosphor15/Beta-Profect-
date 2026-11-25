@@ -29,7 +29,7 @@ export default async function Home() {
           position="center 35%"
           className="absolute inset-0"
           label="Harald's, Campo Smith"
-          veil="linear-gradient(180deg, rgba(16,28,69,.55) 0%, rgba(16,28,69,.1) 35%, rgba(16,28,69,.25) 60%, rgba(16,28,69,.92) 100%)"
+          veil="radial-gradient(90% 55% at 15% 100%, rgba(255,90,31,.38), transparent 70%), linear-gradient(180deg, rgba(43,24,16,.55) 0%, rgba(43,24,16,.1) 35%, rgba(43,24,16,.25) 60%, rgba(43,24,16,.92) 100%)"
         />
         <div className="relative z-10 mx-auto flex h-full max-w-7xl flex-col justify-end px-5 pb-24 sm:px-8 sm:pb-28">
           <p className="eyebrow animate-page !text-gold-2" style={{ animationDelay: "150ms" }}>{t.hero2.eyebrow}</p>
@@ -76,7 +76,7 @@ export default async function Home() {
       {/* ---------- DUE ESPERIENZE (archi) ---------- */}
       <section className="mx-auto grid max-w-7xl gap-14 px-5 pb-28 sm:px-8 md:grid-cols-2 md:gap-10">
         {[
-          { photo: "restaurant", pos: "center 25%", title: t.duo.restTitle, text: t.duo.restText, cta: t.duo.restCta, href: "/ristorante", accent: "text-gold" },
+          { photo: "chalet", pos: "center 45%", title: t.duo.restTitle, text: t.duo.restText, cta: t.duo.restCta, href: "/ristorante", accent: "text-gold" },
           { photo: "apres", pos: "center 40%", title: t.duo.apresTitle, text: t.duo.apresText, cta: t.duo.apresCta, href: "/apres-ski", accent: "text-sunset" },
         ].map((x, i) => (
           <Link key={x.href} href={x.href} className={`group reveal block ${i === 1 ? "md:mt-24" : ""}`} style={{ ["--d" as string]: `${i * 150}ms` }}>
@@ -203,7 +203,7 @@ export default async function Home() {
 
       {/* ---------- FINALE ---------- */}
       <section className="px-5 pb-8 sm:px-8">
-        <div className="grain relative mx-auto max-w-7xl overflow-hidden rounded-[2.5rem] bg-[linear-gradient(120deg,#ff6b4a_0%,#ff8a5c_35%,#f0cf85_100%)] px-6 py-20 text-center text-navy sm:py-28">
+        <div className="grain relative mx-auto max-w-7xl overflow-hidden rounded-[2.5rem] bg-[linear-gradient(120deg,#ff5a1f_0%,#ff7a3d_35%,#f2c56b_100%)] px-6 py-20 text-center text-navy sm:py-28">
           <h2 className="display reveal text-5xl sm:text-8xl">
             {t.finale.title} <span className="display-italic text-white">{t.finale.titleItalic}</span>
           </h2>

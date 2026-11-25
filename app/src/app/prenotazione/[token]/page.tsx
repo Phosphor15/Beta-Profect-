@@ -42,7 +42,7 @@ export default async function BookingPage({
   }
 
   const ok = b.status === "confirmed" || b.status === "manual";
-  const qr = ok ? await QRCode.toDataURL(`${publicUrl()}/staff/checkin/${b.token}`, { margin: 1, width: 640, color: { dark: "#101c45", light: "#ffffff" } }) : null;
+  const qr = ok ? await QRCode.toDataURL(`${publicUrl()}/staff/checkin/${b.token}`, { margin: 1, width: 640, color: { dark: "#2b1810", light: "#ffffff" } }) : null;
   const statusColor = ok ? "bg-pine/12 text-pine" : b.status === "hold" ? "bg-blush text-sunset" : "bg-danger/10 text-danger";
 
   return (
@@ -52,8 +52,8 @@ export default async function BookingPage({
       <p className={`mt-4 inline-flex rounded-full px-4 py-1.5 text-sm font-semibold ${statusColor}`}>● {t.page.status[b.status]}</p>
 
       {ok && qr && (
-        <section className="animate-page mt-8 overflow-hidden rounded-[2rem] bg-paper text-center shadow-[0_40px_80px_-40px_rgba(16,28,69,.55)]" style={{ animationDelay: "150ms" }}>
-          <div className="bg-[linear-gradient(135deg,#1f43c9,#101c45)] px-6 pb-8 pt-7 text-white">
+        <section className="animate-page mt-8 overflow-hidden rounded-[2rem] bg-paper text-center shadow-[0_40px_80px_-40px_rgba(43,24,16,.55)]" style={{ animationDelay: "150ms" }}>
+          <div className="bg-[linear-gradient(135deg,#7a1e2c,#2b1810)] px-6 pb-8 pt-7 text-white">
             <p className="display-italic text-3xl">Harald&rsquo;s</p>
             <p className="mt-1 text-[0.65rem] font-semibold uppercase tracking-[0.25em] text-gold-2">Après-Ski · Campo Smith</p>
           </div>

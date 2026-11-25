@@ -11,6 +11,7 @@ export async function Footer() {
         <div className="grid gap-12 md:grid-cols-[1.4fr_1fr_1fr]">
           <div>
             <p className="display-italic text-5xl">Harald&rsquo;s</p>
+            <span aria-hidden className="mt-4 flex h-1.5 w-24 overflow-hidden rounded-full"><span className="flex-1 bg-brand" /><span className="flex-1 bg-gold" /></span>
             <p className="mt-4 max-w-sm text-white/70">{t.footer.tagline}</p>
             <Link href="/prenota" className="btn btn-primary mt-8">{t.nav.book}</Link>
           </div>

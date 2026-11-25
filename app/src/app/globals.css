@@ -1,36 +1,38 @@
 @import "tailwindcss";
 
 /* =========================================================
-   HARALD'S — "Alpine Riviera"
-   Base luminosa color neve, blu royal e oro del marchio,
-   accento corallo "tramonto" per l'energia dell'après-ski.
+   HARALD'S — "Fuoco e neve"
+   Crema calda e legno, bordeaux come il vino, arancio brace per
+   la griglia e l'après-ski; blu royal e oro restano la firma del marchio.
    ========================================================= */
 
 @theme {
-  --color-snow: #fbf8f3;     /* sfondo */
+  --color-snow: #f7efe4;     /* crema calda (sfondo) */
   --color-paper: #ffffff;    /* card */
-  --color-sand: #f3ece1;     /* sezioni alternate */
-  --color-navy: #101c45;     /* testo e sezioni scure */
-  --color-navy-2: #172a66;
-  --color-muted: #646a80;
-  --color-line: #e6ddcf;
-  --color-royal: #1f43c9;    /* blu royal Harald's */
-  --color-royal-2: #2d55e8;
+  --color-sand: #efe3d2;     /* sezioni alternate */
+  --color-navy: #2b1810;     /* espresso: testo e sezioni scure */
+  --color-navy-2: #3d2418;
+  --color-muted: #7a6658;
+  --color-line: #e6d6c2;
+  --color-royal: #7a1e2c;    /* bordeaux vino (colore principale) */
+  --color-royal-2: #962a3b;
   --color-gold: #d4a23c;     /* oro Harald's */
-  --color-gold-2: #f0cf85;
-  --color-sunset: #ff6b4a;   /* corallo tramonto */
-  --color-sunset-2: #ff8a5c;
-  --color-blush: #ffe3d6;
+  --color-brand: #1f43c9;    /* blu royal Harald's: solo come firma */
+  --color-wood-warm: #5a3a26; /* noce */
+  --color-gold-2: #f2c56b;
+  --color-sunset: #ff5a1f;   /* arancio brace */
+  --color-sunset-2: #ff7a3d;
+  --color-blush: #ffe2d3;
   --color-pine: #2f8a5b;
   --color-danger: #d9432e;
 
   /* nomi storici usati dall'area staff */
-  --color-ink: #fbf8f3;
+  --color-ink: #f7efe4;
   --color-wood: #ffffff;
-  --color-wood-2: #f3ece1;
-  --color-cream: #101c45;
+  --color-wood-2: #efe3d2;
+  --color-cream: #2b1810;
 
-  --font-display: "Bodoni Moda", "Didot", "Times New Roman", serif;
+  --font-display: "Fraunces", Georgia, "Times New Roman", serif;
   --font-sans: "Outfit", system-ui, -apple-system, "Segoe UI", sans-serif;
 
   --ease-out-soft: cubic-bezier(.22, 1, .36, 1);
@@ -62,8 +64,8 @@ body {
     font-family: var(--font-sans); font-size: .72rem; font-weight: 600;
     letter-spacing: .26em; text-transform: uppercase; color: var(--color-royal);
   }
-  .display { font-family: var(--font-display); font-weight: 500; letter-spacing: -.015em; line-height: 1.02; }
-  .display-italic { font-family: var(--font-display); font-style: italic; font-weight: 400; }
+  .display { font-family: var(--font-display); font-weight: 600; letter-spacing: -.02em; line-height: 1.02; font-variation-settings: "SOFT" 100, "WONK" 0; }
+  .display-italic { font-family: var(--font-display); font-style: italic; font-weight: 500; letter-spacing: -.01em; font-variation-settings: "SOFT" 100, "WONK" 1; }
 
   /* Bottoni a pillola con riempimento che scorre al passaggio del mouse */
   .btn {
@@ -82,11 +84,11 @@ body {
   .btn:disabled { opacity: .45; cursor: not-allowed; }
   .btn:disabled::before { display: none; }
 
-  .btn-primary { background: var(--color-sunset); color: #fff; box-shadow: 0 10px 30px -10px rgba(255,107,74,.7); }
+  .btn-primary { background: var(--color-sunset); color: #fff; box-shadow: 0 10px 30px -10px rgba(255,90,31,.7); }
   .btn-primary::before { background: var(--color-royal); }
-  .btn-primary:hover { box-shadow: 0 14px 34px -12px rgba(31,67,201,.7); }
+  .btn-primary:hover { box-shadow: 0 14px 34px -12px rgba(122,30,44,.7); }
 
-  .btn-royal { background: var(--color-royal); color: #fff; box-shadow: 0 10px 30px -12px rgba(31,67,201,.65); }
+  .btn-royal { background: var(--color-royal); color: #fff; box-shadow: 0 10px 30px -12px rgba(122,30,44,.65); }
   .btn-royal::before { background: var(--color-navy); }
 
   .btn-ghost { border: 1.5px solid currentColor; color: var(--color-navy); }
@@ -102,16 +104,16 @@ body {
 
   .card {
     background: var(--color-paper); border: 1px solid var(--color-line); border-radius: 1.5rem;
-    box-shadow: 0 1px 0 rgba(16,28,69,.03), 0 18px 40px -28px rgba(16,28,69,.35);
+    box-shadow: 0 1px 0 rgba(43,24,16,.03), 0 18px 40px -28px rgba(43,24,16,.35);
   }
   .card-hover { transition: transform .5s var(--ease-out-soft), box-shadow .5s var(--ease-out-soft); }
-  .card-hover:hover { transform: translateY(-6px); box-shadow: 0 30px 60px -30px rgba(16,28,69,.45); }
+  .card-hover:hover { transform: translateY(-6px); box-shadow: 0 30px 60px -30px rgba(43,24,16,.45); }
 
   .field {
     width: 100%; background: var(--color-snow); border: 1.5px solid var(--color-line); border-radius: .9rem;
     padding: .8rem 1rem; color: var(--color-navy); font-size: 1rem; transition: border-color .25s, box-shadow .25s;
   }
-  .field:focus { outline: none; border-color: var(--color-royal); box-shadow: 0 0 0 4px rgba(31,67,201,.12); background: #fff; }
+  .field:focus { outline: none; border-color: var(--color-royal); box-shadow: 0 0 0 4px rgba(122,30,44,.12); background: #fff; }
 
   /* Foto con fallback a gradiente */
   .photo { background-size: cover; background-position: center; position: relative; overflow: hidden; background-color: var(--color-sand); }

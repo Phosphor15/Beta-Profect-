@@ -34,6 +34,18 @@ export const DRINKS: DrinkCategory[] = [
     ],
   },
   {
+    id: "wine", it: "Vini", en: "Wines",
+    items: [
+      { name: "Calice di Barbera d'Asti", price: 7 },
+      { name: "Calice di Nebbiolo Langhe", price: 9, top: true },
+      { name: "Roero Arneis", size: "0,75 l", price: 32 },
+      { name: "Barbera d'Alba Superiore", size: "0,75 l", price: 38 },
+      { name: "Nebbiolo Langhe", size: "0,75 l", price: 42 },
+      { name: "Barbaresco DOCG", size: "0,75 l", price: 65 },
+      { name: "Barolo DOCG", size: "0,75 l", price: 80, top: true },
+    ],
+  },
+  {
     id: "spirits", it: "Bottiglie spirits", en: "Spirits bottles",
     items: [
       { name: "Vodka Absolut", size: "0,7 l", price: 120 },

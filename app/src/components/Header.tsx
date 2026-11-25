@@ -17,7 +17,7 @@ export async function Header() {
     <HeaderShell>
       <div className="relative mx-auto flex h-[4.5rem] max-w-7xl items-center justify-between gap-4 px-5 sm:px-8">
         <Link href="/" className="group flex items-baseline gap-2" aria-label="Harald's — home">
-          <span className="display-italic text-[1.9rem] leading-none">Harald&rsquo;s</span>
+          <span className="display-italic text-[1.9rem] leading-none transition-colors duration-500 group-data-[solid=true]/header:text-brand">Harald&rsquo;s</span>
           <span className="hidden text-[0.6rem] font-semibold uppercase tracking-[0.3em] text-gold sm:inline">Campo Smith</span>
         </Link>
         <nav className="hidden items-center gap-8 text-[0.8rem] font-medium uppercase tracking-[0.14em] lg:flex">

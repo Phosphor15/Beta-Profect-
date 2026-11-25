@@ -1,11 +1,11 @@
 // Foto con fallback: carica /images/<name>.jpg se presente, altrimenti un gradiente.
 // L'immagine sta in un livello interno così può fare zoom (hover) o Ken Burns senza spostare il contenuto.
 const gradients: Record<string, string> = {
-  hero: "radial-gradient(120% 80% at 70% 10%, #2d55e8 0%, #101c45 70%)",
-  apres: "linear-gradient(160deg, #ff8a5c, #d4a23c)",
-  restaurant: "linear-gradient(160deg, #f0cf85, #d4a23c)",
-  terrace: "linear-gradient(160deg, #9fb6ff, #1f43c9)",
-  chalet: "linear-gradient(160deg, #f0cf85, #8a5a2b)",
+  hero: "radial-gradient(120% 80% at 70% 10%, #962a3b 0%, #2b1810 70%)",
+  apres: "linear-gradient(160deg, #ff7a3d, #d4a23c)",
+  restaurant: "linear-gradient(160deg, #f2c56b, #d4a23c)",
+  terrace: "linear-gradient(160deg, #c4566a, #7a1e2c)",
+  chalet: "linear-gradient(160deg, #f2c56b, #8a5a2b)",
 };
 
 export function Photo({
