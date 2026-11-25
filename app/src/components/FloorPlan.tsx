@@ -35,23 +35,23 @@ export function FloorPlan({
       <text x="50" y="6" textAnchor="middle" fontSize="2.6" fill="#dfe8ee" letterSpacing="0.6">{t.booking.map.slopes} ▲</text>
 
       {/* Edificio chalet */}
-      <rect x="3" y="54" width="94" height="43" rx="2" fill="#2b1e15" stroke="#5a4232" strokeWidth="0.5" />
-      <rect x="62" y="58" width="31" height="16" rx="1.5" fill="#3a2a1e" />
-      <text x="77.5" y="67.5" textAnchor="middle" fontSize="2.8" fill="#d9ab62">{t.booking.map.bar}</text>
-      <rect x="62" y="78" width="31" height="15" rx="1.5" fill="#241912" />
-      <text x="77.5" y="86.5" textAnchor="middle" fontSize="2.4" fill="#8a7867">{t.booking.map.kitchen}</text>
+      <rect x="3" y="54" width="94" height="43" rx="2" fill="#0c1638" stroke="#2c4088" strokeWidth="0.5" />
+      <rect x="62" y="58" width="31" height="16" rx="1.5" fill="#16245a" />
+      <text x="77.5" y="67.5" textAnchor="middle" fontSize="2.8" fill="#d6b04a">{t.booking.map.bar}</text>
+      <rect x="62" y="78" width="31" height="15" rx="1.5" fill="#0e1940" />
+      <text x="77.5" y="86.5" textAnchor="middle" fontSize="2.4" fill="#7d89b8">{t.booking.map.kitchen}</text>
 
       {/* DJ e ingresso */}
-      <rect x="70" y="14" width="24" height="14" rx="1.5" fill="#3a2a1e" />
-      <text x="82" y="22.5" textAnchor="middle" fontSize="3" fill="#e8734c">♪ {t.booking.map.dj}</text>
-      <rect x="70" y="36" width="24" height="10" rx="1.5" fill="none" stroke="#8a7867" strokeDasharray="1 1" strokeWidth="0.4" />
-      <text x="82" y="42.3" textAnchor="middle" fontSize="2.4" fill="#b8a793">{t.booking.map.entrance}</text>
+      <rect x="70" y="14" width="24" height="14" rx="1.5" fill="#16245a" />
+      <text x="82" y="22.5" textAnchor="middle" fontSize="3" fill="#e8c867">♪ {t.booking.map.dj}</text>
+      <rect x="70" y="36" width="24" height="10" rx="1.5" fill="none" stroke="#7d89b8" strokeDasharray="1 1" strokeWidth="0.4" />
+      <text x="82" y="42.3" textAnchor="middle" fontSize="2.4" fill="#a9b3d6">{t.booking.map.entrance}</text>
 
       {(["terrazza", "chalet"] as Zone[]).map((z) => {
         const a = AREA[z];
         const isSel = selected === z;
         const soldOut = free ? free[z] <= 0 : false;
-        const color = z === "terrazza" ? "#d2552f" : "#5f8a6a";
+        const color = z === "terrazza" ? "#3a68ee" : "#d6b04a";
         const clickable = !disabled && !soldOut;
         return (
           <g
@@ -70,15 +70,15 @@ export function FloorPlan({
               fill={color} fillOpacity={isSel ? 0.35 : soldOut ? 0.05 : 0.16}
               stroke={color} strokeWidth={isSel ? 0.9 : 0.5} strokeDasharray={soldOut ? "1.5 1" : undefined}
             />
-            <text x={a.x + 2} y={a.y + 4.2} fontSize="2.6" fill="#f4ecdd" fontWeight="600" letterSpacing="0.3">
+            <text x={a.x + 2} y={a.y + 4.2} fontSize="2.6" fill="#f6f1e4" fontWeight="600" letterSpacing="0.3">
               {t.booking.zonesShort[z].toUpperCase()}
             </text>
             {tables.filter((x) => x.zone === z).map((tb) => {
               const taken = takenIds.has(tb.id);
               return (
                 <g key={tb.id}>
-                  <circle cx={tb.x} cy={tb.y} r="3.6" fill={taken ? "#4a372a" : color} fillOpacity={taken ? 1 : 0.9} />
-                  <text x={tb.x} y={tb.y + 0.9} textAnchor="middle" fontSize="2.2" fill={taken ? "#8a7867" : "#fff"}>
+                  <circle cx={tb.x} cy={tb.y} r="3.6" fill={taken ? "#1f2d63" : color} fillOpacity={taken ? 1 : 0.9} />
+                  <text x={tb.x} y={tb.y + 0.9} textAnchor="middle" fontSize="2.2" fill={taken ? "#7d89b8" : "#fff"}>
                     {tb.label}
                   </text>
                 </g>

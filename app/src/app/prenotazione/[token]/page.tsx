@@ -42,8 +42,8 @@ export default async function BookingPage({
   }
 
   const ok = b.status === "confirmed" || b.status === "manual";
-  const qr = ok ? await QRCode.toDataURL(`${publicUrl()}/staff/checkin/${b.token}`, { margin: 1, width: 640, color: { dark: "#17110c", light: "#ffffff" } }) : null;
-  const statusColor = ok ? "text-pine" : b.status === "hold" ? "text-gold" : "text-ember";
+  const qr = ok ? await QRCode.toDataURL(`${publicUrl()}/staff/checkin/${b.token}`, { margin: 1, width: 640, color: { dark: "#0e1940", light: "#ffffff" } }) : null;
+  const statusColor = ok ? "text-pine" : b.status === "hold" ? "text-gold" : "text-danger";
 
   return (
     <div className="mx-auto max-w-xl px-4 py-12">

@@ -59,7 +59,7 @@ export default async function StaffHome({ searchParams }: { searchParams: Promis
               href={`/staff/serata/${d.date}`}
               className={`min-h-20 rounded-lg border p-1.5 text-left text-xs transition hover:border-gold ${d.date === today ? "border-gold" : "border-line"} ${open ? "bg-wood" : "bg-ink opacity-60"}`}
             >
-              <div className="flex justify-between"><span className="font-semibold">{Number(d.date.slice(8))}</span>{d.special && <span className="text-ember">★</span>}</div>
+              <div className="flex justify-between"><span className="font-semibold">{Number(d.date.slice(8))}</span>{d.special && <span className="text-gold">★</span>}</div>
               <div className={open ? "text-pine" : "text-muted"}>{open ? "Aperta" : "Chiusa"}</div>
               {open && <div className="text-muted">{taken}/{total} tav.</div>}
               {d.eventName && <div className="truncate text-gold">{d.eventName}</div>}

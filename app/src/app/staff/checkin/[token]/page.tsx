@@ -25,7 +25,7 @@ export default async function CheckIn({ params }: { params: Promise<{ token: str
   const today = romeNow().date;
   const wrongDay = b && b.date !== today;
 
-  const tone = !valid ? "bg-ember" : b!.checked_in_at ? "bg-gold" : wrongDay ? "bg-gold" : "bg-pine";
+  const tone = !valid ? "bg-danger" : b!.checked_in_at ? "bg-gold" : wrongDay ? "bg-gold" : "bg-pine";
   const title = !b ? "QR non valido" : !valid ? "Prenotazione non valida" : b.checked_in_at ? "QR già usato" : wrongDay ? "Data diversa da oggi" : "Valido";
 
   return (

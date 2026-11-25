@@ -1,16 +1,19 @@
 @import "tailwindcss";
 
 @theme {
-  --color-ink: #17110c;
-  --color-wood: #241912;
-  --color-wood-2: #33241a;
-  --color-line: #4a372a;
-  --color-cream: #f4ecdd;
-  --color-muted: #b8a793;
-  --color-ember: #d2552f;
-  --color-ember-2: #e8734c;
-  --color-gold: #d9ab62;
-  --color-pine: #5f8a6a;
+  /* Palette Harald's: blu royal + oro */
+  --color-ink: #070e29;      /* sfondo blu notte */
+  --color-wood: #0e1940;     /* superfici / card */
+  --color-wood-2: #152457;
+  --color-line: #26397a;
+  --color-cream: #f6f1e4;
+  --color-muted: #a9b3d6;
+  --color-royal: #2452d6;    /* blu royal */
+  --color-royal-2: #3a68ee;
+  --color-gold: #d6b04a;     /* oro */
+  --color-gold-2: #e8c867;
+  --color-pine: #4fae7d;
+  --color-danger: #ef6b5b;
   --font-display: "Fraunces", Georgia, "Times New Roman", serif;
   --font-sans: "Manrope", system-ui, -apple-system, "Segoe UI", sans-serif;
 }
@@ -36,8 +39,8 @@ body {
   transition: background .15s, color .15s, border-color .15s, transform .1s;
 }
 .btn:active { transform: scale(.98); }
-.btn-primary { background: var(--color-ember); color: #fff; }
-.btn-primary:hover { background: var(--color-ember-2); }
+.btn-primary { background: var(--color-royal); color: #fff; box-shadow: inset 0 0 0 1px rgba(214,176,74,.35); }
+.btn-primary:hover { background: var(--color-royal-2); }
 .btn-primary:disabled { opacity: .45; cursor: not-allowed; }
 .btn-ghost { border: 1px solid var(--color-line); color: var(--color-cream); }
 .btn-ghost:hover { border-color: var(--color-gold); }
@@ -57,7 +60,7 @@ body {
 }
 .photo::after {
   content: ""; position: absolute; inset: 0;
-  background: linear-gradient(180deg, rgba(23,17,12,0) 40%, rgba(23,17,12,.85) 100%);
+  background: linear-gradient(180deg, rgba(7,14,41,0) 40%, rgba(7,14,41,.88) 100%);
 }
 
 }

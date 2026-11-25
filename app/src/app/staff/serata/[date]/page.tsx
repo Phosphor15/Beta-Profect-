@@ -12,7 +12,7 @@ export const dynamic = "force-dynamic";
 export const metadata: Metadata = { title: "Serata · staff", robots: { index: false } };
 
 const STATUS: Record<string, [string, string]> = {
-  confirmed: ["Pagata", "text-pine"], manual: ["Manuale", "text-gold"], hold: ["In pagamento", "text-ember-2"],
+  confirmed: ["Pagata", "text-pine"], manual: ["Manuale", "text-gold"], hold: ["In pagamento", "text-royal-2"],
   cancelled: ["Annullata", "text-muted"], expired: ["Scaduta", "text-muted"],
 };
 
@@ -78,10 +78,10 @@ export default async function Serata({ params }: { params: Promise<{ date: strin
                           </select>
                           <button className="rounded-full border border-line px-2 text-xs">OK</button></form>
                         <details className="text-xs">
-                          <summary className="cursor-pointer text-ember-2">Annulla</summary>
+                          <summary className="cursor-pointer text-danger">Annulla</summary>
                           <form action={cancel} className="mt-1 flex gap-1"><input type="hidden" name="id" value={b.id} /><input type="hidden" name="date" value={date} />
                             <input name="reason" placeholder="Motivo" className="rounded border border-line bg-ink px-2 py-1" />
-                            <button className="rounded-full bg-ember px-2 text-white">Conferma</button></form>
+                            <button className="rounded-full bg-danger px-2 text-white">Conferma</button></form>
                           {b.status === "confirmed" && <p className="mt-1 text-muted">Il rimborso va fatto a mano dal pannello Stripe.</p>}
                         </details>
                       </div>

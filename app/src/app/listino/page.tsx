@@ -33,7 +33,7 @@ export default async function Listino() {
               {c.items.map((i) => (
                 <li key={i.name + (i.size ?? "")} className="flex items-baseline gap-3 py-3">
                   <span className="font-medium">{i.name}</span>
-                  {i.top && <span className="rounded-full bg-ember/20 px-2 py-0.5 text-[0.65rem] font-semibold uppercase tracking-wider text-ember-2">{t.drinks.featured}</span>}
+                  {i.top && <span className="rounded-full bg-royal/20 px-2 py-0.5 text-[0.65rem] font-semibold uppercase tracking-wider text-royal-2">{t.drinks.featured}</span>}
                   {i.size && <span className="text-sm text-muted">{i.size}</span>}
                   <span className="ml-auto font-semibold tabular-nums">{fmt(i.price)}</span>
                 </li>

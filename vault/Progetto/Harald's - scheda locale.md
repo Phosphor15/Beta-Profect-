@@ -10,6 +10,7 @@ Torna a [[00 - Indice]] · [[Piano Beta]]
 - Instagram: @haralds_ski_restaurant_bar
 - Orari: dalle 7:30 (colazione con pasticceria interna), pranzo, cena à la carte; après-ski con DJ set
 - Fonte testi: pagina Harald's su bardonecchiaski.com
+- **Colori brand: blu royal (#2452d6) e oro (#d6b04a)** — sfondo blu notte (#070e29)
 
 ## Valori beta usati nel sito (da confermare col locale)
 | | Terrazza | Chalet |

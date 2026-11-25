@@ -9,7 +9,7 @@ export function LoginForm() {
       <label className="grid gap-1 text-sm">Password staff
         <input name="password" type="password" required autoComplete="current-password" className="field" />
       </label>
-      {error && <p role="alert" className="text-sm text-ember-2">{error}</p>}
+      {error && <p role="alert" className="text-sm text-danger">{error}</p>}
       <button className="btn btn-primary" disabled={pending}>{pending ? "…" : "Entra"}</button>
     </form>
   );

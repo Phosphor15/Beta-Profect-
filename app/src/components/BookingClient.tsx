@@ -132,11 +132,11 @@ export function BookingClient(p: Props) {
                     aria-label={`${formatDate(d.date, lang)}${label ? ` · ${label}` : ""}${d.eventName ? ` · ${d.eventName}` : ""}`}
                     className={`relative flex aspect-square flex-col items-center justify-center rounded-lg border text-sm transition sm:aspect-[1/0.9]
                       ${sel ? "border-gold bg-gold text-ink" : bookable ? "border-line bg-ink hover:border-gold" : "border-transparent text-muted/50"}
-                      ${d.special && bookable && !sel ? "!border-ember/70" : ""}`}
+                      ${d.special && bookable && !sel ? "!border-gold/70" : ""}`}
                   >
                     <span className="font-semibold">{n}</span>
-                    <span className={`hidden text-[0.6rem] leading-tight sm:block ${sel ? "text-ink/80" : d.state === "soldout" ? "text-ember" : ""}`}>{label}</span>
-                    {d.special && <span className={`absolute right-1 top-1 h-1.5 w-1.5 rounded-full ${sel ? "bg-ink" : "bg-ember"}`} />}
+                    <span className={`hidden text-[0.6rem] leading-tight sm:block ${sel ? "text-ink/80" : d.state === "soldout" ? "text-danger" : ""}`}>{label}</span>
+                    {d.special && <span className={`absolute right-1 top-1 h-1.5 w-1.5 rounded-full ${sel ? "bg-ink" : "bg-gold"}`} />}
                   </button>
                 );
               })}
@@ -144,7 +144,7 @@ export function BookingClient(p: Props) {
             {!loading && !anyOpen && <p className="p-3 text-sm text-muted">{t.booking.noDays}</p>}
           </div>
           <p className="mt-3 flex items-center gap-2 text-xs text-muted">
-            <span className="inline-block h-1.5 w-1.5 rounded-full bg-ember" /> {t.booking.specialEvents}
+            <span className="inline-block h-1.5 w-1.5 rounded-full bg-gold" /> {t.booking.specialEvents}
           </p>
         </section>
 
@@ -180,7 +180,7 @@ export function BookingClient(p: Props) {
                   onClick={() => setZone(z)}
                   className={`card p-4 text-left transition disabled:opacity-50 ${zone === z ? "!border-gold" : "hover:border-gold"}`}
                 >
-                  <span className={`inline-block h-2.5 w-2.5 rounded-full ${z === "terrazza" ? "bg-ember" : "bg-pine"}`} />
+                  <span className={`inline-block h-2.5 w-2.5 rounded-full ${z === "terrazza" ? "bg-royal-2" : "bg-gold"}`} />
                   <p className="mt-2 font-semibold">{t.booking.zones[z]}</p>
                   <p className="text-sm text-muted">
                     {day ? (soldOut ? t.booking.soldOut : `${formatEuro(day.prices[z], lang)} · ${day.free[z]} ${t.booking.freeTables}`) : "—"}
@@ -298,15 +298,15 @@ function BookingDialog({
           <div className="flex justify-between"><dt className="text-muted">{t.booking.tablePrice}</dt><dd>{formatEuro(price, lang)}</dd></div>
           <div className="flex justify-between"><dt className="text-muted">{t.booking.included.replace("{amount}", formatEuro(price, lang))}</dt><dd>✓</dd></div>
           <div className="flex justify-between border-t border-line pt-2 text-base font-semibold"><dt>{t.booking.payNow}</dt><dd>{formatEuro(due, lang)}</dd></div>
-          <p className="pt-1 text-xs text-muted">{t.booking.wholeNight} · <span className="text-ember">{t.booking.nonRefundable}</span></p>
+          <p className="pt-1 text-xs text-muted">{t.booking.wholeNight} · <span className="text-gold">{t.booking.nonRefundable}</span></p>
         </dl>
 
         <label className="mt-4 flex items-start gap-2 text-sm">
-          <input type="checkbox" required checked={accepted} onChange={(e) => setAccepted(e.target.checked)} className="mt-1 accent-[#d2552f]" />
+          <input type="checkbox" required checked={accepted} onChange={(e) => setAccepted(e.target.checked)} className="mt-1 accent-[#2452d6]" />
           <span>{t.booking.accept} <Link href="/termini" target="_blank" className="text-gold underline">{t.booking.termsLink}</Link></span>
         </label>
 
-        {error && <p role="alert" className="mt-4 rounded-lg bg-ember/15 p-3 text-sm text-ember-2">{error}</p>}
+        {error && <p role="alert" className="mt-4 rounded-lg bg-danger/15 p-3 text-sm text-danger">{error}</p>}
 
         <button type="submit" disabled={sending || !accepted} className="btn btn-primary mt-5 w-full">
           {sending ? t.booking.sending : `${t.booking.pay} · ${formatEuro(due, lang)}`}

@@ -58,7 +58,7 @@ export default async function Home() {
           <ol className="mt-8 grid gap-6 sm:grid-cols-4">
             {t.home.steps.map(([title, text], i) => (
               <li key={title}>
-                <span className="display text-3xl text-ember">{["I", "II", "III", "IV"][i]}</span>
+                <span className="display text-3xl text-gold">{["I", "II", "III", "IV"][i]}</span>
                 <h3 className="mt-2 font-semibold">{title}</h3>
                 <p className="mt-1 text-sm text-muted">{text}</p>
               </li>
