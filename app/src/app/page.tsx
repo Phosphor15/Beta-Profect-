@@ -13,7 +13,7 @@ export default async function Home() {
   const events = specialEvents().slice(0, 3);
   return (
     <>
-      <Photo name="hero" className="-mt-[4.5rem] min-h-[94svh]" label="Harald's, Campo Smith">
+      <Photo name="hero" className="-mt-[4.5rem] min-h-[94svh]" label="Harald's, Campo Smith" position="center 38%" veil={0.55}>
         <div className="mx-auto flex min-h-[94svh] max-w-4xl flex-col items-center justify-center px-4 pb-16 pt-32 text-center">
           <Crest size={132} />
           <p className="eyebrow mt-8">{t.hero.eyebrow}</p>
@@ -71,7 +71,7 @@ export default async function Home() {
       </section>
 
       <section className="mx-auto grid max-w-6xl items-center gap-8 px-4 pt-24 md:grid-cols-2">
-        <div className="md:order-2"><Photo name="restaurant" className="frame aspect-[4/5]" label="Ristorante" /></div>
+        <div className="md:order-2"><Photo name="restaurant" className="frame aspect-[4/5]" label="Ristorante" position="center 30%" /></div>
         <div>
           <p className="eyebrow">{t.home.restEyebrow}</p>
           <h2 className="display mt-3 text-4xl">{t.home.restTitle}</h2>
@@ -85,8 +85,8 @@ export default async function Home() {
         <p className="eyebrow">{t.home.igEyebrow}</p>
         <h2 className="display mt-2 text-3xl sm:text-4xl">{t.home.igTitle}</h2>
         <p className="mt-3 max-w-xl text-muted">{t.home.igText}</p>
-        <div className="mt-8 grid grid-cols-3 gap-2 sm:grid-cols-6">
-          {[1, 2, 3, 4, 5, 6].map((n) => (
+        <div className="mt-8 grid grid-cols-2 gap-3 sm:grid-cols-4">
+          {[1, 2, 3, 4].map((n) => (
             <a key={n} href={VENUE.instagram} target="_blank" rel="noopener noreferrer" aria-label={`Instagram ${n}`}>
               <Photo name={`gallery-${n}`} className="aspect-square border border-gold/30 transition hover:opacity-80" />
             </a>

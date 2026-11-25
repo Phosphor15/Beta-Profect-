@@ -9,14 +9,23 @@ const gradients: Record<string, string> = {
 };
 
 export function Photo({
-  name, className = "", label, children,
-}: { name: string; className?: string; label?: string; children?: React.ReactNode }) {
+  name, className = "", label, children, position = "center", veil = 0,
+}: {
+  name: string; className?: string; label?: string; children?: React.ReactNode;
+  /** background-position, es. "center 35%" */
+  position?: string;
+  /** velatura blu notte sopra la foto (0–1), per leggere il testo */
+  veil?: number;
+}) {
   return (
     <div
       className={`photo ${className}`}
       role={label ? "img" : undefined}
       aria-label={label}
-      style={{ backgroundImage: `url(/images/${name}.jpg), ${gradients[name] ?? gradients.hero}` }}
+      style={{
+        backgroundImage: `${veil ? `linear-gradient(rgba(8,18,48,${veil}), rgba(8,18,48,${veil})), ` : ""}url(/images/${name}.jpg), ${gradients[name] ?? gradients.hero}`,
+        backgroundPosition: position,
+      }}
     >
       {children && <div className="relative z-10 h-full">{children}</div>}
     </div>

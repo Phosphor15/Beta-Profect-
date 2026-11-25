@@ -30,8 +30,10 @@ Torna a [[00 - Indice]] · [[Piano Beta]]
 - Listino bevande beta: après-ski (Bombardino, Vin brulé, Hugo…), birre, bollicine €40–400, bottiglie spirits €120–350
 
 ## Da chiedere al locale
-- [ ] Foto in alta qualità (o permesso di usare quelle di Instagram)
-- [ ] Logo
+- [x] Prime 4 foto da Instagram inserite (fuochi d'artificio, festa après-ski, chef, piatto) — vedi `app/public/images/README.md`
+- [ ] Permesso scritto del locale per le foto; per la foto della festa anche del fotografo (@borntoride_it / @bardonecchia_ski)
+- [ ] Originali in alta risoluzione (quelle di Instagram sono ~1180px)
+- [ ] Logo in alta risoluzione (dall'avatar Instagram: rombo con sciatore, rosso e blu)
 - [ ] Listino vero e prezzi tavoli
 - [ ] Piantina reale della terrazza e della sala
 - [ ] Account Stripe e email mittente
